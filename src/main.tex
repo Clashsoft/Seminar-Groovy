@@ -4,14 +4,41 @@
 %%
 
 % Preamble
+\newcommand{\paperTitle}[0]{Die Sprache Groovy}
+\newcommand{\paperSubtitle}[0]{Seminar Skriptsprachen, Wintersemester 2018/19}
+\newcommand{\paperDate}[0]{\today}
+\newcommand{\paperKeywords}[0]{Groovy, Seminar, Skriptsprachen}
+\newcommand{\paperAuthor}[0]{Adrian Kunz}
 
-\documentclass[11pt]{article}
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+
+\usepackage{hyperref}
+\hypersetup{
+	pdftitle={\paperTitle{}},
+	pdfauthor={\paperAuthor{}},
+	pdfsubject={\paperTitle{}},
+	pdfkeywords={\paperKeywords},
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	hidelinks,
+}
+\usepackage{hypcap}
+
+\title{\paperTitle}
+\author{\paperAuthor}
+\date{\paperDate}
 
 % Document
 \begin{document}
 
 
 	\bibliography{main}
-	\bibliographystyle{plain}
+	\bibliographystyle{ieeetr}
 
+	% --------------- ---------------
 \end{document}
