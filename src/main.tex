@@ -3,39 +3,73 @@
 %% 2018-12-28
 %%
 
-% Preamble
+% =============== Preamble ===============
+
+% --------------- Definitions ---------------
 \newcommand{\paperTitle}[0]{Die Sprache Groovy}
 \newcommand{\paperSubtitle}[0]{Seminar Skriptsprachen, Wintersemester 2018/19}
 \newcommand{\paperDate}[0]{\today}
 \newcommand{\paperKeywords}[0]{Groovy, Seminar, Skriptsprachen}
 \newcommand{\paperAuthor}[0]{Adrian Kunz}
 
+% --------------- Commands ---------------
+\newcommand{\code}[1]{\mintinline{java}{#1}}
+
+% --------------- Document Setup ---------------
 \documentclass[11pt,a4paper]{article}
-
-\usepackage[ngerman]{babel}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{url}
-
-\usepackage{hyperref}
-\hypersetup{
-	pdftitle={\paperTitle{}},
-	pdfauthor={\paperAuthor{}},
-	pdfsubject={\paperTitle{}},
-	pdfkeywords={\paperKeywords},
-	bookmarksnumbered=true,
-	bookmarksopen=true,
-	hidelinks,
-}
-\usepackage{hypcap}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
 
 \title{\paperTitle}
 \author{\paperAuthor}
 \date{\paperDate}
 
-% Document
+% --------------- Packages ---------------
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+
+% Minted
+\usepackage{minted}
+\usemintedstyle{vs}
+\setminted{frame=single,framesep=2mm,tabsize=2}
+
+% Hyperref
+\usepackage{hyperref}
+\hypersetup{
+pdftitle={\paperTitle{}},
+pdfauthor={\paperAuthor{}},
+pdfsubject={\paperTitle{}},
+pdfkeywords={\paperKeywords},
+bookmarksnumbered=true,
+bookmarksopen=true,
+hidelinks,
+}
+\usepackage{hypcap}
+
+% =============== Document ===============
+
 \begin{document}
 
+
+
+	\subsection{Besonderheiten}\label{subsec:besonderheiten}
+
+	% --------------- ---------------
+
+	\section{Community, Verwendung und Verbreitung}\label{sec:community}
+
+	Groovy wird von vielen Unternehmen verwendet, unter anderen Google, IBM und LinkedIn~\cite{GroovyLangOrg,wiki:Groovy}.
+
+	\subsection{Gradle}\label{subsec:gradle}
+
+	\subsection{Grails}\label{subsec:grails}
+
+	% --------------- ---------------
+
+	\section{Zusammenfassung}\label{sec:zusammenfassung}
+
+	% --------------- ---------------
 
 	\bibliography{main}
 	\bibliographystyle{ieeetr}
