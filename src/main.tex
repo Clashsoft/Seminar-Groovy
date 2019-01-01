@@ -52,6 +52,33 @@ hidelinks,
 \begin{document}
 
 
+	% --------------- ---------------
+
+	\section{Sprache}\label{sec:sprache}
+
+	Im folgenden Abschnitt wird Groovy als Sprache vorgestellt.
+	Da die Syntax auf Java aufgebaut ist, wird zunächst ein Vergleich in Unterabschnitt~\ref{subsec:vergleichMitJava}durchgeführt.
+	Dabei wird sowohl auf syntaktischer als auch auf semantischer Ebene Bezug genommen.
+	In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
+
+	\subsection{Vergleich mit Java}\label{subsec:vergleichMitJava}
+
+	Die Syntax von Groovy ist stark an Java und andere C-ähnliche Sprachen angelehnt.
+	Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, ist es möglich, viele Java-Programme direkt als Groovy-Programm zu verwenden.
+	Dies hat einerseits den Vorteil, dass bei der Überführung eines Projekts von Java zu Groovy zunächst nur wenige Änderungen vorgenommen werden müssen.
+	Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte aneignen können.
+
+	Es gibt jedoch einige Fälle, in denen ein Java-Programm nicht auch ein Groovy-Programm ist.
+	Triviale Beispiele sind jene Programme, in denen Schlüsselwörter von Groovy als Bezeichner verwendet werden.
+	Zu den Kontrollstrukturen, die Groovy in Version 2 nicht unterstützt, gehören Do-While-Schleifen, Try-With-Resource- Blöcke und Block-Statements.
+	Die Java-Syntax für Lambda-Ausdrücke, Methoden-Referenzen und Array-Initialisierung werden von dieser Version auch nicht unterstützt.
+	In Groovy 3~\cite{groovy-lang:release3}, welches sich derzeit in Entwicklung befindet, werden jedoch mithilfe eines neuen Parsers Bemühungen betrieben, auch diese Sprachelemente zu erlauben und somit den Umstieg weiter zu erleichtern.
+
+	Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen syntaktisch gültig sind, da sich in einigen Fällen die Semantik in Groovy anders als in Java verhält.
+	Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, dazu gehören {u.a.} \code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{java.math.BigInteger} und \code{java.math.BigDecimal}.
+	Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
+
+	Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} zu finden.
 
 	\subsection{Besonderheiten}\label{subsec:besonderheiten}
 
@@ -59,7 +86,7 @@ hidelinks,
 
 	\section{Community, Verwendung und Verbreitung}\label{sec:community}
 
-	Groovy wird von vielen Unternehmen verwendet, unter anderen Google, IBM und LinkedIn~\cite{GroovyLangOrg,wiki:Groovy}.
+	Groovy wird von vielen Unternehmen verwendet, unter anderen Google, IBM und LinkedIn~\cite{groovy-lang:main,wiki:Groovy}.
 
 	\subsection{Gradle}\label{subsec:gradle}
 
