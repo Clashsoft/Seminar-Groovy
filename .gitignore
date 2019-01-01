@@ -2,9 +2,12 @@
 /out/
 /auxil/
 
+_minted-main/
+
 *.aux
 *.bbl
 *.blg
+*.docx
 *.log
 *.out
 *.pdf
