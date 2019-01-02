@@ -15,6 +15,14 @@
 % --------------- Commands ---------------
 \newcommand{\code}[1]{\mintinline{java}{#1}}
 
+\newcommand{\codelisting}[3]{
+\begin{listing}
+	\inputminted{#1}{#1/#2}
+	\caption{#3}
+	\label{lst:#2}
+\end{listing}
+}
+
 % --------------- Document Setup ---------------
 \documentclass[11pt,a4paper]{article}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
@@ -32,7 +40,7 @@
 % Minted
 \usepackage{minted}
 \usemintedstyle{vs}
-\setminted{frame=single,framesep=2mm,tabsize=2,linenos}
+\setminted{frame=single,tabsize=2,linenos}
 
 % Hyperref
 \usepackage{hyperref}
@@ -78,11 +86,7 @@ hidelinks,
 	Wie etwa bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang-Zeile beginnen, um sie direkt ausführbar zu machen.
 	Variablen und Statements können direkt in der obersten Ebene platziert werden, ebenso Imports, Klassen und Methoden.
 
-	\begin{listing}
-		\inputminted{groovy}{groovy/hello-world.groovy}
-		\caption{Hello World in Groovy}
-		\label{lst:hello-world.groovy}
-	\end{listing}
+	\codelisting{groovy}{hello-world.groovy}{Hello World in Groovy}
 
 	Das Codebeispiel~\ref{lst:hello-world.groovy} kann mit dem Befehl  \code{groovy hello-world.groovy} ausgeführt werden;
 	es kann durch das Shebang aber auch direkt als \code{./hello-world.groovy} aufgerufen werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden; der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
