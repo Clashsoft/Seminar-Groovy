@@ -67,13 +67,36 @@ hidelinks,
 	\section{Sprache}\label{sec:sprache}
 
 	Im folgenden Abschnitt wird Groovy als Sprache vorgestellt.
-	Da die Syntax auf Java aufgebaut ist, wird zunächst ein Vergleich in Unterabschnitt~\ref{subsec:vergleichMitJava}durchgeführt.
+	Die Syntax ist stark auf Java und andere C-ähnliche Sprachen angelehnt.
+	Deshalb wird im Unterabschnitt~\ref{subsec:vergleichMitJava} durchgeführt ein Vergleich mit Java durchgeführt.
 	Dabei wird sowohl auf syntaktischer als auch auf semantischer Ebene Bezug genommen.
 	In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
 
+	Bei Groovy handelt es sich {u.a.} um eine Skriptsprache.
+	Somit sollten Groovy-Programme einfach auszuführen sein, möglichst ohne Zwischenschritte wie etwa ein Aufruf eines Compilers.
+	Groovy-Skripte können entsprechend mit dem \code{groovy}-Programm ausgeführt werden.
+	Wie etwa bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang-Zeile beginnen, um sie direkt ausführbar zu machen.
+	Variablen und Statements können direkt in der obersten Ebene platziert werden, ebenso Imports, Klassen und Methoden.
+
+	\begin{listing}
+		\inputminted{groovy}{groovy/hello-world.groovy}
+		\caption{Hello World in Groovy}
+		\label{lst:hello-world.groovy}
+	\end{listing}
+
+	Das Codebeispiel~\ref{lst:hello-world.groovy} kann mit dem Befehl  \code{groovy hello-world.groovy} ausgeführt werden;
+	es kann durch das Shebang aber auch direkt als \code{./hello-world.groovy} aufgerufen werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden; der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
+
+	Die Ausgabe ist in beiden Fällen \code{Hello World!}.
+	Auffällig ist das Schlüsselwort \code{def}, der Methodenaufruf von \code{println} ohne Klammern und die Zeichenkette mit Interpolierung.
+	Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:dynamische-typen},~\ref{subsubsec:optionale-syntax} und~\ref{subsubsec:string-interpolierung} näher eingegangen.
+
+	Zu beachten ist, dass es sich zwar um ein Skript handelt, aber Groovy dennoch in jedem Fall vor der Ausführung kompiliert wird.
+	Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
+	der generierte Bytecode wird nur im Arbeitsspeicher zwischengespeichert und am Ende der Ausführung verworfen.
+
 	\subsection{Vergleich mit Java}\label{subsec:vergleichMitJava}
 
-	Die Syntax von Groovy ist stark an Java und andere C-ähnliche Sprachen angelehnt.
 	Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, ist es möglich, viele Java-Programme direkt als Groovy-Programm zu verwenden.
 	Dies hat einerseits den Vorteil, dass bei der Überführung eines Projekts von Java zu Groovy zunächst nur wenige Änderungen vorgenommen werden müssen.
 	Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte aneignen können.
@@ -126,9 +149,15 @@ hidelinks,
 
 	\subsection{Besonderheiten}\label{subsec:besonderheiten}
 
+	\subsubsection{String-Interpolierung}\label{subsubsec:string-interpolierung}
+
+	\subsubsection{Dynamische Typen}\label{subsubsec:dynamische-typen}
+
+	\subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
+
 	% --------------- ---------------
 
-	\section{Community, Verwendung und Verbreitung}\label{sec:community}
+	\section{Community, Einsatz und Verbreitung}\label{sec:community}
 
 	Groovy wird von vielen Unternehmen verwendet, unter anderen Google, IBM und LinkedIn~\cite{groovy-lang:main,wiki:Groovy}.
 
