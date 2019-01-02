@@ -123,33 +123,18 @@ hidelinks,
 	Es handelt sich um eine Form des Polymorphismus, bei der die aufzurufende Methode nicht nur anhand des Laufzeittyps des Empfängers, sondern auch anhand der Typen der Argumente ausgewählt wird.
 	In Java werden Methodenaufrufe, bei denen der Aufruf vom Laufzeittyp des Empfängers abhängt, als "virtuell" bezeichnet.
 	Dabei ist das \emph{Überschreiben} von Methoden in Unterklassen von Bedeutung.
-	Parallel dazu gibt es die Möglichkeit, Methoden zu \code{überladen}.
+	Orthogonal dazu gibt es die Möglichkeit, Methoden zu \emph{überladen}.
 	Dies bezeichnet das Deklarieren von zwei oder mehr Methoden im gleichen Kontext, die denselben Namen besitzen und sich in der Anzahl der Parameter oder deren Typen unterscheiden.
 	Beim Aufruf dieser Methoden wird abhängig von den zur Kompilierungszeit bestimmten Typen der Argument ausgewählt, welche Methode aufgerufen wird.
 	Zur Laufzeit sind die Typen der Argument für die Auswahl der Methode dann nicht mehr relevant.
 
-	Zur Verdeutlichung soll~\ref{lst:polycalls} betrachtet werden.
-	Es handelt sich bei dem Programmcode um ein Polyglot,
-	da er sowohl gültiger Java-Code als auch gültiger Groovy-Code ist.
+	\codelisting{groovy}{multi-methods.groovy}{Multi-Methoden in Groovy}
 
-	% TODO maybe get rid of speak and animals and use Object and String
-
-	\begin{listing}[ht]
-		\inputminted{java}{java/PolyCalls.java}
-		\caption{Überschreiben und Überladen}
-		\label{lst:polycalls}
-	\end{listing}
-
-	Bei der Ausführung wird jedoch ein Unterschied in der Ausgabe deutlich.
-	Die Aufrufe der virtuellen Methode \code{speak} in Zeile 10 erzeugen beide die Ausgabe \code{woof}
-	Hier wird die Implementierung von \code{speak} in der Klasse \code{Dog} ausgewählt, da der Laufzeittyp des Objekts, welches von den Variablen \code{a} und \code{d} referenziert wird, \code{Dog} ist, obwohl \code{a} mit dem statischen Typ \code{Animal} deklariert ist.
-	Im ersten Aufruf von \code{take} in Zeile 11 wird in Java und Groovy die zweite \code{take}-Implementierung aufgerufen, die Ausgabe ist entsprechend \code{Dog}.
-	Die Ausgabe des zweiten \code{take}-Aufrufs unterscheidet die Programmiersprachen:
-	In Java wird die erste Implementierung aufgerufen und \code{Animal} ausgegeben, da der statische Typ von \code{a}, \code{Animal} für die Auswahl herangezogen wird.
-	In Groovy wird auch der Laufzeittyp der Argumente betrachtet, dieser ist für das Argument \code{a} \code{Dog}, weshalb auch hier die zweite Implementierung aufgerufen wird.
-	Zum Vergleich:
-	Die Ausgabe des Programms, als Java-Code ausgeführt, ist \code{woof woof Dog Animal };
-	als Groovy-Programm wird \code{woof woof Dog Dog } ausgegeben.
+	Zur Verdeutlichung des Verhaltens von Groovy soll Listing~\ref{lst:multi-methods.groovy} betrachtet werden.
+	Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
+	Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
+	Der Laufzeittyp des Arguments \code{o} ist \code{String}, während der statische Typ \code{Object} ist.
+	In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
 
 	\subsection{Besonderheiten}\label{subsec:besonderheiten}
 
