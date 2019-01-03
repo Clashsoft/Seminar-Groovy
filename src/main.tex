@@ -13,7 +13,7 @@
 \newcommand{\paperAuthor}[0]{Adrian Kunz}
 
 % --------------- Commands ---------------
-\newcommand{\code}[1]{\mintinline{java}{#1}}
+\newcommand{\code}[1]{\mintinline{groovy}{#1}}
 
 \newcommand{\codelisting}[3]{
 \begin{listing}
@@ -160,13 +160,40 @@ hidelinks,
 
 	\subsubsection{Zeichenketten}\label{subsubsec:strings}
 
+	Auch Zeichenketten sind vielfältiger als in Java.
+	Es existieren sechs Arten von String-Literalen in Groovy:
+
+	\begin{itemize}
+		\item \code{'single quoted'}, unterstützt keine Interpolation oder Zeilenumbrüche,
+		\item \code{'''triple single quoted'''}, unterstützt keine Interpolation aber mehrere Zeilen,
+		\item \code{"double quoted"}, unterstützt Interpolation mit dem \code{$}-Zeichen, aber nur einzeilig,
+		\item \code{"""triple quoted"""}, unterstützt Interpolation und mehrere Zeilen,
+		\item \code{/slashy/}, für reguläre Ausdrücke, Interpolation und Zeilenumbrüche werden auch unterstützt, und
+		\item \code{$/dollar slashy/$}, ähnlich zu \code{/slashy/} aber mit besonderen Escape-Regeln.
+	\end{itemize}
+
+	Besonders interessant ist hierbei die Interpolation, welche ein einfaches Einsetzen von Werten in Strings erlaubt.
+	Das Beispiel~\ref{lst:string-interpolation.groovy} zeigt, wie diese in String-Literalen zum Einsatz kommt.
+	\codelisting{groovy}{string-interpolation.groovy}{String-Interpolation in Groovy}
+	Im ersten String-Literal in Zeile 3 wird anstelle von \code{$a} und \code{$b} wird der Wert der Variablen eingesetzt;
+	\code{${a+b}} wertet den Ausdruck \code{a+b} aus und setzt das Ergebnis in den resultierenden String ein.
+
+	Zu beachten ist hier, dass es sich bei dem linken String-Literal in Zeile 3 eigentlich nicht um einen \code{String} handelt, sondern um eine Instanz der Klasse \code{GString}.
+	Diese speichert auch die Objekte, die anstelle der Platzhalter eingesetzt werden.
+	Erst der Vergleich mit \code{==} verursacht eine Konvertierung zu \code{String}; dabei werden auch Ersetzung vorgenommen.
+
+	In Zeile 5 wird ein GString verwendet, der eine \code{Closure}-Instanz als Platzhalter verwendet.
+	Diese wird jedes Mal aufgerufen, wenn der GString zu einem String konvertiert wird.
+	Dabei können auch Seiteneffekte auftreten und der Rückgabewert kann sich ändern, was im Beispiel zur Ausgabe \code{0 1 0 3} führt.
+	Auf Closures wird in Unterabschnitt~\ref{subsubsec:closures} näher eingegangen.
+
 	\subsubsection{Listen und Maps}
 
 	\subsubsection{Null-Sicherheit}
 
 	\subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
-	\subsubsection{Closures}
+	\subsubsection{Closures}\label{subsubsec:closures}
 
 	\subsubsection{AST-Transformation}
 
