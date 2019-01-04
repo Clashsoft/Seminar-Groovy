@@ -123,7 +123,7 @@ hidelinks,
 
 	Unter Multi-Methoden versteht man eine besondere Art der Semantik von Methodenaufrufen.
 	Es handelt sich um eine Form des Polymorphismus, bei der die aufzurufende Methode nicht nur anhand des Laufzeittyps des Empfängers, sondern auch anhand der Typen der Argumente ausgewählt wird.
-	In Java werden Methodenaufrufe, bei denen der Aufruf vom Laufzeittyp des Empfängers abhängt, als "virtuell" bezeichnet.
+	In Java werden Methodenaufrufe, bei denen der Aufruf vom Laufzeittyp des Empfängers abhängt, als \emph{virtuell} bezeichnet.
 	Dabei ist das \emph{Überschreiben} von Methoden in Unterklassen von Bedeutung.
 	Orthogonal dazu gibt es die Möglichkeit, Methoden zu \emph{überladen}.
 	Dies bezeichnet das Deklarieren von zwei oder mehr Methoden im gleichen Kontext, die denselben Namen besitzen und sich in der Anzahl der Parameter oder deren Typen unterscheiden.
@@ -209,6 +209,20 @@ hidelinks,
 	Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[{Abs.} 7.-9.]{groovy-lang:syntax} zu finden.
 
 	\subsubsection{Null-Sicherheit}
+
+	Obwohl Groovy im Kern eine Skriptsprache ist und Sicherheit daher eine kleinere Rolle spielt, ist es dennoch im Bereich Null-Sicherheit besser ausgestattet als Java.
+	Im Kern stehen dabei zwei sehr nützliche Operatoren, \code{?.} und \code{?:}, welche im Folgenden kurz vorgestellt werden.
+
+	Der Safe-Navigation-Operator \code{?.} wird verwendet, um \code{NullPointerException}s zu vermeiden.
+	Anstelle des \code{.}-Operators für Methoden- und Feldzugriffe sorgt er dafür, dass das Ergebnis des Zugriffs \code{null} ist, wenn der Empfänger \code{null} ist.
+	Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, wenn \code{person} schon \code{null} ist.
+
+	Der \code{?:}-Operator, auch Elvis-Operator genannt, ist ein syntaktischer Zucker der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
+	Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[{Abs.} 5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
+	Diese sorgen nämlich dafür, dass \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
+	Jedoch kann dies auch zu Problemen in der Semantik führen:
+	Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb das Ergebnis des Elvis-Operators mit ihnen auf der linken Seite auch die rechte Seite zurückgibt.
+	In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen Datentypen, welche gleichzeitig auch \code{null} werden können, aufgrund der Existenz geeigneterer ``Leer''-Werte kein guter Stil sind.
 
 	\subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
