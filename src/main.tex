@@ -58,218 +58,218 @@ hidelinks,
 % =============== Document ===============
 
 \begin{document}
-	% --------------- ---------------
+% --------------- ---------------
 
-	\maketitle
+\maketitle
 
-	% --------------- ---------------
+% --------------- ---------------
 
-	\section{Einleitung}\label{sec:einleitung}
+\section{Einleitung}\label{sec:einleitung}
 
-	% TODO
+% TODO
 
-	% --------------- ---------------
+% --------------- ---------------
 
-	\section{Sprache}\label{sec:sprache}
+\section{Sprache}\label{sec:sprache}
 
-	Im folgenden Abschnitt wird Groovy als Sprache vorgestellt.
-	Die Syntax ist stark auf Java und andere C-ähnliche Sprachen angelehnt.
-	Deshalb wird im Unterabschnitt~\ref{subsec:vergleichMitJava} durchgeführt ein Vergleich mit Java durchgeführt.
-	Dabei wird sowohl auf syntaktischer als auch auf semantischer Ebene Bezug genommen.
-	In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
+Im folgenden Abschnitt wird Groovy als Sprache vorgestellt.
+Die Syntax ist stark auf Java und andere C-ähnliche Sprachen angelehnt.
+Deshalb wird im Unterabschnitt~\ref{subsec:vergleichMitJava} durchgeführt ein Vergleich mit Java durchgeführt.
+Dabei wird sowohl auf syntaktischer als auch auf semantischer Ebene Bezug genommen.
+In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
 
-	Bei Groovy handelt es sich {u.a.} um eine Skriptsprache.
-	Somit sollten Groovy-Programme einfach auszuführen sein, möglichst ohne Zwischenschritte wie etwa ein Aufruf eines Compilers.
-	Groovy-Skripte können entsprechend mit dem \code{groovy}-Programm ausgeführt werden.
-	Wie etwa bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang-Zeile beginnen, um sie direkt ausführbar zu machen.
-	Variablen und Statements können direkt in der obersten Ebene platziert werden, ebenso Imports, Klassen und Methoden.
+Bei Groovy handelt es sich {u.a.} um eine Skriptsprache.
+Somit sollten Groovy-Programme einfach auszuführen sein, möglichst ohne Zwischenschritte wie etwa ein Aufruf eines Compilers.
+Groovy-Skripte können entsprechend mit dem \code{groovy}-Programm ausgeführt werden.
+Wie etwa bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang-Zeile beginnen, um sie direkt ausführbar zu machen.
+Variablen und Statements können direkt in der obersten Ebene platziert werden, ebenso Imports, Klassen und Methoden.
 
-	\codelisting{groovy}{hello-world.groovy}{Hello World in Groovy}
+\codelisting{groovy}{hello-world.groovy}{Hello World in Groovy}
 
-	Das Listing~\ref{lst:hello-world.groovy} kann mit dem Befehl \code{groovy hello-world.groovy} ausgeführt werden;
-	es kann durch das Shebang aber auch direkt als \code{./hello-world.groovy} aufgerufen werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden;
-	der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
-	Die Ausgabe ist in beiden Fällen \code{Hello World!}.
-	Auffällig ist das Schlüsselwort \code{def}, der Methodenaufruf von \code{println} ohne Klammern und die Zeichenkette mit Interpolierung.
-	Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:dynamische-typisierung},~\ref{subsubsec:optionale-syntax} und~\ref{subsubsec:strings} näher eingegangen.
+Das Listing~\ref{lst:hello-world.groovy} kann mit dem Befehl \code{groovy hello-world.groovy} ausgeführt werden;
+es kann durch das Shebang aber auch direkt als \code{./hello-world.groovy} aufgerufen werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden;
+der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
+Die Ausgabe ist in beiden Fällen \code{Hello World!}.
+Auffällig ist das Schlüsselwort \code{def}, der Methodenaufruf von \code{println} ohne Klammern und die Zeichenkette mit Interpolierung.
+Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:dynamische-typisierung},~\ref{subsubsec:optionale-syntax} und~\ref{subsubsec:strings} näher eingegangen.
 
-	Zu beachten ist, dass es sich zwar um ein Skript handelt, aber Groovy dennoch in jedem Fall vor der Ausführung kompiliert wird.
-	Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
-	der generierte Bytecode wird nur im Arbeitsspeicher zwischengespeichert und am Ende der Ausführung verworfen.
+Zu beachten ist, dass es sich zwar um ein Skript handelt, aber Groovy dennoch in jedem Fall vor der Ausführung kompiliert wird.
+Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
+der generierte Bytecode wird nur im Arbeitsspeicher zwischengespeichert und am Ende der Ausführung verworfen.
 
-	\subsection{Vergleich mit Java}\label{subsec:vergleichMitJava}
+\subsection{Vergleich mit Java}\label{subsec:vergleichMitJava}
 
-	Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, ist es möglich, viele Java-Programme direkt als Groovy-Programm zu verwenden.
-	Dies hat einerseits den Vorteil, dass bei der Überführung eines Projekts von Java zu Groovy zunächst nur wenige Änderungen vorgenommen werden müssen.
-	Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte aneignen können.
+Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, ist es möglich, viele Java-Programme direkt als Groovy-Programm zu verwenden.
+Dies hat einerseits den Vorteil, dass bei der Überführung eines Projekts von Java zu Groovy zunächst nur wenige Änderungen vorgenommen werden müssen.
+Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte aneignen können.
 
-	Es gibt jedoch einige Fälle, in denen ein Java-Programm nicht auch ein Groovy-Programm ist.
-	Triviale Beispiele sind jene Programme, in denen Schlüsselwörter von Groovy als Bezeichner verwendet werden.
-	Zu den Kontrollstrukturen, die Groovy in Version 2 nicht unterstützt, gehören Do-While-Schleifen, Try-With-Resource- Blöcke und Block-Statements.
-	Die Java-Syntax für Lambda-Ausdrücke, Methoden-Referenzen und Array-Initialisierung werden von dieser Version auch nicht unterstützt.
-	In Groovy 3~\cite{groovy-lang:release3}, welches sich derzeit in Entwicklung befindet, werden jedoch mithilfe eines neuen Parsers Bemühungen betrieben, auch diese Sprachelemente zu erlauben und somit den Umstieg weiter zu erleichtern.
+Es gibt jedoch einige Fälle, in denen ein Java-Programm nicht auch ein Groovy-Programm ist.
+Triviale Beispiele sind jene Programme, in denen Schlüsselwörter von Groovy als Bezeichner verwendet werden.
+Zu den Kontrollstrukturen, die Groovy in Version 2 nicht unterstützt, gehören Do-While-Schleifen, Try-With-Resource- Blöcke und Block-Statements.
+Die Java-Syntax für Lambda-Ausdrücke, Methoden-Referenzen und Array-Initialisierung werden von dieser Version auch nicht unterstützt.
+In Groovy 3~\cite{groovy-lang:release3}, welches sich derzeit in Entwicklung befindet, werden jedoch mithilfe eines neuen Parsers Bemühungen betrieben, auch diese Sprachelemente zu erlauben und somit den Umstieg weiter zu erleichtern.
 
-	Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen syntaktisch gültig sind, da sich in einigen Fällen die Semantik in Groovy anders als in Java verhält.
-	Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, dazu gehören {u.a.} \code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{java.math.BigInteger} und \code{java.math.BigDecimal}.
-	Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
+Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen syntaktisch gültig sind, da sich in einigen Fällen die Semantik in Groovy anders als in Java verhält.
+Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, dazu gehören {u.a.} \code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{java.math.BigInteger} und \code{java.math.BigDecimal}.
+Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
 
-	Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} zu finden.
+Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} zu finden.
 
-	\subsubsection{Dynamische Typisierung}\label{subsubsec:dynamische-typisierung}
+\subsubsection{Dynamische Typisierung}\label{subsubsec:dynamische-typisierung}
 
-	% TODO
+% TODO
 
-	\subsubsection{Prototyp-Erweiterung}
+\subsubsection{Prototyp-Erweiterung}
 
-	% TODO
+% TODO
 
-	\subsubsection{Multi-Methoden}
+\subsubsection{Multi-Methoden}
 
-	Unter Multi-Methoden versteht man eine besondere Art der Semantik von Methodenaufrufen.
-	Es handelt sich um eine Form des Polymorphismus, bei der die aufzurufende Methode nicht nur anhand des Laufzeittyps des Empfängers, sondern auch anhand der Typen der Argumente ausgewählt wird.
-	In Java werden Methodenaufrufe, bei denen der Aufruf vom Laufzeittyp des Empfängers abhängt, als \emph{virtuell} bezeichnet.
-	Dabei ist das \emph{Überschreiben} von Methoden in Unterklassen von Bedeutung.
-	Orthogonal dazu gibt es die Möglichkeit, Methoden zu \emph{überladen}.
-	Dies bezeichnet das Deklarieren von zwei oder mehr Methoden im gleichen Kontext, die denselben Namen besitzen und sich in der Anzahl der Parameter oder deren Typen unterscheiden.
-	Beim Aufruf dieser Methoden wird abhängig von den zur Kompilierungszeit bestimmten Typen der Argument ausgewählt, welche Methode aufgerufen wird.
-	Zur Laufzeit sind die Typen der Argument für die Auswahl der Methode dann nicht mehr relevant.
+Unter Multi-Methoden versteht man eine besondere Art der Semantik von Methodenaufrufen.
+Es handelt sich um eine Form des Polymorphismus, bei der die aufzurufende Methode nicht nur anhand des Laufzeittyps des Empfängers, sondern auch anhand der Typen der Argumente ausgewählt wird.
+In Java werden Methodenaufrufe, bei denen der Aufruf vom Laufzeittyp des Empfängers abhängt, als \emph{virtuell} bezeichnet.
+Dabei ist das \emph{Überschreiben} von Methoden in Unterklassen von Bedeutung.
+Orthogonal dazu gibt es die Möglichkeit, Methoden zu \emph{überladen}.
+Dies bezeichnet das Deklarieren von zwei oder mehr Methoden im gleichen Kontext, die denselben Namen besitzen und sich in der Anzahl der Parameter oder deren Typen unterscheiden.
+Beim Aufruf dieser Methoden wird abhängig von den zur Kompilierungszeit bestimmten Typen der Argument ausgewählt, welche Methode aufgerufen wird.
+Zur Laufzeit sind die Typen der Argument für die Auswahl der Methode dann nicht mehr relevant.
 
-	\codelisting{groovy}{multi-methods.groovy}{Multi-Methoden in Groovy}
+\codelisting{groovy}{multi-methods.groovy}{Multi-Methoden in Groovy}
 
-	Zur Verdeutlichung des Verhaltens von Groovy soll Listing~\ref{lst:multi-methods.groovy} betrachtet werden.
-	Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
-	Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
-	Der Laufzeittyp des Arguments \code{o} ist \code{String}, während der statische Typ \code{Object} ist.
-	In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
+Zur Verdeutlichung des Verhaltens von Groovy soll Listing~\ref{lst:multi-methods.groovy} betrachtet werden.
+Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
+Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
+Der Laufzeittyp des Arguments \code{o} ist \code{String}, während der statische Typ \code{Object} ist.
+In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
 
-	\subsection{Besonderheiten}\label{subsec:besonderheiten}
+\subsection{Besonderheiten}\label{subsec:besonderheiten}
 
-	% TODO
+% TODO
 
-	\subsubsection{Zahlen}\label{subsubsec:zahlen}
+\subsubsection{Zahlen}\label{subsubsec:zahlen}
 
-	Mathematische Konzepte haben eine besondere Bedeutung in Groovy.
-	Die Klassen \code{BigInteger} und \code{BigDecimal} sind standardmäßig importiert~\cite[{Abs.} 1.]{groovy-lang:differences} und leichter zu verwenden als in Java, da sie übliche Operatoren unterstützen.
-	Um Fließkommafehler zu vermeiden, sind Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal}~\cite[{Abs.} 5.2.]{groovy-lang:syntax}.
-	Das Ergebnis von Divisionen ist in vielen Fällen\footnote{wenn einer der beiden Operanden ein \code{float} oder \code{double} ist, ist das Ergebnis vom Typ \code{double}} auch ein \code{BigDecimal}~\cite[{Abs.} 5.5.1.]{groovy-lang:syntax}.
-	Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen~\cite[{Abs.} 5.5.2.]{groovy-lang:syntax}.
+Mathematische Konzepte haben eine besondere Bedeutung in Groovy.
+Die Klassen \code{BigInteger} und \code{BigDecimal} sind standardmäßig importiert~\cite[{Abs.} 1.]{groovy-lang:differences} und leichter zu verwenden als in Java, da sie übliche Operatoren unterstützen.
+Um Fließkommafehler zu vermeiden, sind Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal}~\cite[{Abs.} 5.2.]{groovy-lang:syntax}.
+Das Ergebnis von Divisionen ist in vielen Fällen\footnote{wenn einer der beiden Operanden ein \code{float} oder \code{double} ist, ist das Ergebnis vom Typ \code{double}} auch ein \code{BigDecimal}~\cite[{Abs.} 5.5.1.]{groovy-lang:syntax}.
+Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen~\cite[{Abs.} 5.5.2.]{groovy-lang:syntax}.
 
-	Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren~\cite[{Abs.} 10.]{groovy-lang:operators}.
-	Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, Brüche oder Polynome zu erstellen und mit Operatoren zu verwenden.
-	Eigene Operatoren können jedoch nicht definiert werden.
+Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren~\cite[{Abs.} 10.]{groovy-lang:operators}.
+Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, Brüche oder Polynome zu erstellen und mit Operatoren zu verwenden.
+Eigene Operatoren können jedoch nicht definiert werden.
 
-	In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[{Abs.} 10.]{groovy-lang:differences}.
-	Somit unterstützen sie die üblichen Funktionalitäten, die sich auf Objekte beziehen.
+In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[{Abs.} 10.]{groovy-lang:differences}.
+Somit unterstützen sie die üblichen Funktionalitäten, die sich auf Objekte beziehen.
 
-	\subsubsection{Zeichenketten}\label{subsubsec:strings}
+\subsubsection{Zeichenketten}\label{subsubsec:strings}
 
-	Auch Zeichenketten sind vielfältiger als in Java.
-	Es existieren sechs Arten von String-Literalen in Groovy:
+Auch Zeichenketten sind vielfältiger als in Java.
+Es existieren sechs Arten von String-Literalen in Groovy:
 
-	\begin{itemize}
-		\item \code{'single quoted'}, unterstützt keine Interpolation oder Zeilenumbrüche,
-		\item \code{'''triple single quoted'''}, unterstützt keine Interpolation aber mehrere Zeilen,
-		\item \code{"double quoted"}, unterstützt Interpolation mit dem \code{$}-Zeichen, aber nur einzeilig,
-		\item \code{"""triple quoted"""}, unterstützt Interpolation und mehrere Zeilen,
-		\item \code{/slashy/}, für reguläre Ausdrücke, Interpolation und Zeilenumbrüche werden auch unterstützt, und
-		\item \code{$/dollar slashy/$}, ähnlich zu \code{/slashy/} aber mit besonderen Escape-Regeln.
-	\end{itemize}
+\begin{itemize}
+\item \code{'single quoted'}, unterstützt keine Interpolation oder Zeilenumbrüche,
+\item \code{'''triple single quoted'''}, unterstützt keine Interpolation aber mehrere Zeilen,
+\item \code{"double quoted"}, unterstützt Interpolation mit dem \code{$}-Zeichen, aber nur einzeilig,
+\item \code{"""triple quoted"""}, unterstützt Interpolation und mehrere Zeilen,
+\item \code{/slashy/}, für reguläre Ausdrücke, Interpolation und Zeilenumbrüche werden auch unterstützt, und
+\item \code{$/dollar slashy/$}, ähnlich zu \code{/slashy/} aber mit besonderen Escape-Regeln.
+\end{itemize}
 
-	Besonders interessant ist hierbei die Interpolation, welche ein einfaches Einsetzen von Werten in Strings erlaubt.
-	Das Beispiel~\ref{lst:string-interpolation.groovy} zeigt, wie diese in String-Literalen zum Einsatz kommt.
-	\codelisting{groovy}{string-interpolation.groovy}{String-Interpolation in Groovy}
-	Im ersten String-Literal in Zeile 3 wird anstelle von \code{$a} und \code{$b} wird der Wert der Variablen eingesetzt;
-	\code{${a+b}} wertet den Ausdruck \code{a+b} aus und setzt das Ergebnis in den resultierenden String ein.
+Besonders interessant ist hierbei die Interpolation, welche ein einfaches Einsetzen von Werten in Strings erlaubt.
+Das Beispiel~\ref{lst:string-interpolation.groovy} zeigt, wie diese in String-Literalen zum Einsatz kommt.
+\codelisting{groovy}{string-interpolation.groovy}{String-Interpolation in Groovy}
+Im ersten String-Literal in Zeile 3 wird anstelle von \code{$a} und \code{$b} wird der Wert der Variablen eingesetzt;
+\code{${a+b}} wertet den Ausdruck \code{a+b} aus und setzt das Ergebnis in den resultierenden String ein.
 
-	Zu beachten ist hier, dass es sich bei dem linken String-Literal in Zeile 3 eigentlich nicht um einen \code{String} handelt, sondern um eine Instanz der Klasse \code{GString}.
-	Diese speichert auch die Objekte, die anstelle der Platzhalter eingesetzt werden.
-	Erst der Vergleich mit \code{==} verursacht eine Konvertierung zu \code{String}; dabei werden auch Ersetzung vorgenommen.
+Zu beachten ist hier, dass es sich bei dem linken String-Literal in Zeile 3 eigentlich nicht um einen \code{String} handelt, sondern um eine Instanz der Klasse \code{GString}.
+Diese speichert auch die Objekte, die anstelle der Platzhalter eingesetzt werden.
+Erst der Vergleich mit \code{==} verursacht eine Konvertierung zu \code{String}; dabei werden auch Ersetzung vorgenommen.
 
-	In Zeile 5 wird ein GString verwendet, der eine \code{Closure}-Instanz als Platzhalter verwendet.
-	Diese wird jedes Mal aufgerufen, wenn der GString zu einem String konvertiert wird.
-	Dabei können auch Seiteneffekte auftreten und der Rückgabewert kann sich ändern, was im Beispiel zur Ausgabe \code{0 1 0 3} führt.
-	Auf Closures wird in Unterabschnitt~\ref{subsubsec:closures} näher eingegangen.
+In Zeile 5 wird ein GString verwendet, der eine \code{Closure}-Instanz als Platzhalter verwendet.
+Diese wird jedes Mal aufgerufen, wenn der GString zu einem String konvertiert wird.
+Dabei können auch Seiteneffekte auftreten und der Rückgabewert kann sich ändern, was im Beispiel zur Ausgabe \code{0 1 0 3} führt.
+Auf Closures wird in Unterabschnitt~\ref{subsubsec:closures} näher eingegangen.
 
-	\subsubsection{Listen und Maps}
+\subsubsection{Listen und Maps}
 
-	Auch Listen und Maps haben in Groovy erste Bürgerrechte und einen großen Satz von Funktionen, um ihre Verwendung zu erleichtern.
+Auch Listen und Maps haben in Groovy erste Bürgerrechte und einen großen Satz von Funktionen, um ihre Verwendung zu erleichtern.
 
-	\codelisting{groovy}{lists-and-maps.groovy}{Listen und Maps in Groovy}
+\codelisting{groovy}{lists-and-maps.groovy}{Listen und Maps in Groovy}
 
-	Listing~\ref{lst:lists-and-maps.groovy} zeigt einige Möglichkeiten, Listen und Maps zu verwenden.
-	In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
-	diese ist ohne explizite Typangabe eine \code{ArrayList}.
-	In Zeile 4 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie etwa in Python möglich.
-	Danach wird mit dem \code{<<}-Operator ein Element ans Ende der Liste angehängt.
-	Die 6. Zeile zeigt, dass der Index-Operator auch mehrere Argument sowie Intervalle unterstützt.
-	Der \code{..}-Operator sowie der nicht-inklusive \code{..<}-Operator sind auch in anderen Kontexten verwendbar, um einfach Intervalle zu definieren, beispielsweise in Foreach-Schleifen.
+Listing~\ref{lst:lists-and-maps.groovy} zeigt einige Möglichkeiten, Listen und Maps zu verwenden.
+In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
+diese ist ohne explizite Typangabe eine \code{ArrayList}.
+In Zeile 4 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie etwa in Python möglich.
+Danach wird mit dem \code{<<}-Operator ein Element ans Ende der Liste angehängt.
+Die 6. Zeile zeigt, dass der Index-Operator auch mehrere Argument sowie Intervalle unterstützt.
+Der \code{..}-Operator sowie der nicht-inklusive \code{..<}-Operator sind auch in anderen Kontexten verwendbar, um einfach Intervalle zu definieren, beispielsweise in Foreach-Schleifen.
 
-	In Zeile 8 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
-	Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw. \code{b} als Schlüssel verwendet.
-	Das erzeugte Objekt verwendet die \code{LinkedHashMap}-Implementierung, damit die Reihenfolge der Schlüssel erhalten bleibt.
-	Zeile 10 zeigt, wie der Zugriff auf den Wert eines Schlüssels sowohl mit dem Index-Operator als auch mit dem Punkt-Operator möglich ist, als wäre \code{d} eine Klassenvariable.
-	In der nächsten Zeile werden auch beide Möglichkeiten verwendet, um neue Einträge hinzuzufügen.
-	Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 12, welcher auch mit dem Punkt-Operator möglich ist und \code{null} zurückgibt.
+In Zeile 8 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
+Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw. \code{b} als Schlüssel verwendet.
+Das erzeugte Objekt verwendet die \code{LinkedHashMap}-Implementierung, damit die Reihenfolge der Schlüssel erhalten bleibt.
+Zeile 10 zeigt, wie der Zugriff auf den Wert eines Schlüssels sowohl mit dem Index-Operator als auch mit dem Punkt-Operator möglich ist, als wäre \code{d} eine Klassenvariable.
+In der nächsten Zeile werden auch beide Möglichkeiten verwendet, um neue Einträge hinzuzufügen.
+Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 12, welcher auch mit dem Punkt-Operator möglich ist und \code{null} zurückgibt.
 
-	Andere Collections und Arrays können durch Coercion von Listen- oder Map-Literalen erzeugt werden.
-	Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[{Abs.} 7.-9.]{groovy-lang:syntax} zu finden.
+Andere Collections und Arrays können durch Coercion von Listen- oder Map-Literalen erzeugt werden.
+Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[{Abs.} 7.-9.]{groovy-lang:syntax} zu finden.
 
-	\subsubsection{Null-Sicherheit}
+\subsubsection{Null-Sicherheit}
 
-	Obwohl Groovy im Kern eine Skriptsprache ist und Sicherheit daher eine kleinere Rolle spielt, ist es dennoch im Bereich Null-Sicherheit besser ausgestattet als Java.
-	Im Kern stehen dabei zwei sehr nützliche Operatoren, \code{?.} und \code{?:}, welche im Folgenden kurz vorgestellt werden.
+Obwohl Groovy im Kern eine Skriptsprache ist und Sicherheit daher eine kleinere Rolle spielt, ist es dennoch im Bereich Null-Sicherheit besser ausgestattet als Java.
+Im Kern stehen dabei zwei sehr nützliche Operatoren, \code{?.} und \code{?:}, welche im Folgenden kurz vorgestellt werden.
 
-	Der Safe-Navigation-Operator \code{?.} wird verwendet, um \code{NullPointerException}s zu vermeiden.
-	Anstelle des \code{.}-Operators für Methoden- und Feldzugriffe sorgt er dafür, dass das Ergebnis des Zugriffs \code{null} ist, wenn der Empfänger \code{null} ist.
-	Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, wenn \code{person} schon \code{null} ist.
+Der Safe-Navigation-Operator \code{?.} wird verwendet, um \code{NullPointerException}s zu vermeiden.
+Anstelle des \code{.}-Operators für Methoden- und Feldzugriffe sorgt er dafür, dass das Ergebnis des Zugriffs \code{null} ist, wenn der Empfänger \code{null} ist.
+Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, wenn \code{person} schon \code{null} ist.
 
-	Der \code{?:}-Operator, auch Elvis-Operator genannt, ist ein syntaktischer Zucker der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
-	Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[{Abs.} 5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
-	Diese sorgen nämlich dafür, dass \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
-	Jedoch kann dies auch zu Problemen in der Semantik führen:
-	Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb das Ergebnis des Elvis-Operators mit ihnen auf der linken Seite auch die rechte Seite zurückgibt.
-	In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen Datentypen, welche gleichzeitig auch \code{null} werden können, aufgrund der Existenz geeigneterer ``Leer''-Werte kein guter Stil sind.
+Der \code{?:}-Operator, auch Elvis-Operator genannt, ist ein syntaktischer Zucker der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
+Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[{Abs.} 5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
+Diese sorgen nämlich dafür, dass \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
+Jedoch kann dies auch zu Problemen in der Semantik führen:
+Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb das Ergebnis des Elvis-Operators mit ihnen auf der linken Seite auch die rechte Seite zurückgibt.
+In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen Datentypen, welche gleichzeitig auch \code{null} werden können, aufgrund der Existenz geeigneterer ``Leer''-Werte kein guter Stil sind.
 
-	\subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
+\subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
-	% TODO
+% TODO
 
-	\subsubsection{Closures}\label{subsubsec:closures}
+\subsubsection{Closures}\label{subsubsec:closures}
 
-	% TODO
+% TODO
 
-	\subsubsection{AST-Transformation}
+\subsubsection{AST-Transformation}
 
-	% TODO
+% TODO
 
-	% --------------- ---------------
+% --------------- ---------------
 
-	\section{Community, Einsatz und Verbreitung}\label{sec:community}
+\section{Community, Einsatz und Verbreitung}\label{sec:community}
 
-	% TODO
+% TODO
 
-	\subsection{Gradle}\label{subsec:gradle}
+\subsection{Gradle}\label{subsec:gradle}
 
-	% TODO
+% TODO
 
-	\subsection{Grails}\label{subsec:grails}
+\subsection{Grails}\label{subsec:grails}
 
-	% TODO
+% TODO
 
-	\subsection{Griffon}\label{subsec:griffon}
+\subsection{Griffon}\label{subsec:griffon}
 
-	% TODO
+% TODO
 
-	% --------------- ---------------
+% --------------- ---------------
 
-	\section{Zusammenfassung}\label{sec:zusammenfassung}
+\section{Zusammenfassung}\label{sec:zusammenfassung}
 
-	% TODO
+% TODO
 
-	% --------------- ---------------
+% --------------- ---------------
 
-	\bibliography{main}
-	\bibliographystyle{ieeetr}
+\bibliography{main}
+\bibliographystyle{ieeetr}
 
-	% --------------- ---------------
+% --------------- ---------------
 \end{document}
