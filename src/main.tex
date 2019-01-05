@@ -225,9 +225,10 @@ Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, we
 
 Der \code{?:}-Operator, auch Elvis-Operator genannt, ist ein syntaktischer Zucker der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
 Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[{Abs.} 5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
-Diese sorgen nämlich dafür, dass \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
-Jedoch kann dies auch zu Problemen in der Semantik führen:
-Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb das Ergebnis des Elvis-Operators mit ihnen auf der linken Seite auch die rechte Seite zurückgibt.
+Eine Regel besagt, dass \code{null}-Referenzen als \code{falsy}\footnote{In Skriptsprachen wird dieser Begriff häufig für Werte verwendet, die sich in boolschen Ausdrücken wie \code{false} verhalten, aber eigentlich kein boolscher Wert sind.} gelten.
+Somit wird \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
+Jedoch können die Regeln auch zu Problemen in der Semantik führen:
+Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb der Elvis-Operators mit solchen Werten als linkem Operand auch den rechten Operand zurückgibt.
 In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen Datentypen, welche gleichzeitig auch \code{null} werden können, aufgrund der Existenz geeigneterer ``Leer''-Werte kein guter Stil sind.
 
 \subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
