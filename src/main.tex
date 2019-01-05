@@ -133,10 +133,10 @@ Orthogonal dazu gibt es die Möglichkeit, Methoden zu \emph{überladen}.
 Dies bezeichnet das Deklarieren von zwei oder mehr Methoden im gleichen Kontext, die denselben Namen besitzen und sich in der Anzahl der Parameter oder deren Typen unterscheiden.
 Beim Aufruf dieser Methoden wird abhängig von den zur Kompilierungszeit bestimmten Typen der Argument ausgewählt, welche Methode aufgerufen wird.
 Zur Laufzeit sind die Typen der Argument für die Auswahl der Methode dann nicht mehr relevant.
+Zur Verdeutlichung des Verhaltens von Groovy soll Listing~\ref{lst:multi-methods.groovy} betrachtet werden.
 
 \codelisting{groovy}{multi-methods.groovy}{Multi-Methoden in Groovy}
 
-Zur Verdeutlichung des Verhaltens von Groovy soll Listing~\ref{lst:multi-methods.groovy} betrachtet werden.
 Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
 Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
 Der Laufzeittyp des Arguments \code{o} ist \code{String}, während der statische Typ \code{Object} ist.
@@ -176,8 +176,10 @@ Es existieren sechs Arten von String-Literalen in Groovy:
 \end{itemize}
 
 Besonders interessant ist hierbei die Interpolation, welche ein einfaches Einsetzen von Werten in Strings erlaubt.
-Das Beispiel~\ref{lst:string-interpolation.groovy} zeigt, wie diese in String-Literalen zum Einsatz kommt.
+Listing~\ref{lst:string-interpolation.groovy} zeigt, wie diese in String-Literalen zum Einsatz kommt.
+
 \codelisting{groovy}{string-interpolation.groovy}{String-Interpolation in Groovy}
+
 Im ersten String-Literal in Zeile 3 wird anstelle von \code{$a} und \code{$b} wird der Wert der Variablen eingesetzt;
 \code{${a+b}} wertet den Ausdruck \code{a+b} aus und setzt das Ergebnis in den resultierenden String ein.
 
@@ -193,10 +195,10 @@ Auf Closures wird in Unterabschnitt~\ref{subsubsec:closures} näher eingegangen.
 \subsubsection{Listen und Maps}\label{subsubsec:listen-und-maps}
 
 Auch Listen und Maps haben in Groovy erste Bürgerrechte und einen großen Satz von Funktionen, um ihre Verwendung zu erleichtern.
+Listing~\ref{lst:lists-and-maps.groovy} zeigt einige Möglichkeiten, Listen und Maps zu verwenden.
 
 \codelisting{groovy}{lists-and-maps.groovy}{Listen und Maps in Groovy}
 
-Listing~\ref{lst:lists-and-maps.groovy} zeigt einige Möglichkeiten, Listen und Maps zu verwenden.
 In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
 diese ist ohne explizite Typangabe eine \code{ArrayList}.
 In Zeile 4 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie etwa in Python möglich.
