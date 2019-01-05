@@ -190,7 +190,7 @@ Diese wird jedes Mal aufgerufen, wenn der GString zu einem String konvertiert wi
 Dabei können auch Seiteneffekte auftreten und der Rückgabewert kann sich ändern, was im Beispiel zur Ausgabe \code{0 1 0 3} führt.
 Auf Closures wird in Unterabschnitt~\ref{subsubsec:closures} näher eingegangen.
 
-\subsubsection{Listen und Maps}
+\subsubsection{Listen und Maps}\label{subsubsec:listen-und-maps}
 
 Auch Listen und Maps haben in Groovy erste Bürgerrechte und einen großen Satz von Funktionen, um ihre Verwendung zu erleichtern.
 
@@ -233,7 +233,23 @@ In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen 
 
 \subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
-% TODO
+Groovy erlaubt es, Punkt-Operatoren und Klammern bei Methodenaufrufen wegzulassen.
+Dies ermöglicht die einfache Erstellung von DSLs, wie es das Listing~\ref{lst:optional-parens.groovy} zeigt.
+
+\codelisting{groovy}{optional-parens.groovy}{Eine kleine DSL mithilfe von optionalen Klammern und Punkten}
+
+Hier wird zunächst eine Hilfsfunktion \code{make} erstellt, welche die DSL definiert.
+Um das Beispiel kurz zu halten, werden hierfür Map-Literale und Closures, die in den Unterabschnitten~\ref{subsubsec:listen-und-maps} und~\ref{subsubsec:closures} erklärt werden.
+Bei echten DSLs sollten stattdessen Klassen und Methoden verwendet werden.
+Hier wurde zusätzlich ausgenutzt, dass die Verwendung des \code{return}-Schlüsselworts zur Rückgabe der erstellten Map auch optional ist.
+In Zeile 9 werden aus Illustrationsgründung symbolische Variablen für einige Zeichenketten definiert.
+Danach folgt die Verwendung der definierten DSL:
+Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch equivalent zu der Anweisung in Zeile 11.
+Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und Methodenaufrufe impliziert.
+Die Ausgabe ist zweimal der Satz \code{my cake contains sugar, eggs and flour}.
+
+Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semicolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
+In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 11 ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
 
 \subsubsection{Closures}\label{subsubsec:closures}
 
