@@ -91,7 +91,7 @@ es kann durch das Shebang aber auch direkt als \code{./hello-world.groovy} aufge
 der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
 Die Ausgabe ist in beiden Fällen \code{Hello World!}.
 Auffällig ist das Schlüsselwort \code{def}, der Methodenaufruf von \code{println} ohne Klammern und die Zeichenkette mit Interpolierung.
-Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:dynamische-typisierung},~\ref{subsubsec:optionale-syntax} und~\ref{subsubsec:strings} näher eingegangen.
+Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:typisierung},~\ref{subsubsec:optionale-syntax} und~\ref{subsubsec:strings} näher eingegangen.
 
 Zu beachten ist, dass es sich zwar um ein Skript handelt, aber Groovy dennoch in jedem Fall vor der Ausführung kompiliert wird.
 Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
@@ -115,9 +115,26 @@ Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Lite
 
 Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} zu finden.
 
-\subsubsection{Dynamische Typisierung}\label{subsubsec:dynamische-typisierung}
+\subsubsection{Typisierung}\label{subsubsec:typisierung}
 
-% TODO
+Das Typsystem von Groovy ist standardmäßig dynamisch und unterstützt Duck-Typisierung~\cite[Abs.~6.]{groovy-lang:semantics}.
+An vielen Stellen werden implizite Typkonvertierung, beispielsweise von und zu Strings oder Booleans durchgeführt~\cite[Abs.~3.]{groovy-lang:semantics}.
+Typinformationen im Code dienen dem Compiler nur als Hilfe um Warnungen auszugeben; Fehler treten jedoch erst zur Laufzeit auf.
+Wenn gewünscht ist es aber auch möglich, Typfehler zur Compilezeit zu erzwingen; dafür können die \code{@TypeChecked}- und \code{@CompileStatic}-Annotationen verwendet werden~\cite[Abs.~6.2.]{groovy-lang:semantics}.
+Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
+
+\codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung in Groovy}
+
+Zunächst wird eine Klasse \code{Duck} mit einer \code{quack}-Methode deklariert.
+In Zeile 4 wird die \code{duck}-Variable angelegt, der eine \code{Duck}-Instanz zugewiesen wird.
+Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Object}.
+Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \code{quack}.
+In der nächsten Zeile wird ein Map-Literal angelegt, welches dem Schlüssel \code{quack} eine Closure zuweist.
+Durch den Coercion-Operator \code{as} wird die Map zu einem \code{Duck}-Objekt konvertiert, welches die \code{quack}-Methode überschreibt.
+Zeile 6 zeigt, dass \code{duck} noch immer eine Instanz der \code{Duck}-Klasse ist; der \code{quack}-Aufruf erzeugt jedoch nun die Ausgabe \code{I'm not a duck}.
+Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist die Zuweisung eines Strings erlaubt.
+Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgelehnt, führt jedoch zur Laufzeit zu einer \code{MissingMethodException}.
+Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung eine \code{GroovyCastException} erzeugt.
 
 \subsubsection{Prototyp-Erweiterung}
 
