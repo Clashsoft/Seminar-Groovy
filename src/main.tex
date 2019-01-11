@@ -142,21 +142,17 @@ Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgele
 
 \subsubsection{Multi-Methoden}
 
-Unter Multi-Methoden versteht man eine besondere Art der Semantik von Methodenaufrufen.
-Es handelt sich um eine Form des Polymorphismus, bei der die aufzurufende Methode nicht nur anhand des Laufzeittyps des Empfängers, sondern auch anhand der Typen der Argumente ausgewählt wird.
-In Java werden Methodenaufrufe, bei denen der Aufruf vom Laufzeittyp des Empfängers abhängt, als \emph{virtuell} bezeichnet.
-Dabei ist das \emph{Überschreiben} von Methoden in Unterklassen von Bedeutung.
-Orthogonal dazu gibt es die Möglichkeit, Methoden zu \emph{überladen}.
-Dies bezeichnet das Deklarieren von zwei oder mehr Methoden im gleichen Kontext, die denselben Namen besitzen und sich in der Anzahl der Parameter oder deren Typen unterscheiden.
-Beim Aufruf dieser Methoden wird abhängig von den zur Kompilierungszeit bestimmten Typen der Argument ausgewählt, welche Methode aufgerufen wird.
-Zur Laufzeit sind die Typen der Argument für die Auswahl der Methode dann nicht mehr relevant.
-Zur Verdeutlichung des Verhaltens von Groovy soll Listing~\ref{lst:multi-methods.groovy} betrachtet werden.
+Ein Unterschied zu Java, der mit der dynamischen Typisierung in Verbindung steht, ist die Auflösung von Methodenaufrufen.
+In Java werden diese dynamisch anhand des Empfängertyps (Überschreiben), aber statisch anhand der Argumenttypen (Überladen) aufgelöst.
+Bei Groovy sind auch die Laufzeittypen der Argument für die Auswahl entscheidend, was unter dem Begriff Multi-Methoden bekannt ist.
+Das Listing~\ref{lst:multi-methods.groovy} erklärt dieses Verhalten.
 
 \codelisting{groovy}{multi-methods.groovy}{Multi-Methoden in Groovy}
 
 Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
 Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
 Der Laufzeittyp des Arguments \code{o} ist \code{String}, während der statische Typ \code{Object} ist.
+Dadurch wählt die Groovy-Laufzeitumgebung dynamisch die \code{take(String)}-Methode aus.
 In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
 
 \subsection{Besonderheiten}\label{subsec:besonderheiten}
