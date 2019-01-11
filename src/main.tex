@@ -78,7 +78,7 @@ Deshalb wird im Unterabschnitt~\ref{subsec:vergleichMitJava} durchgeführt ein V
 Dabei wird sowohl auf syntaktischer als auch auf semantischer Ebene Bezug genommen.
 In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
 
-Bei Groovy handelt es sich {u.a.} um eine Skriptsprache.
+Bei Groovy handelt es sich primär um eine Skriptsprache.
 Somit sollten Groovy-Programme einfach auszuführen sein, möglichst ohne Zwischenschritte wie etwa ein Aufruf eines Compilers.
 Groovy-Skripte können entsprechend mit dem \code{groovy}-Programm ausgeführt werden.
 Wie etwa bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang-Zeile beginnen, um sie direkt ausführbar zu machen.
@@ -110,7 +110,7 @@ Die Java-Syntax für Lambda-Ausdrücke, Methoden-Referenzen und Array-Initialisi
 In Groovy 3~\cite{groovy-lang:release3}, welches sich derzeit in Entwicklung befindet, werden jedoch mithilfe eines neuen Parsers Bemühungen betrieben, auch diese Sprachelemente zu erlauben und somit den Umstieg weiter zu erleichtern.
 
 Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen syntaktisch gültig sind, da sich in einigen Fällen die Semantik in Groovy anders als in Java verhält.
-Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, dazu gehören {u.a.} \code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{java.math.BigInteger} und \code{java.math.BigDecimal}.
+Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, dazu gehören u.a.~\code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{java.math.BigInteger} und \code{java.math.BigDecimal}.
 Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
 
 Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} zu finden.
@@ -166,16 +166,16 @@ Auf die oben genannten Sprachkonzepte wird in diesem Unterabschnitt genauer eing
 \subsubsection{Zahlen}\label{subsubsec:zahlen}
 
 Mathematische Konzepte haben eine besondere Bedeutung in Groovy.
-Die Klassen \code{BigInteger} und \code{BigDecimal} sind standardmäßig importiert~\cite[{Abs.} 1.]{groovy-lang:differences} und leichter zu verwenden als in Java, da sie übliche Operatoren unterstützen.
-Um Fließkommafehler zu vermeiden, sind Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal}~\cite[{Abs.} 5.2.]{groovy-lang:syntax}.
-Das Ergebnis von Divisionen ist in vielen Fällen\footnote{wenn einer der beiden Operanden ein \code{float} oder \code{double} ist, ist das Ergebnis vom Typ \code{double}} auch ein \code{BigDecimal}~\cite[{Abs.} 5.5.1.]{groovy-lang:syntax}.
-Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen~\cite[{Abs.} 5.5.2.]{groovy-lang:syntax}.
+Die Klassen \code{BigInteger} und \code{BigDecimal} sind standardmäßig importiert~\cite[Abs.~1.]{groovy-lang:differences} und leichter zu verwenden als in Java, da sie übliche Operatoren unterstützen.
+Um Fließkommafehler zu vermeiden, sind Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal}~\cite[Abs.~5.2.]{groovy-lang:syntax}.
+Das Ergebnis von Divisionen ist in vielen Fällen\footnote{wenn einer der beiden Operanden ein \code{float} oder \code{double} ist, ist das Ergebnis vom Typ \code{double}} auch ein \code{BigDecimal}~\cite[Abs.~5.5.1.]{groovy-lang:syntax}.
+Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen~\cite[Abs.~5.5.2.]{groovy-lang:syntax}.
 
-Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren~\cite[{Abs.} 10.]{groovy-lang:operators}.
+Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren~\cite[Abs.~10.]{groovy-lang:operators}.
 Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, Brüche oder Polynome zu erstellen und mit Operatoren zu verwenden.
 Eigene Operatoren können jedoch nicht definiert werden.
 
-In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[{Abs.} 10.]{groovy-lang:differences}.
+In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[Abs.~10.]{groovy-lang:differences}.
 Somit unterstützen sie die üblichen Funktionalitäten, die sich auf Objekte beziehen.
 
 \subsubsection{Zeichenketten}\label{subsubsec:strings}
@@ -231,7 +231,7 @@ In der nächsten Zeile werden auch beide Möglichkeiten verwendet, um neue Eintr
 Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 12, welcher auch mit dem Punkt-Operator möglich ist und \code{null} zurückgibt.
 
 Andere Collections und Arrays können durch Coercion von Listen- oder Map-Literalen erzeugt werden.
-Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[{Abs.} 7.-9.]{groovy-lang:syntax} zu finden.
+Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[Abs.~7.-9.]{groovy-lang:syntax} zu finden.
 
 \subsubsection{Null-Sicherheit}
 
@@ -243,7 +243,7 @@ Anstelle des \code{.}-Operators für Methoden- und Feldzugriffe sorgt er dafür,
 Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, wenn \code{person} schon \code{null} ist.
 
 Der \code{?:}-Operator, auch Elvis-Operator genannt, ist ein syntaktischer Zucker der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
-Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[{Abs.} 5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
+Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[Abs.~5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
 Eine Regel besagt, dass \code{null}-Referenzen als \code{falsy}\footnote{In Skriptsprachen wird dieser Begriff häufig für Werte verwendet, die sich in boolschen Ausdrücken wie \code{false} verhalten, aber eigentlich kein boolscher Wert sind.} gelten.
 Somit wird \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
 Jedoch können die Regeln auch zu Problemen in der Semantik führen:
