@@ -221,15 +221,15 @@ In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
 diese ist ohne explizite Typangabe eine \code{ArrayList}.
 In Zeile 4 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie etwa in Python möglich.
 Danach wird mit dem \code{<<}-Operator ein Element ans Ende der Liste angehängt.
-Die 6. Zeile zeigt, dass der Index-Operator auch mehrere Argument sowie Intervalle unterstützt.
+Die 5. Zeile zeigt, dass der Index-Operator auch mehrere Argument sowie Intervalle unterstützt.
 Der \code{..}-Operator sowie der nicht-inklusive \code{..<}-Operator sind auch in anderen Kontexten verwendbar, um einfach Intervalle zu definieren, beispielsweise in Foreach-Schleifen.
 
-In Zeile 8 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
+In Zeile 7 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
 Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw. \code{b} als Schlüssel verwendet.
 Das erzeugte Objekt verwendet die \code{LinkedHashMap}-Implementierung, damit die Reihenfolge der Schlüssel erhalten bleibt.
-Zeile 10 zeigt, wie der Zugriff auf den Wert eines Schlüssels sowohl mit dem Index-Operator als auch mit dem Punkt-Operator möglich ist, als wäre \code{d} eine Klassenvariable.
+Zeile 8 zeigt, wie der Zugriff auf den Wert eines Schlüssels sowohl mit dem Index-Operator als auch mit dem Punkt-Operator möglich ist, als wäre \code{d} eine Klassenvariable.
 In der nächsten Zeile werden auch beide Möglichkeiten verwendet, um neue Einträge hinzuzufügen.
-Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 12, welcher auch mit dem Punkt-Operator möglich ist und \code{null} zurückgibt.
+Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 10, welcher auch mit dem Punkt-Operator möglich ist und in beiden Fällen \code{null} zurückgibt.
 
 Andere Collections und Arrays können durch Coercion von Listen- oder Map-Literalen erzeugt werden.
 Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[Abs.~7.-9.]{groovy-lang:syntax} zu finden.
