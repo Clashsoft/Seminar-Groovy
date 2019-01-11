@@ -136,10 +136,6 @@ Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist die Zuwe
 Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgelehnt, führt jedoch zur Laufzeit zu einer \code{MissingMethodException}.
 Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung eine \code{GroovyCastException} erzeugt.
 
-\subsubsection{Prototyp-Erweiterung}
-
-% TODO
-
 \subsubsection{Multi-Methoden}
 
 Ein Unterschied zu Java, der mit der dynamischen Typisierung in Verbindung steht, ist die Auflösung von Methodenaufrufen.
@@ -161,6 +157,7 @@ Trotz der Anlehnung an Java bringt Groovy auch einige Besonderheiten mit sich.
 Selbst elementare Sprachkonzepte wie Strings, Zahlen und boolsche Werte sind vielfältiger.
 Listen, Maps und andere Datenstrukturen sind einfacher zu verwenden; auch Null-Sicherheit wird durch die Sprache erleichtert.
 Optionale Syntax und Closures ermöglichen es, DSLs zu definieren und verwenden.
+Durch Prototyp-Erweiterungen können Methoden zur Laufzeit zu Klassen und einzelnen Instanzen hinzugefügt werden.
 Auf die oben genannten Sprachkonzepte wird in diesem Unterabschnitt genauer eingegangen.
 
 \subsubsection{Zahlen}\label{subsubsec:zahlen}
@@ -300,6 +297,22 @@ Die Closure, die der \code{eval}-Funktion übergeben wird, bezieht sich auf die 
 Jedoch wird sie von \code{eval} erst aufgerufen, nachdem das \code{delegate} gesetzt wurde.
 Dies hat zur Folge, dass die bisher unbekannten Funktionen nun über das \code{delegate} zur Laufzeit aufgelöst werden, und sich entsprechend auf die Methoden der anonymen Klasse beziehen.
 Somit kann das Programm erfolgreich ausgeführt werden und gibt \code{5.5} ($=(((0+3)*4)+-1)*0.5$) als Ergebnis der DSL-Rechnung aus.
+
+\subsubsection{Prototyp-Erweiterung}
+
+Die Prototyp-Erweiterung ist eine weitere Besonderheit der Methodenauflösung von Groovy.
+Sie erlaubt es, Klassen und Objekten Eigenschaften und Methoden zur Laufzeit hinzuzufügen, ohne dass der Quellcode geändert werden muss.
+Listing~\ref{lst:prototype-extension.groovy} zeigt, wie diese zur rekursiven Berechnung einer Fakultät verwendet werden kann.
+
+\codelisting{groovy}{prototype-extension.groovy}{Fakultätberechnung mit Prototyp-Erweiterungen}
+
+Hier wird zunächst die \code{factorial}-Methode für das \code{Integer}-Objekt der Zahl \code{0} durch eine Closure definiert, welche den Wert \code{1} zurückgibt (Basisfall).
+Danach wird allgemein für die \code{Number}-Klasse der Rekursionsfall definiert.
+Hier steht \code{delegate} für den Empfänger.
+In Zeile 4 wird schließlich die \code{factorial}-Methode aufgerufen.
+Dabei wird zur Laufzeit zuerst in der \code{metaClass} der konkreten Instanz nach einer Definition gesucht, danach in der \code{metaClass} des Laufzeittyps.
+Bei dem Aufruf \code{0.factorial()} wird also sofort die Definition aus Zeile 2 aufgerufen;
+bei \code{5.factorial()} wird fünf Mal die Definition aus Zeile 3 aufgerufen, bevor \code{delegate} gleich \code{1} ist und \code{(delegate - 1).factorial()} auf die Definition für \code{0} verweist.
 
 % --------------- ---------------
 
