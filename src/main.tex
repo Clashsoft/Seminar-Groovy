@@ -283,7 +283,7 @@ Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gepackt,
 In Zeile 4 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe über von \code{list} berechnet.
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw. \code{fold} bekannt.
 
-Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht unbedingt an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
+Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
 Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DSLs geeignet ist und im Listing~\ref{lst:closures-dsl.groovy} gezeigt wird.
 
 \codelisting{groovy}{closures-dsl.groovy}{Verwendung von Closure Delegates für eine weitere DSL}
@@ -291,12 +291,12 @@ Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DS
 Das Programm beginnt mit der Deklaration der Funktion \code{eval}, welche eine Closure akzeptiert und einen Variable \code{result} speichert.
 Danach wird dem \code{delegate} der Closure ein Objekt einer anonymen Klasse zugewiesen, welche die Methoden \code{add} und \code{mul} definiert.
 Diese verändern entsprechend die \code{result}-Variable mit dem übergebenen Argument.
-In Zeile 8 wird abschließend noch die Closure aufgerufen und der Wert der Ergebnisvariable ausgegeben.
-Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folgt in Zeile 11.
+In Zeile 6 wird die modifizierte Closure aufgerufen und der Wert der Ergebnisvariable ausgegeben.
+Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folgt in Zeile 8.
 Die Closure, die der \code{eval}-Funktion übergeben wird, bezieht sich auf die in diesem Kontext unbekannten Funktionen \code{add} und \code{mul}.
-Jedoch wird sie von \code{eval} erst aufgerufen, nachdem das \code{delegate} gesetzt wurde.
-Dies hat zur Folge, dass die bisher unbekannten Funktionen nun über das \code{delegate} zur Laufzeit aufgelöst werden, und sich entsprechend auf die Methoden der anonymen Klasse beziehen.
-Somit kann das Programm erfolgreich ausgeführt werden und gibt \code{5.5} ($=(((0+3)*4)+-1)*0.5$) als Ergebnis der DSL-Rechnung aus.
+Diese müssen jedoch erst aufgelöst werden, wenn die Closure aufgerufen wird.
+Da zu diesem Zeitpunkt schon das \code{delegate} gesetzt ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, und beziehen sich entsprechend auf die Methoden der anonymen Klasse.
+Somit kann das Programm erfolgreich ausgeführt werden und gibt \code{5.5} aus, das Ergebnis der DSL-Rechenmaschine.
 
 \subsubsection{Prototyp-Erweiterung}
 
