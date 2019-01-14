@@ -14,6 +14,7 @@
 
 % --------------- Commands ---------------
 \newcommand{\code}[1]{\mintinline{groovy}{#1}}
+\newcommand{\plain}[1]{\mintinline{text}{#1}}
 
 \newcommand{\codelisting}[3]{
 \begin{listing}[ht]
@@ -89,7 +90,7 @@ Variablen und Statements können direkt in der obersten Ebene platziert werden, 
 Das Listing~\ref{lst:hello-world.groovy} kann mit dem Befehl \code{groovy hello-world.groovy} ausgeführt werden;
 es kann durch das Shebang aber auch direkt als \code{./hello-world.groovy} aufgerufen werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden;
 der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
-Die Ausgabe ist in beiden Fällen \code{Hello World!}.
+Die Ausgabe ist in beiden Fällen \plain{Hello World!}.
 Auffällig ist das Schlüsselwort \code{def}, der Methodenaufruf von \code{println} ohne Klammern und die Zeichenkette mit Interpolierung.
 Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:typisierung},~\ref{subsubsec:optionale-syntax} und~\ref{subsubsec:strings} näher eingegangen.
 
@@ -128,10 +129,10 @@ Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
 Zunächst wird eine Klasse \code{Duck} mit einer \code{quack}-Methode deklariert.
 In Zeile 4 wird die \code{duck}-Variable angelegt, der eine \code{Duck}-Instanz zugewiesen wird.
 Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Object}.
-Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \code{quack}.
+Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{quack}.
 In der nächsten Zeile wird ein Map-Literal angelegt, welches dem Schlüssel \code{quack} eine Closure zuweist.
 Durch den Coercion-Operator \code{as} wird die Map zu einem \code{Duck}-Objekt konvertiert, welches die \code{quack}-Methode überschreibt.
-Zeile 6 zeigt, dass \code{duck} noch immer eine Instanz der \code{Duck}-Klasse ist; der \code{quack}-Aufruf erzeugt jedoch nun die Ausgabe \code{I'm not a duck}.
+Zeile 6 zeigt, dass \code{duck} noch immer eine Instanz der \code{Duck}-Klasse ist; der \code{quack}-Aufruf erzeugt jedoch nun die Ausgabe \plain{I'm not a duck}.
 Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist die Zuweisung eines Strings erlaubt.
 Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgelehnt, führt jedoch zur Laufzeit zu einer \code{MissingMethodException}.
 Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung eine \code{GroovyCastException} erzeugt.
@@ -263,7 +264,7 @@ In Zeile 5 werden aus Illustrationsgründung symbolische Variablen für einige Z
 Danach folgt die Verwendung der definierten DSL:
 Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch equivalent zu der Anweisung in Zeile 7.
 Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und Methodenaufrufe impliziert.
-Die Ausgabe ist zweimal der Satz \code{my cake contains sugar, eggs and flour}.
+Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semicolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
 In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 11 ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
@@ -296,7 +297,7 @@ Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folg
 Die Closure, die der \code{eval}-Funktion übergeben wird, bezieht sich auf die in diesem Kontext unbekannten Funktionen \code{add} und \code{mul}.
 Diese müssen jedoch erst aufgelöst werden, wenn die Closure aufgerufen wird.
 Da zu diesem Zeitpunkt schon das \code{delegate} gesetzt ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, und beziehen sich entsprechend auf die Methoden der anonymen Klasse.
-Somit kann das Programm erfolgreich ausgeführt werden und gibt \code{5.5} aus, das Ergebnis der DSL-Rechenmaschine.
+Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus, das Ergebnis der DSL-Rechenmaschine.
 
 \subsubsection{Prototyp-Erweiterung}
 
