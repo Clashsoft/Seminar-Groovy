@@ -164,17 +164,22 @@ Auf die oben genannten Sprachkonzepte wird in diesem Unterabschnitt genauer eing
 \subsubsection{Zahlen}\label{subsubsec:zahlen}
 
 Mathematische Konzepte haben eine besondere Bedeutung in Groovy.
-Die Klassen \code{BigInteger} und \code{BigDecimal} sind standardmäßig importiert~\cite[Abs.~1.]{groovy-lang:differences} und leichter zu verwenden als in Java, da sie übliche Operatoren unterstützen.
-Um Fließkommafehler zu vermeiden, sind Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal}~\cite[Abs.~5.2.]{groovy-lang:syntax}.
-Das Ergebnis von Divisionen ist in vielen Fällen\footnote{wenn einer der beiden Operanden ein \code{float} oder \code{double} ist, ist das Ergebnis vom Typ \code{double}} auch ein \code{BigDecimal}~\cite[Abs.~5.5.1.]{groovy-lang:syntax}.
-Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen~\cite[Abs.~5.5.2.]{groovy-lang:syntax}.
+In Listing~\ref{lst:numbers.groovy} werden einige Besonderheiten dargestellt.
 
-Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren~\cite[Abs.~10.]{groovy-lang:operators}.
+\codelisting{groovy}{numbers.groovy}{Zahlen und mathematische Operatoren in Groovy}
+
+In Zeile 2 wird das klassische Beispiel für Fließkommafehler gezeigt, welches in Groovy keine Probleme verursacht, da Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal} sind.
+Das Ergebnis von Divisionen ist hier auch ein \code{BigDecimal}, somit ist die Berechnung auch mit ``Brüchen'' korrekt.
+Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen.
+
+Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren.
 Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, Brüche oder Polynome zu erstellen und mit Operatoren zu verwenden.
+In Zeile 3 bis 6 ist eine einfache Klasse \code{MyNum} deklariert\footnote{Die Annotation \code{@groovy.transform.Canonical} sorgt dafür, dass ein Konstruktor sowie Standardimplementierungen der Methoden \code{equals}, \code{hashCode} und \code{toString} generiert werden.}, welche durch die \code{plus}-Methode die Addition ihrer Instanzen erlaubt.
 Eigene Operatoren können jedoch nicht definiert werden.
 
 In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[Abs.~10.]{groovy-lang:differences}.
 Somit unterstützen sie die üblichen Funktionalitäten, die sich auf Objekte beziehen.
+Das Verhalten von Zahlen und Operatoren ist bei~\cite[Abs.~5.]{groovy-lang:syntax} und ~\cite[Abs.~10.]{groovy-lang:operators} genauer dokumentiert.
 
 \subsubsection{Zeichenketten}\label{subsubsec:strings}
 
