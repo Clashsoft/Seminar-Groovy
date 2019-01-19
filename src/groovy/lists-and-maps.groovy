@@ -1,10 +1,10 @@
 #!/usr/bin/env groovy
-def l = [1, 2, 3]
-assert l instanceof ArrayList && l[0] == 1 && l[-1] == 3
-l << 4
-assert l[0, 2] == [1, 3] && l[1..3] == [2, 3, 4]
+def list = [1, 2, 3]
+assert list instanceof ArrayList && list[0] == 1 && list[-1] == 3
+list << 4
+assert list[0, 2] == [1, 3] && list[1..3] == [2, 3, 4]
 
-def m = [a: 1, b: 2]
-assert m instanceof LinkedHashMap && m['a'] == 1 && m.b == 2
-m['c'] = 3; m.d = 4
-assert m['foobar'] == null && m.unknown == null
+def map = [a: 1, b: 2]
+assert map instanceof LinkedHashMap && map['a'] == 1 && map.b == 2
+map['c'] = 3; map.d = 4
+assert map.c == 3 && map['foobar'] == null && map.unknown == null

@@ -1,3 +1,3 @@
 #!/usr/bin/env groovy
-def whom = 'World'
-println "Hello $whom!"
+def what = 'World'
+println "Hello $what!"

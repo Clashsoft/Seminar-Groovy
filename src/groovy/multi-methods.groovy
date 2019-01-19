@@ -2,5 +2,5 @@
 String take(Object o) { return "Object" }
 String take(String s) { return "String" }
 
-Object o = "o"
-assert take(o) == "String"
+Object arg = "I'm a String"
+assert take(arg) == "String"
