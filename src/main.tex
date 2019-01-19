@@ -76,17 +76,17 @@ Skripte, welche per Definition sehr kurz sind, sind daher in Java undenkbar.
 Das dachte sich wohl auch James Strachan im Jahre 2003, als er mit einem Blogpost~\cite{james-strachan-blog} die Skriptsprache \emph{Groovy} ankündigte.
 Sie sollte dynamisch typisiert sein, aber für die Java Virtual Machine kompiliert werden und somit bestehende Java-Bibliotheken und -Code nutzen können.
 Die bereits existierenden JRuby-, Jython- und Rhino-Skriptsprachen, welche die Verwendung von Ruby, Python und JavaScript auf der JVM ermöglichten, reichten ihm dafür nicht aus.
-Von Anfang an wollte der Entwickler
+Ein Design-Ziel war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development zu gewinnen, wobei auch die Typisierung weniger wichtig ist.
 
 Im März 2004 wurde die neue Sprache dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
-Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 wurde am 2. Januar 2007 veröffentlicht.
+Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 am 2. Januar 2007 veröffentlicht.
 Am 18. November 2015 wurde das Groovy-Projekt nach einer Inkubationsphase von der Apache Foundation aufgenommen~\cite{apache-incubator:groovy} und seither weiterentwickelt.
 Die aktuelle stabile Version ist 2.5.3, welche am 10. Oktober 2018 erschien; nebenbei wird aber schon an Version 3 der Sprache gearbeitet.
 
 In dieser Arbeit soll die Skriptsprache Groovy behandelt werden.
-Ein wichtiger Aspekt, den Strachan in seinem Blogpost mit dem vereinfachten Test-Driven-Development andeutet, ist die Eignung für Domain-Specific Languages (DSLs).
-Sie soll in den folgenden Texten besondere Aufmerksamkeit erhalten.
-Neben Besonderheiten in Syntax und Semantik in Abschnitt~\ref{sec:sprache} werden auch das Ökosystem um Groovy sowie zwei der wichtigsten Framworks in Abschnitt~\ref{sec:community} betrachtet.
+Die Eignung für Domain-Specific Languages (DSLs), für die Strachen in dem Blogpost das Beispiel TDD gab, soll im Folgenden besondere Aufmerksamkeit erhalten.
+In Abschnitt~\ref{sec:sprache}, wo Besonderheiten der Sprache in Syntax und Semantik betrachtet werden, werden dafür die Grundlagen erläutert.
+Danach wird das Ökosystem um Groovy sowie zwei der wichtigsten Frameworks, welche sich die Sprachbesonderheiten zunutze machen, in Abschnitt~\ref{sec:community} betrachtet.
 
 % --------------- ---------------
 
@@ -350,7 +350,7 @@ Im Folgenden werden kurz zwei Projekte vorgestellt, die auf Groovy basieren --- 
 \subsection{Gradle}\label{subsec:gradle}
 
 Gradle~\cite{gradle} ist ein Open-Source-Tool zur Build-Automatisierung, welches in Groovy und Java geschrieben wurde.
-Konfiguriert wird es durch Groovy-Skripte, die sich die DSL-Fähigkeiten der Sprache zu Nutze machen.
+Konfiguriert wird es durch Groovy-Skripte, die sich die DSL-Fähigkeiten der Sprache zunutze machen.
 Dies hebt es von seinen Vorgängern Apache Ant und Apache Maven, welche XML-Dateien verwenden, durch erhöhte Nutzerfreundlichkeit ab.
 Seit dem ersten Release 2005 wurde Gradle stets weiterentwickelt, um neben Java und Groovy auch andere Zielsprachen wie Scala und sogar Python und C++ zu unterstützen.
 Gradle ist besonders für große Projekte gut geeignet, da durch inkrementelle Builds nur geänderte Dateien verarbeitet werden müssen.
