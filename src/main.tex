@@ -67,7 +67,26 @@ hidelinks,
 
 \section{Einleitung}\label{sec:einleitung}
 
-% TODO
+Die am meisten genutzte Programmiersprache der Welt ist Java.
+Die Möglichkeit, portable und sichere Programme zu schreiben und sich dabei auf eine große Anzahl von Bibliotheken verlassen zu können, begründen diesen Status.
+Doch die Sprache hat auch Schwächen:
+Selbst für einfachste Programme wie ein Hello World benötigt man mehrere Zeilen Java-Code.
+Skripte, welche per Definition sehr kurz sind, sind daher in Java undenkbar.
+
+Das dachte sich wohl auch James Strachan im Jahre 2003, als er mit einem Blogpost~\cite{james-strachan-blog} die Skriptsprache \emph{Groovy} ankündigte.
+Sie sollte dynamisch typisiert sein, aber für die Java Virtual Machine kompiliert werden und somit bestehende Java-Bibliotheken und -Code nutzen können.
+Die bereits existierenden JRuby-, Jython- und Rhino-Skriptsprachen, welche die Verwendung von Ruby, Python und JavaScript auf der JVM ermöglichten, reichten ihm dafür nicht aus.
+Von Anfang an wollte der Entwickler
+
+Im März 2004 wurde die neue Sprache dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
+Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 wurde am 2. Januar 2007 veröffentlicht.
+Am 18. November 2015 wurde das Groovy-Projekt nach einer Inkubationsphase von der Apache Foundation aufgenommen~\cite{apache-incubator:groovy} und seither weiterentwickelt.
+Die aktuelle stabile Version ist 2.5.3, welche am 10. Oktober 2018 erschien; nebenbei wird aber schon an Version 3 der Sprache gearbeitet.
+
+In dieser Arbeit soll die Skriptsprache Groovy behandelt werden.
+Ein wichtiger Aspekt, den Strachan in seinem Blogpost mit dem vereinfachten Test-Driven-Development andeutet, ist die Eignung für Domain-Specific Languages (DSLs).
+Sie soll in den folgenden Texten besondere Aufmerksamkeit erhalten.
+Neben Besonderheiten in Syntax und Semantik in Abschnitt~\ref{sec:sprache} werden auch das Ökosystem um Groovy sowie zwei der wichtigsten Framworks in Abschnitt~\ref{sec:community} betrachtet.
 
 % --------------- ---------------
 
@@ -329,7 +348,6 @@ Nach dem technischen Teil zur Spache soll nun auch das Ökosystem um Groovy betr
 Im Januar 2019 ist Groovy auf Platz 21 des Tiobe Index~\cite{tiobe-index} und somit die zweithöchste JVM-Sprache (nach Java auf dem ersten Platz, vor Scala und Kotlin auf Platz 28. und 31.).
 Auf StackOverflow~\cite{stackoverflow:groovy} sind über 22.000 Fragen und Antworten zu Groovy finden.
 Die Popularität von Groovy ist wahrscheinlich mit dem einfachem Umstieg von Java und der Eignung als Skriptsprache zu erklären.
-%Zudem reduziert es den Kritikpunkt von Java, zu umfangreich zu sein, da man beispielsweise keine Getter und Setter oder eine Klasse und Methode um den Main-Code braucht.
 
 Da Groovy quelloffen~\cite{github:groovy} ist, kann sich jeder an der Weiterentwicklung und Fehlerbehebung beteiligen.
 Im Folgenden werden kurz zwei Projekte vorgestellt, die auf Groovy basieren --- Gradle und Grails.
