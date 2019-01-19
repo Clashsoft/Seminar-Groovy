@@ -257,12 +257,12 @@ Obwohl Groovy im Kern eine Skriptsprache ist und Sicherheit daher eine kleinere 
 Im Kern stehen dabei zwei sehr nützliche Operatoren, \code{?.} und \code{?:}, welche im Folgenden kurz vorgestellt werden.
 
 Der Safe-Navigation-Operator \code{?.} wird verwendet, um \code{NullPointerException}s zu vermeiden.
-Anstelle des \code{.}-Operators für Methoden- und Feldzugriffe sorgt er dafür, dass das Ergebnis des Zugriffs \code{null} ist, wenn der Empfänger \code{null} ist.
+Anstelle des \code{.}-Operators für Methodenaufrufe und Attributzugriffe sorgt er dafür, dass das Ergebnis des Aufrufs oder Zugriffs \code{null} ist, wenn der Empfänger \code{null} ist.
 Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, wenn \code{person} schon \code{null} ist.
 
 Der \code{?:}-Operator, auch Elvis-Operator genannt, ist ein syntaktischer Zucker der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
 Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[Abs.~5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
-Eine Regel besagt, dass \code{null}-Referenzen als \code{falsy}\footnote{In Skriptsprachen wird dieser Begriff häufig für Werte verwendet, die sich in boolschen Ausdrücken wie \code{false} verhalten, aber eigentlich kein boolscher Wert sind.} gelten.
+Eine dieser Regeln besagt, dass \code{null}-Referenzen als \code{falsy}\footnote{In Skriptsprachen wird dieser Begriff häufig für Werte verwendet, die sich in boolschen Ausdrücken wie \code{false} verhalten, aber eigentlich kein boolscher Wert sind.} gelten.
 Somit wird \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
 Jedoch können die Regeln auch zu Problemen in der Semantik führen:
 Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb der Elvis-Operators mit solchen Werten als linkem Operand auch den rechten Operand zurückgibt.
@@ -276,7 +276,7 @@ Dies ermöglicht die einfache Erstellung von DSLs, wie es das Listing~\ref{lst:o
 \codelisting{groovy}{optional-parens.groovy}{Eine kleine DSL mithilfe von optionalen Klammern und Punkten}
 
 Hier wird zunächst eine Hilfsfunktion \code{make} erstellt, welche die DSL definiert.
-Um das Beispiel kurz zu halten, werden hierfür Map-Literale und Closures, die in den Unterabschnitten~\ref{subsubsec:listen-und-maps} und~\ref{subsubsec:closures} erklärt werden.
+Um das Beispiel kurz zu halten, werden hierfür Map-Literale und Closures verwendet, die in den Unterabschnitten~\ref{subsubsec:listen-und-maps} und~\ref{subsubsec:closures} erklärt werden.
 Bei echten DSLs sollten stattdessen Klassen und Methoden verwendet werden.
 Hier wurde zusätzlich ausgenutzt, dass die Verwendung des \code{return}-Schlüsselworts auch optional ist.
 In Zeile 5 werden aus Illustrationsgründung symbolische Variablen für einige Zeichenketten definiert.
@@ -286,7 +286,7 @@ Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und M
 Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semicolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
-In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 11 ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
+In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 11, ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
 
 \subsubsection{Closures}\label{subsubsec:closures}
 
@@ -300,7 +300,7 @@ Zunächst wird in Zeile 2 eine Liste definiert.
 In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
 Dafür wird eine Closure als Argument übergeben, die einen Parameter \code{it} empfängt und ihn verdoppelt zurückgibt.
 Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gepackt, die gerade sind.
-In Zeile 4 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe über von \code{list} berechnet.
+In Zeile 4 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw. \code{fold} bekannt.
 
 Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
@@ -322,7 +322,7 @@ Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus,
 
 Die Prototyp-Erweiterung ist eine weitere Besonderheit der Methodenauflösung von Groovy.
 Sie erlaubt es, Klassen und Objekten Eigenschaften und Methoden zur Laufzeit hinzuzufügen, ohne dass der Quellcode geändert werden muss.
-Listing~\ref{lst:prototype-extension.groovy} zeigt, wie diese zur rekursiven Berechnung einer Fakultät verwendet werden kann.
+Listing~\ref{lst:prototype-extension.groovy} zeigt, wie diese zur rekursiven Berechnung der Fakultät von Zahlen verwendet werden kann.
 
 \codelisting{groovy}{prototype-extension.groovy}{Fakultätberechnung mit Prototyp-Erweiterungen}
 
