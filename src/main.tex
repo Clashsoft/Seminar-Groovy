@@ -93,7 +93,7 @@ Danach wird das Ökosystem um Groovy sowie zwei der wichtigsten Frameworks, welc
 \section{Sprache}\label{sec:sprache}
 
 Im folgenden Abschnitt wird Groovy als Sprache vorgestellt.
-Die Syntax ist stark auf Java und andere C-ähnliche Sprachen angelehnt.
+Die Syntax ist stark an Java und andere C-ähnliche Sprachen angelehnt.
 Deshalb wird im Unterabschnitt~\ref{subsec:vergleichMitJava} ein Vergleich mit Java durchgeführt.
 Dabei wird sowohl auf syntaktischer als auch auf semantischer Ebene Bezug genommen.
 In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
@@ -119,7 +119,7 @@ der generierte Bytecode wird nur zwischengespeichert und nach der Ausführung ve
 
 \subsection{Vergleich mit Java}\label{subsec:vergleichMitJava}
 
-Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, ist es möglich, viele Java-Programme direkt als Groovy-Programm zu verwenden.
+Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, können viele Java-Programme direkt als Groovy-Programm verwendet werden.
 Dies hat einerseits den Vorteil, dass bei der Überführung eines Projekts von Java zu Groovy zunächst nur wenige Änderungen vorgenommen werden müssen.
 Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte aneignen können.
 
@@ -130,10 +130,10 @@ Die Java-Syntax für Lambda-Ausdrücke, Methoden-Referenzen und Array-Initialisi
 In Groovy 3~\cite{groovy-lang:release3}, welches sich derzeit in Entwicklung befindet, werden jedoch mithilfe eines neuen Parsers Bemühungen betrieben, auch diese Sprachelemente zu erlauben und somit den Umstieg weiter zu erleichtern.
 
 Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen syntaktisch gültig sind, da sich in einigen Fällen die Semantik in Groovy anders als in Java verhält.
-Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, dazu gehören u.a.~\code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{java.math.BigInteger} und \code{java.math.BigDecimal}.
+Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, darunter u.a.~\code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{BigInteger} und \code{BigDecimal} aus \code{java.math}.
+Skripts, die auf Dateien oder das Internet zugreifen oder genaue Berechnungen durchführen, kommen also ohne zusätzliche Import-Deklarationen aus und sind entsprechend kürzer.
 Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
-
-Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} zu finden.
+Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} sowie in den nachfolgenden Unterabschnitten zu finden.
 
 \subsubsection{Typisierung}\label{subsubsec:typisierung}
 
