@@ -1,7 +1,6 @@
 #!/usr/bin/env groovy
 def a = 1, b = 2
 assert "$a+$b=${a+b}" == '1+2=3'
-def g = "${ -> a++ }"
-assert g == '1' && g == '2' && g == '3'
-a = 10
-assert g == '10'
+def match = '123.456' =~ /(\d+)\.(\d+)/
+assert match instanceof java.util.regex.Matcher && match
+assert match.group(1) == "123" && match.group(2) == "456"

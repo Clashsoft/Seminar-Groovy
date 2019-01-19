@@ -217,20 +217,15 @@ Es existieren sechs Arten von String-Literalen in Groovy:
 Besonders interessant ist hierbei die Interpolation, welche ein einfaches Einsetzen von Werten in Strings erlaubt.
 Listing~\ref{lst:string-interpolation.groovy} zeigt, wie diese in String-Literalen zum Einsatz kommt.
 
-\codelisting{groovy}{string-interpolation.groovy}{String-Interpolation in Groovy}
+\codelisting{groovy}{string-interpolation.groovy}{String-Interpolation und Matching mit regulären Ausdrücken}
 
 Im ersten String-Literal in Zeile 3 wird anstelle von \code{$a} und \code{$b} wird der Wert der Variablen eingesetzt;
 \code{${a+b}} wertet den Ausdruck \code{a+b} aus und setzt das Ergebnis in den resultierenden String ein.
-Zu beachten ist hier, dass es sich bei dem linken String-Literal in Zeile 3 eigentlich nicht um einen \code{String} handelt, sondern um eine Instanz der Klasse \code{GString}.
-Diese speichert auch die Objekte, die anstelle der Platzhalter eingesetzt werden.
-Erst der Vergleich mit \code{==} verursacht eine Konvertierung zu \code{String}; dabei werden auch Ersetzung vorgenommen.
 
-In Zeile 5 wird ein GString verwendet, der eine Closure (siehe Unterabschnitt~\ref{subsubsec:closures}) als Platzhalter verwendet.
-Diese wird jedes Mal aufgerufen, wenn der GString zu einem String konvertiert wird.
-Dabei können auch Seiteneffekte auftreten und der Rückgabewert kann sich ändern.
-Im Beispiel ist zu sehen, dass \code{g} jedes mal den Wert von \code{a} erhöht, wenn es durch den Vergleich zu einem String konvertiert wird.
-Nach der Zuweisung von \code{a} wird der neue Wert in \code{g} verwendet.
-Die Assertions in Zeilen 5 und 7 sind erfolgreich; das Verhalten der Gleichheit ist hier jedoch verwirrend, weshalb solcher Code vermieden werden sollte.
+In Zeile 5 wird ein Slashy-String-Literal zusammen mit dem Find-Operator \code{=~} verwendet, um einen String mit einem regulären Ausdruck zu matchen.
+Durch den Slashy-String müssen die Escape-Zeichen~\plain{\ } für die Metazeichen nur einmal geschrieben werden; der reguläre Ausdruck wird somit leichter lesbar.
+Das Ergebnis des \code{=~}-Operators ist ein \code{Matcher}.
+Dieser kann implizit zu einem Bool konvertiert werden, der den Erfolg angibt, und ermöglich den Zugriff auf die Gruppen des regulären Ausdrucks.
 
 \subsubsection{Listen und Maps}\label{subsubsec:listen-und-maps}
 
