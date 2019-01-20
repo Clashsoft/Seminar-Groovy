@@ -67,25 +67,28 @@ hidelinks,
 
 \section{Einleitung}\label{sec:einleitung}
 
-Die am meisten genutzte Programmiersprache der Welt ist Java~\cite{tiobe-index}.
-Die Möglichkeit, portable und sichere Programme zu schreiben und sich dabei auf eine große Anzahl von Bibliotheken verlassen zu können, begründen diesen Status.
-Doch die Sprache hat auch Schwächen:
-Selbst für einfachste Programme wie ein Hello World benötigt man mehrere Zeilen Java-Code.
-Skripte, welche per Definition sehr kurz sind, sind daher in Java undenkbar.
+Jedem Entwickler, der schonmal ein Java-Programm geschrieben hat, ist aufgefallen, wie diese selbst für einfachste Aufgaben sehr umfangreich werden können.
+Ein Hello-World-Programm benötigt eine Klasse und eine Methode, Datenmodellklassen sind mit Gettern und Settern überfüllt, Dateizugriffe müssen mit Try/Catch-Blöcken geschützt werden.
+Für Skripte, welche per Definition sehr kurz sind, ist es daher wenig geeignet.
 
-Das dachte sich wohl auch James Strachan im Jahre 2003, als er mit einem Blogpost~\cite{james-strachan-blog} die Skriptsprache \emph{Groovy} ankündigte.
-Sie sollte dynamisch typisiert sein, aber für die Java Virtual Machine kompiliert werden und somit bestehende Java-Bibliotheken und -Code nutzen können.
-Die bereits existierenden JRuby-, Jython- und Rhino-Skriptsprachen, welche die Verwendung von Ruby, Python und JavaScript auf der JVM ermöglichten, reichten ihm dafür nicht aus.
-Ein Design-Ziel der neuen Sprache war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development (TDD) zu gewinnen, bei denen auch die Typisierung weniger wichtig ist.
+Dennoch bringt die Entwicklung mit dem Java-Ökosystem einige Vorteile:
+Es bietet ein Rahmenwerk für portable und sichere Programme, bei deren Entwicklung man sich auf eine große Community und viele Bibliotheken verlassen kann.
+Bemühungen, diese Vorteile mit Skriptsprachen zu verbinden, bildeten Projekte wie JRuby, Jython und Rhino, welche Ruby, Python und JavaScript in der Java Virtual Machine (JVM) lauffähig machten.
+Keine dieser Sprachen war jedoch eigens auf Java ausgelegt oder einfach zu verwenden.
+
+Deshalb wurde im Jahr 2003 die Skriptsprache \emph{Groovy} von Softwareentwickler und Java-Enthusiast James Strachan mit einem Blogpost~\cite{james-strachan-blog} angekündigt.
+Sie sollte dynamisch typisiert sein, aber für die JVM kompiliert werden und somit bestehende Java-Bibliotheken und -Code nutzen können.
+Primär basierend auf Java, sollten auch ausgewählte Konzepte von Python und Ruby übernommen werden.
+Ein Design-Ziel der neuen Sprache war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development (TDD) zu gewinnen.
 
 Im März 2004 wurde Groovy dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
 Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 am 2. Januar 2007 veröffentlicht.
-Am 18. November 2015 wurde das Groovy-Projekt nach einer Inkubationsphase von der Apache Foundation aufgenommen~\cite{apache-incubator:groovy} und seither weiterentwickelt.
+Das Groovy-Projekt wurde nach einer Inkubationsphase am 18. November 2015 von der Apache Foundation aufgenommen~\cite{apache-incubator:groovy}.
 Die aktuelle stabile Version ist 2.5.3, welche am 10. Oktober 2018 erschien; nebenbei wird aber schon an Version 3 der Sprache gearbeitet.
 
-In dieser Arbeit soll die Skriptsprache Groovy behandelt werden.
-Die Eignung für Domain-Specific Languages (DSLs), für die Strachen in dem Blogpost das Beispiel TDD gab, soll im Folgenden besondere Aufmerksamkeit erhalten.
-In Abschnitt~\ref{sec:sprache}, wo Besonderheiten der Sprache in Syntax und Semantik betrachtet werden, werden dafür die Grundlagen erläutert.
+Diese Arbeit ist der Skriptsprache Groovy gewidmet.
+Die Eignung für Domain-Specific Languages (DSLs) soll im Folgenden besondere Aufmerksamkeit erhalten.
+Dazu werden zunächst in Abschnitt~\ref{sec:sprache} die Grundlagen der Sprache erläutert und deren Anwendung für DSLs gezeigt.
 Danach wird das Ökosystem um Groovy sowie zwei der wichtigsten Frameworks, welche sich die Sprachbesonderheiten zunutze machen, in Abschnitt~\ref{sec:community} betrachtet.
 
 % --------------- ---------------
