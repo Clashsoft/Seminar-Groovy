@@ -79,7 +79,7 @@ Keine dieser Sprachen war jedoch eigens auf Java ausgelegt oder einfach zu verwe
 Deshalb wurde im Jahr 2003 die Skriptsprache \emph{Groovy} von Softwareentwickler und Java-Enthusiast James Strachan mit einem Blogpost~\cite{james-strachan-blog} angekündigt.
 Sie sollte dynamisch typisiert sein, aber für die JVM kompiliert werden und somit bestehende Java-Bibliotheken und -Code nutzen können.
 Primär basierend auf Java, sollten auch ausgewählte Konzepte von Python und Ruby übernommen werden.
-Ein Design-Ziel der neuen Sprache war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development (TDD) zu gewinnen.
+Ein Design-Ziel der neuen Sprache war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development zu gewinnen.
 
 Im März 2004 wurde Groovy dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
 Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 am 2.~Januar 2007 veröffentlicht.
@@ -109,10 +109,9 @@ Das Listing~\ref{lst:hello-world.groovy} zeigt ein einfaches Hello-World-Program
 
 \codelisting{groovy}{hello-world.groovy}{Hello World in Groovy}
 
-Es kann mit dem Befehl \code{groovy hello-world.groovy}, durch das Shebang aber auch direkt als \code{./hello-world.groovy} ausgeführt werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden; der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
+Speichert man das Beispiel in einer Datei namens \plain{hello-world.groovy}, kann es mit dem Befehl \code{groovy hello-world.groovy} ausgeführt werden.
+Ist die Datei als ausführbar markiert, genügt durch das Shebang der Befehl \code{./hello-world.groovy}.
 Die Ausgabe ist in beiden Fällen \plain{Hello World!}.
-Auffällig ist das Schlüsselwort \code{def}, die Interpolation in der Zeichenkette und der Methodenaufruf von \code{println} ohne Klammern.
-Auf diese wird jeweils in den Unterabschnitten~\ref{subsubsec:typisierung},~\ref{subsubsec:strings} und~\ref{subsubsec:optionale-syntax} näher eingegangen.
 
 Zu beachten ist, dass es sich zwar um ein Skript handelt, aber die Groovy-Laufzeit diese vor der Ausführung immer vollständig kompiliert.
 Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
@@ -242,11 +241,11 @@ In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
 diese ist ohne explizite Typangabe eine \code{ArrayList}.
 In Zeile 4 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie etwa in Python möglich.
 Danach wird mit dem \code{<<}-Operator ein Element ans Ende der Liste angehängt.
-Die 5. Zeile zeigt, dass der Index-Operator auch mehrere Argumente sowie Intervalle unterstützt.
+Die 5.~Zeile zeigt, dass der Index-Operator auch mehrere Argumente sowie Intervalle unterstützt.
 Für letztere sind der geschlossene \code{..}-Operator sowie der halboffene \code{..<}-Operator auch in anderen Kontexten verwendbar, beispielsweise in Foreach-Schleifen.
 
 In Zeile 7 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
-Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw. \code{b} als Schlüssel verwendet.
+Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw.~\code{b} als Schlüssel verwendet.
 Das erzeugte Objekt verwendet die \code{LinkedHashMap}-Implementierung, damit die Reihenfolge der Schlüssel erhalten bleibt.
 Zeile 8 zeigt, wie der Zugriff auf den Wert eines Schlüssels sowohl mit dem Index-Operator als auch mit dem Punkt-Operator möglich ist, als wäre \code{d} eine Klassenvariable.
 In der nächsten Zeile werden auch beide Möglichkeiten verwendet, um neue Einträge hinzuzufügen.
@@ -285,7 +284,7 @@ In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, di
 Dafür wird eine Closure als Argument übergeben, die einen Parameter \code{it} empfängt und ihn verdoppelt zurückgibt.
 Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gelegt, die durch zwei teilbar sind.
 In Zeile 5 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
-In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw. \code{fold} bekannt.
+In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw.~\code{fold} bekannt.
 
 Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
 Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DSLs geeignet ist und im Listing~\ref{lst:closures-dsl.groovy} gezeigt wird.
@@ -347,7 +346,7 @@ Im Januar 2019 ist Groovy auf Platz 21 des Tiobe Index~\cite{tiobe-index} und so
 Die Konkurrenz bilden dabei Scala und Kotlin auf Platz 28.~und 31.
 Auf StackOverflow~\cite{stackoverflow:groovy} sind über 22.000 Fragen und Antworten zu Groovy finden.
 Durch die Quelloffenheit der Groovy-Implementierung auf GitHub~\cite{github:groovy} kann sich jeder an der Weiterentwicklung und Fehlerbehebung beteiligen.
-Da theoretisch jede Java-Bibliothek auch von Groovy-Code verwendbar ist, können sich Entwickler auf über 3,4 Mio. Jar-Artefakte auf Maven Central~\cite{maven-central} verlassen.
+Da theoretisch jede Java-Bibliothek auch von Groovy-Code verwendbar ist, können sich Entwickler auf über 3,4 Mio.~Jar-Artefakte auf Maven Central~\cite{maven-central} verlassen.
 Doch auch eigene große Projekte sind auf Groovy entstanden.
 Im Folgenden werden kurz zwei dieser Projekte vorgestellt --- Gradle und Grails.
 
