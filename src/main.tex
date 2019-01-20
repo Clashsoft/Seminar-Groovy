@@ -286,7 +286,7 @@ Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und M
 Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semicolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
-In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 11, ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
+In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 9, ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
 
 \subsubsection{Closures}\label{subsubsec:closures}
 
@@ -300,7 +300,7 @@ Zunächst wird in Zeile 2 eine Liste definiert.
 In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
 Dafür wird eine Closure als Argument übergeben, die einen Parameter \code{it} empfängt und ihn verdoppelt zurückgibt.
 Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gepackt, die gerade sind.
-In Zeile 4 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
+In Zeile 5 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw. \code{fold} bekannt.
 
 Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
