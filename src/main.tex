@@ -34,14 +34,12 @@
 \newmintinline[code]{groovy}{}
 \newmintinline[plain]{text}{breaklines}
 
-\newcommand{\codelisting}[3]{
-\begin{listing}[ht]
+\newcommand{\codelisting}[3]{\begin{listing}[htp]
 	\inputminted{#1}{#1/#2}
 	\vspace{-3ex}
 	\caption{#3}
 	\label{lst:#2}
-\end{listing}
-}
+\end{listing}}
 
 % Hyperref
 \usepackage{hyperref}
