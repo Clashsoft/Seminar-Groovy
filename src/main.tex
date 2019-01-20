@@ -160,11 +160,11 @@ In Java werden diese dynamisch anhand des Empfängertyps (Überschreiben), aber 
 Bei Groovy sind auch die Laufzeittypen der Argument für die Auswahl entscheidend, was unter dem Begriff Multi-Methoden bekannt ist.
 Das Listing~\ref{lst:multi-methods.groovy} zeigt ein einfaches Beispiel dafür.
 
-\codelisting{groovy}{multi-methods.groovy}{Dynamisches Auflösen von Multi-Methoden}
+\codelisting{groovy}{multi-methods.groovy}{Dynamisches Auflösen von überladenen Methoden}
 
 Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
 Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
-Der Laufzeittyp des Arguments \code{o} ist \code{String}, während der statische Typ \code{Object} ist.
+Der Laufzeittyp des Arguments \code{arg} ist \code{String}, während der statische Typ der Variable \code{Object} ist.
 Dadurch wählt die Groovy-Laufzeitumgebung dynamisch die \code{take(String)}-Methode aus.
 In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
 
