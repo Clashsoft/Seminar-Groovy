@@ -150,7 +150,7 @@ Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
 
 \codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung}
 
-Zunächst werden zwei Klassen \code{Duck} und \code{Frog} mit je einer \code{quack}-Methode deklariert.
+Zunächst werden zwei Klassen \code{Duck} und \code{Frog} jeweils mit einer \code{quack}-Methode deklariert.
 In Zeile 4 wird die \code{duck}-Variable angelegt, der zunächst eine \code{Duck}-Instanz zugewiesen wird.
 Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Object}.
 Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{I'm a duck}.
@@ -196,12 +196,12 @@ Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berech
 
 Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren.
 Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, Brüche oder Polynome zu erstellen und mit Operatoren auszustatten, als wären sie Teil der Sprache.
-In Zeile 3 bis 6 ist eine einfache Klasse \code{MyNum} deklariert\footnote{Die Annotation \code{@groovy.transform.Canonical} sorgt dafür, dass ein Konstruktor sowie Standardimplementierungen der Methoden \code{equals}, \code{hashCode} und \code{toString} generiert werden.}, welche durch die \code{plus}-Methode die Addition ihrer Instanzen erlaubt.
 Eigene Operatoren können jedoch nicht definiert werden.
+In Zeile 3 bis 6 ist eine einfache Klasse \code{MyNum} deklariert\footnote{Die Annotation \code{@groovy.transform.Canonical} sorgt dafür, dass ein Konstruktor sowie Standardimplementierungen der Methoden \code{equals}, \code{hashCode} und \code{toString} generiert werden.}, welche durch die \code{plus}-Methode die Addition ihrer Instanzen erlaubt.
 
 In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[Abs.~10.]{groovy-lang:differences}.
 Somit kann man mit ihnen alles machen, was auch bei Objekten möglich ist, beispielsweise Attributzugriff oder Methodenaufrufe.
-Das Verhalten von Zahlen und Operatoren ist bei~\cite[Abs.~5.]{groovy-lang:syntax} und ~\cite[Abs.~10.]{groovy-lang:operators} genauer dokumentiert.
+Das Verhalten von Zahlen und Operatoren ist unter~\cite[Abs.~5.]{groovy-lang:syntax} und~\cite[Abs.~10.]{groovy-lang:operators} genauer dokumentiert.
 
 \subsubsection{Zeichenketten}\label{subsubsec:strings}
 
@@ -226,7 +226,7 @@ Im ersten String-Literal in Zeile 3 wird anstelle von \code{$a} und \code{$b} de
 \code{${a+b}} wertet den Ausdruck \code{a+b} aus und setzt das Ergebnis in den resultierenden String ein.
 
 In Zeile 5 wird ein Slashy-String-Literal zusammen mit dem Find-Operator \code{=~} verwendet, um einen String mit einem regulären Ausdruck zu matchen.
-Durch den Slashy-String müssen die Escape-Zeichen~\plain{\ } für die Metazeichen nur einmal geschrieben werden; der reguläre Ausdruck wird somit leichter lesbar.
+Im Slashy-String müssen die Escape-Zeichen~\plain{\ } nicht doppelt geschrieben werden; der reguläre Ausdruck wird somit leichter lesbar.
 Das Ergebnis des \code{=~}-Operators ist ein \code{Matcher}.
 Dieser kann implizit zu einem Bool konvertiert werden, der den Erfolg angibt, und ermöglicht den Zugriff auf die Gruppen des regulären Ausdrucks.
 
@@ -241,8 +241,8 @@ In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
 diese ist ohne explizite Typangabe eine \code{ArrayList}.
 In Zeile 4 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie etwa in Python möglich.
 Danach wird mit dem \code{<<}-Operator ein Element ans Ende der Liste angehängt.
-Die 5. Zeile zeigt, dass der Index-Operator auch mehrere Argument sowie Intervalle unterstützt.
-Der \code{..}-Operator sowie der nicht-inklusive \code{..<}-Operator sind auch in anderen Kontexten verwendbar, um einfach Intervalle zu definieren, beispielsweise in Foreach-Schleifen.
+Die 5. Zeile zeigt, dass der Index-Operator auch mehrere Argumente sowie Intervalle unterstützt.
+Für letztere sind der geschlossene \code{..}-Operator sowie der halboffene \code{..<}-Operator auch in anderen Kontexten verwendbar, beispielsweise in Foreach-Schleifen.
 
 In Zeile 7 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
 Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw. \code{b} als Schlüssel verwendet.
