@@ -184,7 +184,7 @@ In Listing~\ref{lst:numbers.groovy} werden einige Besonderheiten dargestellt.
 \codelisting{groovy}{numbers.groovy}{Rechnen mit Zahlen und eigenen Klassen}
 
 In Zeile 2 wird das klassische Beispiel für Fließkommafehler gezeigt, welches in Groovy keine Probleme verursacht, da Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal} sind.
-Das Ergebnis von Divisionen von zwei ganzzahligen Werten ist hier auch ein \code{BigDecimal}.
+Das Ergebnis von Divisionen von zwei ganzzahligen Werten wird standardmäßig nicht gerundet.
 Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen.
 
 Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren.
