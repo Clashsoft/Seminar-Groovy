@@ -67,8 +67,10 @@ hidelinks,
 
 \section{Einleitung}\label{sec:einleitung}
 
-Jedem Entwickler, der schonmal ein Java-Programm geschrieben hat, ist aufgefallen, wie diese selbst für einfachste Aufgaben sehr umfangreich werden können.
-Ein Hello-World-Programm benötigt eine Klasse und eine Methode, Datenmodellklassen sind mit Gettern und Settern überfüllt, Dateizugriffe müssen mit Try/Catch-Blöcken geschützt werden.
+Jedem Entwickler, der schon einmal Java-Programme geschrieben hat, ist vermutlich aufgefallen, wie diese selbst für einfachste Aufgaben sehr umfangreich werden können.
+Ein Hello-World-Programm muss in einer Methode in einer Klasse stehen;
+Datenmodellklassen sind mit Gettern und Settern überfüllt;
+Dateizugriffe müssen mit Try/Catch-Blöcken geschützt werden.
 Für Skripte, welche per Definition sehr kurz sind, ist es daher wenig geeignet.
 
 Dennoch bringt die Entwicklung mit dem Java-Ökosystem einige Vorteile:
@@ -82,9 +84,9 @@ Primär basierend auf Java, sollten auch ausgewählte Konzepte von Python und Ru
 Ein Design-Ziel der neuen Sprache war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development (TDD) zu gewinnen.
 
 Im März 2004 wurde Groovy dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
-Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 am 2. Januar 2007 veröffentlicht.
-Das Groovy-Projekt wurde nach einer Inkubationsphase am 18. November 2015 von der Apache Foundation aufgenommen~\cite{apache-incubator:groovy}.
-Die aktuelle stabile Version ist 2.5.3, welche am 10. Oktober 2018 erschien; parallel dazu wird aber schon an Version 3 der Sprache gearbeitet.
+Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 am 2.~Januar 2007 veröffentlicht.
+Das Groovy-Projekt wurde nach einer Inkubationsphase am 18.~November 2015 von der Apache Foundation aufgenommen~\cite{apache-incubator:groovy}.
+Die aktuelle stabile Version ist 2.5.3, welche am 10.~Oktober 2018 erschien; parallel dazu wird aber schon an Version 3 der Sprache gearbeitet.
 
 Diese Arbeit ist der Skriptsprache Groovy gewidmet.
 Die Eignung für Domain-Specific Languages (DSLs) soll im Folgenden besondere Aufmerksamkeit erhalten.
@@ -154,7 +156,8 @@ Zunächst werden zwei Klassen \code{Duck} und \code{Frog} jeweils mit einer \cod
 In Zeile 4 wird die \code{duck}-Variable angelegt, der zunächst eine \code{Duck}-Instanz zugewiesen wird.
 Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Object}.
 Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{I'm a duck}.
-In der nächsten Zeile wird ein Objekt einer \code{Frog}-Klasse angelegt; der \code{quack}-Aufruf erzeugt nun die Ausgabe \plain{I'm a frog}.
+In der nächsten Zeile wird ein Objekt einer \code{Frog}-Klasse angelegt.
+Der \code{quack}-Aufruf erzeugt nun die Ausgabe \plain{I'm a frog}.
 Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist auch die Zuweisung eines Strings erlaubt.
 Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgelehnt, führt jedoch zur Laufzeit zu einer \code{MissingMethodException}.
 Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung des \code{Frog}-Objekts vom Compiler eine Warnung angezeigt und zur Laufzeit eine \code{GroovyCastException} erzeugt.
@@ -196,7 +199,7 @@ Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berech
 
 Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren.
 Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, Brüche oder Polynome zu erstellen und mit Operatoren auszustatten, als wären sie Teil der Sprache.
-Eigene Operatoren können jedoch nicht definiert werden.
+Eigene Operatorsymbole können jedoch nicht definiert werden.
 In Zeile 3 bis 6 ist eine einfache Klasse \code{MyNum} deklariert\footnote{Die Annotation \code{@groovy.transform.Canonical} sorgt dafür, dass ein Konstruktor sowie Standardimplementierungen der Methoden \code{equals}, \code{hashCode} und \code{toString} generiert werden.}, welche durch die \code{plus}-Methode die Addition ihrer Instanzen erlaubt.
 
 In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[Abs.~10.]{groovy-lang:differences}.
@@ -282,7 +285,7 @@ Listing~\ref{lst:closures-fp.groovy} enthält zunächst einige Beispiele, wie si
 Zunächst wird in Zeile 2 eine Liste definiert.
 In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
 Dafür wird eine Closure als Argument übergeben, die einen Parameter \code{it} empfängt und ihn verdoppelt zurückgibt.
-Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gelegt, die gerade sind.
+Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gelegt, die durch zwei teilbar sind.
 In Zeile 5 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw. \code{fold} bekannt.
 
@@ -374,7 +377,7 @@ Anweisungen auf oberster Ebene, optionale Typen und das Auslassen des Kompilieru
 Die Groovy Shell rundet dies mit einer interaktiven Umgebung ab und vereinfacht das Erlernen.
 
 Die Sprache gibt dem Entwickler viele Freiheiten bei der Syntax durch Closures und optionalen Zeichen, wodurch mächtige DSLs erstellt und optisch anschaulich genutzt werden können.
-Trotz der Skriptnatur ist --- wenn gewünscht --- auch für Sicherheit gesorgt;
+Trotz der Skriptnatur ist, wenn gewünscht, auch für Sicherheit gesorgt;
 besonders die in Java häufig kritisierte Nullsicherheit ist in Groovy besser gelöst.
 Die vereinfachte Verwendung von Listen und Maps macht sie attraktiver als die auf einer tieferen Sprachebene liegenden Arrays.
 Mit der dynamischen Typisierung und dem Überladen von Operatoren hebt sich Groovy auch semantisch von der Muttersprache Java ab.
@@ -383,7 +386,7 @@ Dennoch profitiert Groovy von dieser Herkunft.
 Der leichte Umstieg von Java sowie der Einsatz mit Gradle fördern die Bekanntheit der Skriptsprache.
 Die Möglichkeit, die sehr umfangreiche Anzahl von Java-Bibliotheken zu nutzen, sind ein weiterer wichtiger Faktor.
 Durch die Standardisierung, die Zugehörigkeit zur Apache Foundation und die Quelloffenheit ist Groovy eine robuste und dennoch stets wachsende Sprache.
-Die steigende Popularität von Web-basierten Lösungen macht sich Groovy durch das Grails-Framework zu Nutze.
+Die steigende Popularität von Web-basierten Lösungen macht sich Groovy durch das Grails-Framework zunutze.
 
 Insgesamt ist Groovy eine Sprache, die dem Entwickler freie Wahl ermöglicht.
 Sie bietet ein Rahmenwerk für sehr kurze aber auch sehr lange Programme.
