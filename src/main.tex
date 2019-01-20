@@ -265,33 +265,13 @@ Jedoch können die Regeln auch zu Problemen in der Semantik führen:
 Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb der Elvis-Operators mit solchen Werten als linkem Operand auch den rechten Operand zurückgibt.
 In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen Datentypen, welche gleichzeitig auch \code{null} werden können, aufgrund der Existenz geeigneterer ``Leer''-Werte kein guter Stil sind.
 
-\subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
-
-Groovy erlaubt es, Punkt-Operatoren und Klammern bei Methodenaufrufen wegzulassen.
-Dies ermöglicht die einfache Erstellung von DSLs, wie es das Listing~\ref{lst:optional-parens.groovy} zeigt.
-
-\codelisting{groovy}{optional-parens.groovy}{Eine kleine DSL mithilfe von optionalen Klammern und Punkten}
-
-Hier wird zunächst eine Hilfsfunktion \code{make} erstellt, welche die DSL definiert.
-Um das Beispiel kurz zu halten, werden hierfür Map-Literale und Closures verwendet, die in den Unterabschnitten~\ref{subsubsec:listen-und-maps} und~\ref{subsubsec:closures} erklärt werden.
-Bei echten DSLs sollten stattdessen Klassen und Methoden verwendet werden.
-Hier wurde zusätzlich ausgenutzt, dass die Verwendung des \code{return}-Schlüsselworts auch optional ist.
-In Zeile 5 werden aus Illustrationsgründung symbolische Variablen für einige Zeichenketten definiert.
-Danach folgt die Verwendung der definierten DSL:
-Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch äquivalent zu der Anweisung in Zeile 7.
-Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und Methodenaufrufe impliziert.
-Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
-
-Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semicolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
-In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 9, ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
-
 \subsubsection{Closures}\label{subsubsec:closures}
 
-Neben der optionalen Klammerung sind auch Closures ein wichtiges Werkzeug, um DSLs zu verwirklichen.
-Im Kern sind Closures ähnlich zu Lambda-Ausdrücken in Java, indem sie eine Möglichkeit bieten, Anweisungen als Objekt zu übergeben.
-Listing~\ref{lst:closures-fp.groovy} enthält einige Beispiele, wie sie für funktionale Operationen auf Listen verwendet werden.
+Konzeptuell sind Closures ähnlich zu Lambda-Ausdrücken in Java, indem sie eine Möglichkeit bieten, Anweisungen wie ein Objekt zu speichern und zu übergeben.
+Sie sind sowohl für das Schreiben von kompaktem Code als auch für DSLs unerlässlich.
+Listing~\ref{lst:closures-fp.groovy} enthält zunächst einige Beispiele, wie sie für funktionale Operationen auf Listen verwendet werden, welche mit Schleifen o.ä.~erheblich umfangreicher wären.
 
-\codelisting{groovy}{closures-fp.groovy}{Einsatz von Funktionale Listenoperationen mit Closures}
+\codelisting{groovy}{closures-fp.groovy}{Einsatz von Closures für funktionalen Listenoperationen}
 
 Zunächst wird in Zeile 2 eine Liste definiert.
 In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
@@ -314,6 +294,26 @@ Die Closure, die der \code{eval}-Funktion übergeben wird, bezieht sich auf die 
 Diese müssen jedoch erst aufgelöst werden, wenn die Closure aufgerufen wird.
 Da zu diesem Zeitpunkt schon das \code{delegate} gesetzt ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, und beziehen sich entsprechend auf die Methoden der anonymen Klasse.
 Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus, das Ergebnis der DSL-Rechenmaschine.
+
+\subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
+
+Groovy erlaubt es, Punkt-Operatoren und Klammern bei Methodenaufrufen wegzulassen.
+Dies ermöglicht die einfache Erstellung von nahezu natürlichsprachigen DSLs, wie es das Listing~\ref{lst:optional-parens.groovy} zeigt.
+
+\codelisting{groovy}{optional-parens.groovy}{Eine weitere DSL mithilfe von optionalen Klammern und Punkten}
+
+Hier wird zunächst eine Hilfsfunktion \code{make} erstellt, welche die DSL definiert.
+Um das Beispiel kurz zu halten, werden hierfür Map-Literale und Closures verwendet, die in den Unterabschnitten~\ref{subsubsec:listen-und-maps} und~\ref{subsubsec:closures} erklärt wurden.
+Bei echten DSLs sollten stattdessen Klassen und Methoden verwendet werden.
+Hier wurde zusätzlich ausgenutzt, dass die Verwendung des \code{return}-Schlüsselworts auch optional ist.
+In Zeile 5 werden aus Illustrationsgründung symbolische Variablen für einige Zeichenketten definiert.
+Danach folgt die Verwendung der definierten DSL:
+Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch äquivalent zu der Anweisung in Zeile 7.
+Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und Methodenaufrufe impliziert.
+Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
+
+Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semicolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
+In Listing~\ref{lst:closures-dsl.groovy}, Zeile 8, ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
 
 \subsubsection{Prototyp-Erweiterung}
 
