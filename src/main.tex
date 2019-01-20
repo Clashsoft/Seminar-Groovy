@@ -37,6 +37,7 @@
 \newcommand{\codelisting}[3]{
 \begin{listing}[ht]
 	\inputminted{#1}{#1/#2}
+	\vspace{-3ex}
 	\caption{#3}
 	\label{lst:#2}
 \end{listing}
@@ -385,7 +386,7 @@ Wo Java für kurze und andere Skriptsprachen für lange Programme nicht geeignet
 
 \bibliographystyle{ieeetr}
 \begingroup
-	\linespread{0.5}\selectfont % condense the bibliography entries
+	\linespread{0}\selectfont % condense the bibliography entries
 	\bibliography{main}
 \endgroup
 
