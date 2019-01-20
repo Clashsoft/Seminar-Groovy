@@ -283,7 +283,7 @@ In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die
 Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
 Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DSLs geeignet ist und im Listing~\ref{lst:closures-dsl.groovy} gezeigt wird.
 
-\codelisting{groovy}{closures-dsl.groovy}{Verwendung von Closure Delegates für eine weitere DSL}
+\codelisting{groovy}{closures-dsl.groovy}{Verwendung von Closure Delegates für eine Rechenmaschinen-DSL}
 
 Das Programm beginnt mit der Deklaration der Funktion \code{eval}, welche eine Closure akzeptiert und einen Variable \code{result} speichert.
 Danach wird dem \code{delegate} der Closure ein Objekt einer anonymen Klasse zugewiesen, welche die Methoden \code{add} und \code{mul} definiert.
