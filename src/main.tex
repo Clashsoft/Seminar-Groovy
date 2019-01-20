@@ -102,11 +102,11 @@ Somit sollten Groovy-Programme einfach auszuführen sein, möglichst ohne Zwisch
 Groovy-Skripte können entsprechend mit dem \code{groovy}-Programm ausgeführt werden.
 Wie etwa bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang\footnote{Auf UNIX-basierten Betriebssystem geben die Zeichen ``\#!'' am Anfang einer Datei an, dass diese mit dem darauffolgenden Befehl ausgeführt werden soll.}-Zeile beginnen, um sie direkt ausführbar zu machen.
 Variablen und Anweisungen können direkt in der obersten Ebene platziert werden, ebenso Imports, Klassen und Methoden.
+Das Listing~\ref{lst:hello-world.groovy} zeigt ein einfaches Hello-World-Programm, welches sich dies zunutze macht.
 
 \codelisting{groovy}{hello-world.groovy}{Hello World in Groovy}
 
-Das Listing~\ref{lst:hello-world.groovy} kann mit dem Befehl \code{groovy hello-world.groovy} ausgeführt werden;
-es kann durch das Shebang aber auch direkt als \code{./hello-world.groovy} aufgerufen werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden; der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
+Es kann mit dem Befehl \code{groovy hello-world.groovy}, durch das Shebang aber auch direkt als \code{./hello-world.groovy} ausgeführt werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden; der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
 Die Ausgabe ist in beiden Fällen \plain{Hello World!}.
 Auffällig ist das Schlüsselwort \code{def}, die Interpolation in der Zeichenkette und der Methodenaufruf von \code{println} ohne Klammern.
 Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:typisierung},~\ref{subsubsec:strings} und~\ref{subsubsec:optionale-syntax} näher eingegangen.
@@ -141,7 +141,7 @@ Typinformationen im Code dienen dem Compiler nur als Hilfe um Warnungen auszugeb
 Wenn gewünscht ist es aber auch möglich, Typfehler zur Compilezeit zu erzwingen; dafür können die \code{@TypeChecked}- und \code{@CompileStatic}-Annotationen verwendet werden~\cite[Abs.~6.2.]{groovy-lang:semantics}.
 Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
 
-\codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung in Groovy}
+\codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung}
 
 Zunächst wird eine Klasse \code{Duck} mit einer \code{quack}-Methode deklariert.
 In Zeile 4 wird die \code{duck}-Variable angelegt, der eine \code{Duck}-Instanz zugewiesen wird.
@@ -159,9 +159,9 @@ Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgele
 Ein Unterschied zu Java, der mit der dynamischen Typisierung in Verbindung steht, ist die Auflösung von Methodenaufrufen.
 In Java werden diese dynamisch anhand des Empfängertyps (Überschreiben), aber statisch anhand der Argumenttypen (Überladen) aufgelöst.
 Bei Groovy sind auch die Laufzeittypen der Argument für die Auswahl entscheidend, was unter dem Begriff Multi-Methoden bekannt ist.
-Das Listing~\ref{lst:multi-methods.groovy} erklärt dieses Verhalten.
+Das Listing~\ref{lst:multi-methods.groovy} zeigt ein einfaches Beispiel dafür.
 
-\codelisting{groovy}{multi-methods.groovy}{Multi-Methoden in Groovy}
+\codelisting{groovy}{multi-methods.groovy}{Dynamisches Auflösen von Multi-Methoden}
 
 Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
 Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
@@ -183,7 +183,7 @@ Auf die oben genannten Sprachkonzepte wird in diesem Unterabschnitt genauer eing
 Mathematische Konzepte haben eine besondere Bedeutung in Groovy.
 In Listing~\ref{lst:numbers.groovy} werden einige Besonderheiten dargestellt.
 
-\codelisting{groovy}{numbers.groovy}{Zahlen und mathematische Operatoren in Groovy}
+\codelisting{groovy}{numbers.groovy}{Rechnen mit Zahlen und eigenen Klassen}
 
 In Zeile 2 wird das klassische Beispiel für Fließkommafehler gezeigt, welches in Groovy keine Probleme verursacht, da Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal} sind.
 Das Ergebnis von Divisionen von zwei ganzzahligen Werten ist hier auch ein \code{BigDecimal}.
@@ -228,9 +228,9 @@ Dieser kann implizit zu einem Bool konvertiert werden, der den Erfolg angibt, un
 \subsubsection{Listen und Maps}\label{subsubsec:listen-und-maps}
 
 Auch Listen und Maps sind fest in der Syntax von Groovy verankert und haben einen großen Satz von Funktionen, um ihre Verwendung zu erleichtern.
-Listing~\ref{lst:lists-and-maps.groovy} zeigt einige Möglichkeiten, Listen und Maps zu verwenden.
+Listing~\ref{lst:lists-and-maps.groovy} illustriert einige Möglichkeiten, Listen und Maps zu verwenden.
 
-\codelisting{groovy}{lists-and-maps.groovy}{Listen und Maps in Groovy}
+\codelisting{groovy}{lists-and-maps.groovy}{Erstellen, Zugriff und Verändern von Listen und Maps}
 
 In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
 diese ist ohne explizite Typangabe eine \code{ArrayList}.
@@ -290,9 +290,9 @@ In Listing~\ref{lst:lists-and-maps.groovy}, Zeile 9, ist zu beobachten, wie mit 
 
 Neben der optionalen Klammerung sind auch Closures ein wichtiges Werkzeug, um DSLs zu verwirklichen.
 Im Kern sind Closures ähnlich zu Lambda-Ausdrücken in Java, indem sie eine Möglichkeit bieten, Anweisungen als Objekt zu übergeben.
-Listing~\ref{lst:closures-fp.groovy} zeigt, wie sie für funktionale Operationen auf Listen verwendet werden.
+Listing~\ref{lst:closures-fp.groovy} enthält einige Beispiele, wie sie für funktionale Operationen auf Listen verwendet werden.
 
-\codelisting{groovy}{closures-fp.groovy}{Funktionale Listenoperationen in Groovy}
+\codelisting{groovy}{closures-fp.groovy}{Einsatz von Funktionale Listenoperationen mit Closures}
 
 Zunächst wird in Zeile 2 eine Liste definiert.
 In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
@@ -320,7 +320,7 @@ Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus,
 
 Die Prototyp-Erweiterung ist eine weitere Besonderheit der Methodenauflösung von Groovy.
 Sie erlaubt es, Klassen und Objekten Eigenschaften und Methoden zur Laufzeit hinzuzufügen, ohne dass der Quellcode geändert werden muss.
-Listing~\ref{lst:prototype-extension.groovy} zeigt, wie diese zur rekursiven Berechnung der Fakultät von Zahlen verwendet werden kann.
+In Listing~\ref{lst:prototype-extension.groovy} wird diese zur rekursiven Berechnung der Fakultät von Zahlen verwendet.
 
 \codelisting{groovy}{prototype-extension.groovy}{Fakultätberechnung mit Prototyp-Erweiterungen}
 
