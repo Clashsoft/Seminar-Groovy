@@ -12,18 +12,6 @@
 \newcommand{\paperKeywords}[0]{Groovy, Seminar, Skriptsprachen}
 \newcommand{\paperAuthor}[0]{Adrian Kunz}
 
-% --------------- Commands ---------------
-\newcommand{\code}[1]{\mintinline{groovy}{#1}}
-\newcommand{\plain}[1]{\mintinline{text}{#1}}
-
-\newcommand{\codelisting}[3]{
-\begin{listing}[ht]
-	\inputminted{#1}{#1/#2}
-	\caption{#3}
-	\label{lst:#2}
-\end{listing}
-}
-
 % --------------- Document Setup ---------------
 \documentclass[a4paper]{article}
 \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2cm]{geometry}
@@ -42,6 +30,17 @@
 \usepackage{minted}
 \usemintedstyle{vs}
 \setminted{frame=single,tabsize=2,linenos}
+
+\newmintinline[code]{groovy}{}
+\newmintinline[plain]{text}{breaklines}
+
+\newcommand{\codelisting}[3]{
+\begin{listing}[ht]
+	\inputminted{#1}{#1/#2}
+	\caption{#3}
+	\label{lst:#2}
+\end{listing}
+}
 
 % Hyperref
 \usepackage{hyperref}
