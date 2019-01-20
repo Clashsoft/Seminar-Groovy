@@ -143,16 +143,15 @@ Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
 
 \codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung}
 
-Zunächst wird eine Klasse \code{Duck} mit einer \code{quack}-Methode deklariert.
-In Zeile 4 wird die \code{duck}-Variable angelegt, der eine \code{Duck}-Instanz zugewiesen wird.
+Zunächst werden zwei Klassen \code{Duck} und \code{Frog} mit je einer \code{quack}-Methode deklariert.
+In Zeile 4 wird die \code{duck}-Variable angelegt, der zunächst eine \code{Duck}-Instanz zugewiesen wird.
 Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Object}.
-Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{quack}.
-In der nächsten Zeile wird ein Map-Literal angelegt, welches dem Schlüssel \code{quack} eine Closure zuweist.
-Durch den Coercion-Operator \code{as} wird die Map zu einem \code{Duck}-Objekt konvertiert, welches die \code{quack}-Methode überschreibt.
-Zeile 6 zeigt, dass \code{duck} noch immer eine Instanz der \code{Duck}-Klasse ist; der \code{quack}-Aufruf erzeugt jedoch nun die Ausgabe \plain{I'm not a duck}.
-Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist die Zuweisung eines Strings erlaubt.
+Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{I'm a duck}.
+In der nächsten Zeile wird ein Objekt einer \code{Frog}-Klasse angelegt, welche die \code{quack}-Methode implementiert.
+Der \code{quack}-Aufruf erzeugt nun die Ausgabe \plain{I'm a frog}.
+Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist auch die Zuweisung eines Strings erlaubt.
 Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgelehnt, führt jedoch zur Laufzeit zu einer \code{MissingMethodException}.
-Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung eine \code{GroovyCastException} erzeugt.
+Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung des \code{Frog}-Objekts vom Compiler eine Warnung angezeigt und zur Laufzeit eine \code{GroovyCastException} erzeugt.
 
 \subsubsection{Multi-Methoden}
 

@@ -1,7 +1,6 @@
 #!/usr/bin/env groovy
-class Duck { void quack() { println "quack" }}
-
+class Duck { void quack() { println "I'm a duck" } }
+class Frog { void quack() { println "I'm a frog" } }
 def duck = new Duck(); duck.quack()
-duck = [quack: { println "I'm not a duck"}] as Duck; duck.quack()
-assert duck instanceof Duck
-duck = "I'm a string"; duck.quack()
+    duck = new Frog(); duck.quack()
+    duck = "a string"; duck.quack()
