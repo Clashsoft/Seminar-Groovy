@@ -94,13 +94,12 @@ Danach wird das Ökosystem um Groovy sowie zwei der wichtigsten Frameworks, welc
 Im folgenden Abschnitt wird Groovy als Sprache vorgestellt.
 Die Syntax ist stark an Java und andere C-ähnliche Sprachen angelehnt.
 Deshalb wird im Unterabschnitt~\ref{subsec:vergleichMitJava} ein Vergleich mit Java durchgeführt.
-Dabei wird sowohl auf syntaktischer als auch auf semantischer Ebene Bezug genommen.
 In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
 
 Bei Groovy handelt es sich primär um eine Skriptsprache.
-Somit sollten Groovy-Programme einfach auszuführen sein, möglichst ohne Zwischenschritte wie etwa ein Aufruf eines Compilers.
-Groovy-Skripte können entsprechend mit dem \code{groovy}-Programm ausgeführt werden.
-Wie etwa bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang\footnote{Auf UNIX-basierten Betriebssystem geben die Zeichen ``\#!'' am Anfang einer Datei an, dass diese mit dem darauffolgenden Befehl ausgeführt werden soll.}-Zeile beginnen, um sie direkt ausführbar zu machen.
+Groovy-Programme sollten somit einfach auszuführen sein, möglichst ohne Zwischenschritte wie etwa ein Aufruf eines Compilers.
+Dies ist mit dem \code{groovy}-Programm möglich, welches eine gegebene Datei direkt als Groovy-Skript ausführt.
+Ähnlich wie bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang\footnote{Auf UNIX-basierten Betriebssystem geben die Zeichen ``\#!'' am Anfang einer Datei an, dass diese mit dem darauffolgenden Befehl ausgeführt werden soll.}-Zeile beginnen, um sie direkt ausführbar zu machen.
 Variablen und Anweisungen können direkt in der obersten Ebene platziert werden, ebenso Imports, Klassen und Methoden.
 Das Listing~\ref{lst:hello-world.groovy} zeigt ein einfaches Hello-World-Programm, welches sich dies zunutze macht.
 
@@ -109,7 +108,7 @@ Das Listing~\ref{lst:hello-world.groovy} zeigt ein einfaches Hello-World-Program
 Es kann mit dem Befehl \code{groovy hello-world.groovy}, durch das Shebang aber auch direkt als \code{./hello-world.groovy} ausgeführt werden\footnote{Dafür muss der Programmcode in einer Datei namens \code{hello-world.groovy} gespeichert werden; der Aufruf via Shebang setzt voraus, dass diese ausführbar ist.}.
 Die Ausgabe ist in beiden Fällen \plain{Hello World!}.
 Auffällig ist das Schlüsselwort \code{def}, die Interpolation in der Zeichenkette und der Methodenaufruf von \code{println} ohne Klammern.
-Auf diese wird entsprechend in den Unterabschnitten~\ref{subsubsec:typisierung},~\ref{subsubsec:strings} und~\ref{subsubsec:optionale-syntax} näher eingegangen.
+Auf diese wird jeweils in den Unterabschnitten~\ref{subsubsec:typisierung},~\ref{subsubsec:strings} und~\ref{subsubsec:optionale-syntax} näher eingegangen.
 
 Zu beachten ist, dass es sich zwar um ein Skript handelt, aber die Groovy-Laufzeit diese vor der Ausführung immer vollständig kompiliert.
 Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
@@ -121,7 +120,7 @@ Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, k
 Dies hat einerseits den Vorteil, dass bei der Überführung eines Projekts von Java zu Groovy zunächst nur wenige Änderungen vorgenommen werden müssen.
 Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte aneignen können.
 
-Es gibt jedoch einige Fälle, in denen ein Java-Programm nicht auch ein Groovy-Programm ist.
+In einigen Fällen ist ein gültiges Java-Programm jedoch nicht gleich ein gültiges Groovy-Programm.
 Triviale Beispiele sind jene Programme, in denen Schlüsselwörter von Groovy als Bezeichner verwendet werden.
 Zu den Kontrollstrukturen, die Groovy in Version 2 nicht unterstützt, gehören Do-While-Schleifen, Try-With-Resource- Blöcke und Block-Statements.
 Die Java-Syntax für Lambda-Ausdrücke, Methoden-Referenzen und Array-Initialisierung werden von dieser Version auch nicht unterstützt.
@@ -129,7 +128,7 @@ In Groovy 3~\cite{groovy-lang:release3}, welches sich derzeit in Entwicklung bef
 
 Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen syntaktisch gültig sind, da sich in einigen Fällen die Semantik in Groovy anders als in Java verhält.
 Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, darunter u.a.~\code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{BigInteger} und \code{BigDecimal} aus \code{java.math}.
-Skripts, die auf Dateien oder das Internet zugreifen oder genaue Berechnungen durchführen, kommen also ohne zusätzliche Import-Deklarationen aus und sind entsprechend kürzer.
+Skripts, die auf Dateien oder das Internet zugreifen oder genaue Berechnungen durchführen, kommen also ohne zusätzliche Import-Deklarationen aus und sind dementsprechend kürzer.
 Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
 Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} sowie in den nachfolgenden Unterabschnitten zu finden.
 
@@ -276,7 +275,7 @@ Listing~\ref{lst:closures-fp.groovy} enthält zunächst einige Beispiele, wie si
 Zunächst wird in Zeile 2 eine Liste definiert.
 In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
 Dafür wird eine Closure als Argument übergeben, die einen Parameter \code{it} empfängt und ihn verdoppelt zurückgibt.
-Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gepackt, die gerade sind.
+Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gelegt, die gerade sind.
 In Zeile 5 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw. \code{fold} bekannt.
 
@@ -312,8 +311,8 @@ Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch äquivalent zu
 Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und Methodenaufrufe impliziert.
 Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 
-Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semicolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
-In Listing~\ref{lst:closures-dsl.groovy}, Zeile 8, ist zu beobachten, wie mit einem expliziten Semicolon auch mehrere Anweisungen in einer Zeile stehen können.
+Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semikolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
+In Listing~\ref{lst:closures-dsl.groovy}, Zeile 8, ist zu beobachten, wie mit einem expliziten Semikolon auch mehrere Anweisungen in einer Zeile stehen können.
 
 \subsubsection{Prototyp-Erweiterung}
 
@@ -379,7 +378,7 @@ Die steigende Popularität von Web-basierten Lösungen macht sich Groovy durch d
 
 Insgesamt ist Groovy eine Sprache, die den Entwickler nicht einschränkt.
 Sie bietet die Möglichkeit, sehr kurze aber auch sehr lange Programme zu schreiben.
-Erstere unter Auslassen von Typinformationen, um möglichst schnell loslegen zu können;
+Erstere unter Auslassen von Typinformationen, um möglichst schnell einsatzfähig zu sein;
 letztere können mit Typen und statischer Kompilierung wartbar, robust und performant gemacht werden.
 Wo Java für kurze und andere Skriptsprachen für lange Programme nicht geeignet sind, setzt Groovy ein und verbindet zwei Welten.
 
