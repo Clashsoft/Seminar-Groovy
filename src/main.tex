@@ -76,9 +76,9 @@ Skripte, welche per Definition sehr kurz sind, sind daher in Java undenkbar.
 Das dachte sich wohl auch James Strachan im Jahre 2003, als er mit einem Blogpost~\cite{james-strachan-blog} die Skriptsprache \emph{Groovy} ankündigte.
 Sie sollte dynamisch typisiert sein, aber für die Java Virtual Machine kompiliert werden und somit bestehende Java-Bibliotheken und -Code nutzen können.
 Die bereits existierenden JRuby-, Jython- und Rhino-Skriptsprachen, welche die Verwendung von Ruby, Python und JavaScript auf der JVM ermöglichten, reichten ihm dafür nicht aus.
-Ein Design-Ziel war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development zu gewinnen, wobei auch die Typisierung weniger wichtig ist.
+Ein Design-Ziel der neuen Sprache war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development (TDD) zu gewinnen, bei denen auch die Typisierung weniger wichtig ist.
 
-Im März 2004 wurde die neue Sprache dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
+Im März 2004 wurde Groovy dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
 Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 am 2. Januar 2007 veröffentlicht.
 Am 18. November 2015 wurde das Groovy-Projekt nach einer Inkubationsphase von der Apache Foundation aufgenommen~\cite{apache-incubator:groovy} und seither weiterentwickelt.
 Die aktuelle stabile Version ist 2.5.3, welche am 10. Oktober 2018 erschien; nebenbei wird aber schon an Version 3 der Sprache gearbeitet.
@@ -229,7 +229,7 @@ Dieser kann implizit zu einem Bool konvertiert werden, der den Erfolg angibt, un
 
 \subsubsection{Listen und Maps}\label{subsubsec:listen-und-maps}
 
-Auch Listen und Maps haben in Groovy erste Bürgerrechte und einen großen Satz von Funktionen, um ihre Verwendung zu erleichtern.
+Auch Listen und Maps sind fest in der Syntax von Groovy verankert und haben einen großen Satz von Funktionen, um ihre Verwendung zu erleichtern.
 Listing~\ref{lst:lists-and-maps.groovy} zeigt einige Möglichkeiten, Listen und Maps zu verwenden.
 
 \codelisting{groovy}{lists-and-maps.groovy}{Listen und Maps in Groovy}
@@ -260,10 +260,10 @@ Der Safe-Navigation-Operator \code{?.} wird verwendet, um \code{NullPointerExcep
 Anstelle des \code{.}-Operators für Methodenaufrufe und Attributzugriffe sorgt er dafür, dass das Ergebnis des Aufrufs oder Zugriffs \code{null} ist, wenn der Empfänger \code{null} ist.
 Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, wenn \code{person} schon \code{null} ist.
 
-Der \code{?:}-Operator, auch Elvis-Operator genannt, ist ein syntaktischer Zucker der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
+Der \code{?:}-Operator, auch Elvis-Operator genannt, ist syntaktischer Zucker, der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
 Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[Abs.~5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
 Eine dieser Regeln besagt, dass \code{null}-Referenzen als \code{falsy}\footnote{In Skriptsprachen wird dieser Begriff häufig für Werte verwendet, die sich in boolschen Ausdrücken wie \code{false} verhalten, aber eigentlich kein boolscher Wert sind.} gelten.
-Somit wird \code{rhs} vom Ternary-Operator ausgewählt wird, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
+Somit wird \code{rhs} vom Ternary-Operator ausgewählt, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
 Jedoch können die Regeln auch zu Problemen in der Semantik führen:
 Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb der Elvis-Operators mit solchen Werten als linkem Operand auch den rechten Operand zurückgibt.
 In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen Datentypen, welche gleichzeitig auch \code{null} werden können, aufgrund der Existenz geeigneterer ``Leer''-Werte kein guter Stil sind.
@@ -331,8 +331,8 @@ Danach wird allgemein für die \code{Number}-Klasse der Rekursionsfall definiert
 Hier steht \code{delegate} für den Empfänger.
 In Zeile 4 wird schließlich die \code{factorial}-Methode aufgerufen.
 Dabei wird zur Laufzeit zuerst in der \code{metaClass} der konkreten Instanz nach einer Definition gesucht, danach in der \code{metaClass} des Laufzeittyps.
-Bei dem Aufruf \code{0.factorial()} wird also sofort die Definition aus Zeile 2 aufgerufen;
-bei \code{5.factorial()} wird fünf Mal die Definition aus Zeile 3 aufgerufen, bevor \code{delegate} gleich \code{1} ist und \code{(delegate - 1).factorial()} auf die Definition für \code{0} verweist.
+Der Aufruf \code{0.factorial()} bezieht sich also auf die Definition aus Zeile 2.
+Bei \code{5.factorial()} wird fünf Mal die Definition aus Zeile 3 aufgerufen, bevor \code{delegate} gleich \code{1} ist und \code{(delegate - 1).factorial()} auf die Definition für \code{0} verweist.
 
 % --------------- ---------------
 
