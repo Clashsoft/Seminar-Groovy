@@ -134,7 +134,7 @@ Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei
 
 \subsubsection{Typisierung}\label{subsubsec:typisierung}
 
-Das Typsystem von Groovy ist standardmäßig dynamisch und unterstützt Duck-Typisierung~\cite[Abs.~6.]{groovy-lang:semantics}.
+Das Typsystem von Groovy ist standardmäßig dynamisch und unterstützt neben nominaler auch Duck-Typisierung\footnote{Paradigma, bei dem nicht der Typ eines Objekts entscheidend ist, sondern was dieses kann --- beispielsweise welche Methoden und Attribute es bereitstellt.}~\cite[Abs.~6.]{groovy-lang:semantics}.
 An vielen Stellen werden implizite Typkonvertierung, beispielsweise von und zu Strings oder Booleans durchgeführt~\cite[Abs.~3.]{groovy-lang:semantics}.
 Typinformationen im Code dienen dem Compiler nur als Hilfe um Warnungen auszugeben; Fehler treten jedoch erst zur Laufzeit auf.
 Wenn gewünscht ist es aber auch möglich, Typfehler zur Compilezeit zu erzwingen; dafür können die \code{@TypeChecked}- und \code{@CompileStatic}-Annotationen verwendet werden~\cite[Abs.~6.2.]{groovy-lang:semantics}.
