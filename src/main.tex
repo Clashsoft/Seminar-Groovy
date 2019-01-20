@@ -155,6 +155,7 @@ Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Obj
 Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{I'm a duck}.
 In der nächsten Zeile wird ein Objekt einer \code{Frog}-Klasse angelegt.
 Der \code{quack}-Aufruf erzeugt nun die Ausgabe \plain{I'm a frog}.
+
 Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist auch die Zuweisung eines Strings erlaubt.
 Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgelehnt, führt jedoch zur Laufzeit zu einer \code{MissingMethodException}.
 Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung des \code{Frog}-Objekts vom Compiler eine Warnung angezeigt und zur Laufzeit eine \code{GroovyCastException} erzeugt.
@@ -183,10 +184,12 @@ Optionale Syntax und Closures ermöglichen es, DSLs zu definieren und verwenden.
 Durch Prototyp-Erweiterungen können Methoden zur Laufzeit zu Klassen und einzelnen Instanzen hinzugefügt werden.
 Auf die oben genannten Sprachkonzepte wird in diesem Unterabschnitt genauer eingegangen.
 
-\subsubsection{Zahlen}\label{subsubsec:zahlen}
+\subsubsection{Zahlen und Operatoren}\label{subsubsec:zahlen}
 
 Mathematische Konzepte haben eine besondere Bedeutung in Groovy.
-In Listing~\ref{lst:numbers.groovy} werden einige Besonderheiten dargestellt.
+Der einfache Gebrauch von \code{BigInteger} und \code{BigDecimal} ist für wissenschaftliche und finanzielle Berechnungen interessant.
+Auch die Möglichkeit, Operatoren zu überladen, ist dabei relevant.
+In Listing~\ref{lst:numbers.groovy} werden diese Besonderheiten beispielhaft dargestellt.
 
 \codelisting{groovy}{numbers.groovy}{Rechnen mit Zahlen und eigenen Klassen}
 
