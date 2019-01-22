@@ -171,10 +171,9 @@ Listing~\ref{lst:multi-methods.groovy} zeigt ein einfaches Beispiel dafür.
 
 \codelisting{groovy}{multi-methods.groovy}{Dynamisches Auflösen von überladenen Methoden}
 
-Wenn das Programm ausgeführt wird, ist die Assertion erfolgreich und es wird nichts ausgegeben.
-Grund dafür ist, dass die \code{take}-Methode aufgerufen wird, welche einen \code{String} erwartet.
-Der Laufzeittyp des Arguments \code{arg} ist \code{String}, während der statische Typ der Variable \code{Object} ist.
-Dadurch wählt die Groovy-Laufzeitumgebung dynamisch die \code{take(String)}-Methode aus.
+Hier werden zunächst zwei überladene \code{take}-Methoden definiert, die jeweils ein \code{Object} und einen \code{String} akzeptieren.
+Die Variable in Zeile 4 hat den statischen Typ \code{Object}, ihr Wert ist zur Laufzeit aber vom Typ \code{String}.
+Dadurch wählt die Groovy-Laufzeitumgebung bei dem Aufruf in Zeile 5 dynamisch die \code{take(String)}-Methode aus.
 In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
 
 \subsection{Besonderheiten}\label{subsec:besonderheiten}
