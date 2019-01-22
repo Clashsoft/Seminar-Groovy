@@ -281,7 +281,7 @@ Konzeptuell sind Closures ähnlich zu Lambda-Ausdrücken in Java, indem sie eine
 Sie sind sowohl für das Schreiben von kompaktem Code als auch für DSLs unerlässlich.
 Listing~\ref{lst:closures-fp.groovy} enthält zunächst einige Beispiele, wie sie für funktionale Operationen auf Listen verwendet werden, welche mit Schleifen o.ä.~erheblich umfangreicher wären.
 
-\codelisting{groovy}{closures-fp.groovy}{Einsatz von Closures für funktionalen Listenoperationen}
+\codelisting{groovy}{closures-fp.groovy}{Einsatz von Closures für funktionale Listenoperationen}
 
 Zunächst wird in Zeile 1 eine Liste definiert.
 In Zeile 2 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
@@ -291,7 +291,7 @@ In Zeile 4 wird mit der \code{inject}-Methode und einer Closure, die zwei Argume
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw.~\code{fold} bekannt.
 
 Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
-Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DSLs geeignet ist und im Listing~\ref{lst:closures-dsl.groovy} gezeigt wird.
+Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DSLs geeignet ist und in Listing~\ref{lst:closures-dsl.groovy} gezeigt wird.
 
 \codelisting{groovy}{closures-dsl.groovy}{Verwendung von Closure Delegates für eine Rechenmaschinen-DSL}
 
