@@ -272,8 +272,8 @@ Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groov
 Eine dieser Regeln besagt, dass \code{null}-Referenzen als \code{falsy}\footnote{In Skriptsprachen wird dieser Begriff häufig für Werte verwendet, die sich in boolschen Ausdrücken wie \code{false} verhalten, aber eigentlich kein boolscher Wert sind.} gelten.
 Somit wird \code{rhs} vom Ternary-Operator ausgewählt, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
 Jedoch können die Regeln auch zu Problemen in der Semantik führen:
-Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}, weshalb der Elvis-Operators mit solchen Werten als linkem Operand auch den rechten Operand zurückgibt.
-In der Praxis ist dies jedoch weniger ein Problem, da Variablen mit eben diesen Datentypen, welche gleichzeitig auch \code{null} werden können, aufgrund der Existenz geeigneterer ``Leer''-Werte kein guter Stil sind.
+Leere Strings, Listen und Maps oder Zahlen mit dem Wert \code{0} gelten neben \code{null}-Referenzen auch als \code{falsy}.
+Der Elvis-Operators gibt mit solchen Werten als linkem Operand auch den rechten Operand zurück.
 
 \subsubsection{Closures}\label{subsubsec:closures}
 
