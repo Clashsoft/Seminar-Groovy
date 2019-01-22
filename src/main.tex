@@ -117,6 +117,7 @@ Die Ausgabe ist in beiden Fällen \plain{Hello World!}.
 Zu beachten ist, dass es sich zwar um ein Skript handelt, aber die Groovy-Laufzeit diese vor der Ausführung immer vollständig kompiliert.
 Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
 der generierte Bytecode wird nur zwischengespeichert und nach der Ausführung verworfen.
+Dies verstärkt den Kritikpunkt von JVM-Sprachen, lange Startzeiten zu haben, mit einer zusätzlichen Verzögerung.
 
 Eine Groovy-Installation liefert neben Interpreter, Compiler und anderen Tools auch das \plain{groovysh}-Programm aus.
 Es ermöglicht die interaktive Eingabe und sofortige Auswertung von Deklarationen, Anweisungen und Ausdrücken, ähnlich wie mit Python oder Bash.
@@ -126,7 +127,7 @@ Das Ausprobieren von kurzen Codezeilen wird dadurch vereinfacht, was besonders b
 
 Da ein Großteil der Sprachelemente und deren Syntax direkt übernommen wurde, können viele Java-Programme direkt als Groovy-Programm verwendet werden.
 Dies hat einerseits den Vorteil, dass bei der Überführung eines Projekts von Java zu Groovy zunächst nur wenige Änderungen vorgenommen werden müssen.
-Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte aneignen können.
+Andererseits macht es das Erlernen der Sprache für Entwickler mit einem Java-Hintergrund einfacher, da sie direkt gültigen Groovy-Code schreiben können und sich mit der Zeit spezifische Konzepte für kompakten und idiomatischen Code aneignen können.
 
 In einigen Fällen ist ein gültiges Java-Programm jedoch nicht gleich ein gültiges Groovy-Programm.
 Triviale Beispiele sind jene Programme, in denen Schlüsselwörter von Groovy als Bezeichner verwendet werden.
@@ -188,7 +189,7 @@ Auf die oben genannten Sprachkonzepte wird in diesem Unterabschnitt genauer eing
 \subsubsection{Zahlen und Operatoren}\label{subsubsec:zahlen}
 
 Mathematische Konzepte haben eine besondere Bedeutung in Groovy.
-Der einfache Gebrauch von \code{BigInteger} und \code{BigDecimal} ist für wissenschaftliche und finanzielle Berechnungen interessant.
+Der einfache Gebrauch von \break\code{BigInteger} und \code{BigDecimal} ist für wissenschaftliche und finanzielle Berechnungen interessant.
 Auch die Möglichkeit, Operatoren zu überladen, ist dabei relevant.
 In Listing~\ref{lst:numbers.groovy} werden diese Besonderheiten beispielhaft dargestellt.
 
