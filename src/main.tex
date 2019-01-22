@@ -139,14 +139,14 @@ Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen synta
 Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, darunter u.a.~\code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{BigInteger} und \code{BigDecimal} aus \code{java.math}.
 Skripts, die auf Dateien oder das Internet zugreifen oder genaue Berechnungen durchführen, kommen also ohne zusätzliche Import-Deklarationen aus und sind dementsprechend kürzer.
 Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
-Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite{groovy-lang:differences} sowie in den nachfolgenden Unterabschnitten zu finden.
+Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite[Abs~3.2.]{groovy-lang:documentation} sowie in den nachfolgenden Unterabschnitten zu finden.
 
 \subsubsection{Typisierung}\label{subsubsec:typisierung}
 
-Das Typsystem von Groovy ist standardmäßig dynamisch und unterstützt neben nominaler auch Duck-Typisierung\footnote{Paradigma, bei dem nicht der Typ eines Objekts entscheidend ist, sondern was dieses kann --- beispielsweise welche Methoden und Attribute es bereitstellt.}~\cite[Abs.~6.]{groovy-lang:semantics}.
-An vielen Stellen werden implizite Typkonvertierung, beispielsweise von und zu Strings oder Booleans durchgeführt~\cite[Abs.~3.]{groovy-lang:semantics}.
+Das Typsystem von Groovy ist standardmäßig dynamisch und unterstützt neben nominaler auch Duck-Typisierung\footnote{Paradigma, bei dem nicht der Typ eines Objekts entscheidend ist, sondern was dieses kann --- beispielsweise welche Methoden und Attribute es bereitstellt.}~\cite[Abs.~1.6.6.]{groovy-lang:documentation}.
+An vielen Stellen werden implizite Typkonvertierung, beispielsweise von und zu Strings oder Booleans durchgeführt~\cite[Abs.~1.6.3.]{groovy-lang:documentation}.
 Typinformationen im Code dienen dem Compiler nur als Hilfe um Warnungen auszugeben; Fehler treten jedoch erst zur Laufzeit auf.
-Wenn gewünscht ist es aber auch möglich, Typfehler zur Compilezeit zu erzwingen; dafür können die \code{@TypeChecked}- und \code{@CompileStatic}-Annotationen verwendet werden~\cite[Abs.~6.2.]{groovy-lang:semantics}.
+Wenn gewünscht ist es aber auch möglich, Typfehler zur Compilezeit zu erzwingen; dafür können die \code{@TypeChecked}- und \code{@CompileStatic}-Annotationen verwendet werden~\cite[Abs.~1.6.6.]{groovy-lang:documentation}.
 Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
 
 \codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung}
@@ -203,9 +203,9 @@ Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, 
 Eigene Operatorsymbole können jedoch nicht definiert werden.
 In Zeile 2 bis 5 ist eine einfache Klasse \code{MyNum} deklariert\footnote{Die Annotation \code{@groovy.transform.Canonical} sorgt dafür, dass ein Konstruktor sowie Standardimplementierungen der Methoden \code{equals}, \code{hashCode} und \code{toString} generiert werden.}, welche durch die \code{plus}-Methode die Addition ihrer Instanzen erlaubt.
 
-In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[Abs.~10.]{groovy-lang:differences}.
+In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[Abs.~3.2.10.]{groovy-lang:documentation}.
 Somit kann man mit ihnen alles machen, was auch bei Objekten möglich ist, beispielsweise Attributzugriff oder Methodenaufrufe.
-Das Verhalten von Zahlen und Operatoren ist unter~\cite[Abs.~5.]{groovy-lang:syntax} und~\cite[Abs.~10.]{groovy-lang:operators} genauer dokumentiert.
+Das Verhalten von Zahlen und Operatoren ist unter~\cite[Abs.~1.1.5.]{groovy-lang:documentation} und~\cite[Abs.~1.2.]{groovy-lang:documentation} genauer dokumentiert.
 
 \subsubsection{Zeichenketten}\label{subsubsec:strings}
 
@@ -256,7 +256,7 @@ In der nächsten Zeile werden auch beide Möglichkeiten verwendet, um neue Eintr
 Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 9, welcher auch mit dem Punkt-Operator möglich ist und in beiden Fällen \code{null} zurückgibt.
 
 Andere Collections und Arrays können durch Coercion von Listen- oder Map-Literalen erzeugt werden.
-Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[Abs.~7.-9.]{groovy-lang:syntax} zu finden.
+Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[Abs.~1.1.7.-1.1.9.]{groovy-lang:documentation} zu finden.
 
 \subsubsection{Null-Sicherheit}
 
@@ -268,7 +268,7 @@ Anstelle des \code{.}-Operators für Methodenaufrufe und Attributzugriffe sorgt 
 Somit ist beispielsweise der Wert von \code{person?.name} gleich \code{null}, wenn \code{person} schon \code{null} ist.
 
 Der \code{?:}-Operator, auch Elvis-Operator genannt, ist syntaktischer Zucker, der Ausdrücke der Form \code{lhs ?: rhs} durch \code{lhs ? lhs : rhs} ersetzt.
-Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[Abs.~5.]{groovy-lang:semantics}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
+Dies erscheint im ersten Moment nicht nützlich, doch durch die Regeln der Groovy Truth~\cite[Abs.~1.6.5.]{groovy-lang:documentation}, welche die implizite Konvertierung zu Bool-Werten bestimmen, ist er sehr mächtig.
 Eine dieser Regeln besagt, dass \code{null}-Referenzen als \code{falsy}\footnote{In Skriptsprachen wird dieser Begriff häufig für Werte verwendet, die sich in boolschen Ausdrücken wie \code{false} verhalten, aber eigentlich kein boolscher Wert sind.} gelten.
 Somit wird \code{rhs} vom Ternary-Operator ausgewählt, wenn \code{lhs} \code{null} ist, und \code{lhs} wenn nicht.
 Jedoch können die Regeln auch zu Problemen in der Semantik führen:
