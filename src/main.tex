@@ -152,7 +152,7 @@ Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
 \codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung}
 
 Zunächst werden zwei Klassen \code{Duck} und \code{Frog} jeweils mit einer \code{quack}-Methode deklariert.
-In Zeile 4 wird die \code{duck}-Variable angelegt, der zunächst eine \code{Duck}-Instanz zugewiesen wird.
+In Zeile 3 wird die \code{duck}-Variable angelegt, der zunächst eine \code{Duck}-Instanz zugewiesen wird.
 Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Object}.
 Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{I'm a duck}.
 In der nächsten Zeile wird ein Objekt einer \code{Frog}-Klasse angelegt.
@@ -172,8 +172,8 @@ Listing~\ref{lst:multi-methods.groovy} zeigt ein einfaches Beispiel dafür.
 \codelisting{groovy}{multi-methods.groovy}{Dynamisches Auflösen von überladenen Methoden}
 
 Hier werden zunächst zwei überladene \code{take}-Methoden definiert, die jeweils ein \code{Object} und einen \code{String} akzeptieren.
-Die Variable in Zeile 4 hat den statischen Typ \code{Object}, ihr Wert ist zur Laufzeit aber vom Typ \code{String}.
-Dadurch wählt die Groovy-Laufzeitumgebung bei dem Aufruf in Zeile 5 dynamisch die \code{take(String)}-Methode aus.
+Die Variable in Zeile 3 hat den statischen Typ \code{Object}, ihr Wert ist zur Laufzeit aber vom Typ \code{String}.
+Dadurch wählt die Groovy-Laufzeitumgebung bei dem Aufruf in Zeile 4 dynamisch die \code{take(String)}-Methode aus.
 In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
 
 \subsection{Besonderheiten}\label{subsec:besonderheiten}
@@ -194,14 +194,14 @@ In Listing~\ref{lst:numbers.groovy} werden diese Besonderheiten beispielhaft dar
 
 \codelisting{groovy}{numbers.groovy}{Rechnen mit Zahlen und eigenen Klassen}
 
-In Zeile 2 wird das klassische Beispiel für Fließkommafehler gezeigt, welches in Groovy keine Probleme verursacht, da Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal} sind.
+In Zeile 1 wird das klassische Beispiel für Fließkommafehler gezeigt, welches in Groovy keine Probleme verursacht, da Literale mit Nachkommastellen ohne explizites Suffix oder Cast vom Typ \code{BigDecimal} sind.
 Das Ergebnis von Divisionen von zwei ganzzahligen Werten wird standardmäßig nicht gerundet.
 Der Operator \code{**} kann verwendet werden, um die Potenz einer Zahl zu berechnen.
 
 Übliche Operatoren können auch von eigenen Klassen verwendet werden, indem sie Methoden mit besonderen Namen wie \code{plus} für \code{+}, \code{leftShift} für \code{<<} oder \code{next} für \code{++} deklarieren.
 Dies macht es möglich, Klassen für mathematische Objekte wie komplexe Zahlen, Brüche oder Polynome zu erstellen und mit Operatoren auszustatten, als wären sie Teil der Sprache.
 Eigene Operatorsymbole können jedoch nicht definiert werden.
-In Zeile 3 bis 6 ist eine einfache Klasse \code{MyNum} deklariert\footnote{Die Annotation \code{@groovy.transform.Canonical} sorgt dafür, dass ein Konstruktor sowie Standardimplementierungen der Methoden \code{equals}, \code{hashCode} und \code{toString} generiert werden.}, welche durch die \code{plus}-Methode die Addition ihrer Instanzen erlaubt.
+In Zeile 2 bis 5 ist eine einfache Klasse \code{MyNum} deklariert\footnote{Die Annotation \code{@groovy.transform.Canonical} sorgt dafür, dass ein Konstruktor sowie Standardimplementierungen der Methoden \code{equals}, \code{hashCode} und \code{toString} generiert werden.}, welche durch die \code{plus}-Methode die Addition ihrer Instanzen erlaubt.
 
 In Groovy verhalten sich primitive Datentypen zu Kompilierungs- und Laufzeit wie Objekte ihrer Wrapper-Klassen~\cite[Abs.~10.]{groovy-lang:differences}.
 Somit kann man mit ihnen alles machen, was auch bei Objekten möglich ist, beispielsweise Attributzugriff oder Methodenaufrufe.
@@ -226,10 +226,10 @@ Listing~\ref{lst:string-interpolation.groovy} zeigt, wie diese in String-Literal
 
 \codelisting{groovy}{string-interpolation.groovy}{String-Interpolation und Matching mit regulären Ausdrücken}
 
-Im ersten String-Literal in Zeile 3 wird anstelle von \code{$a} und \code{$b} der Wert der Variablen eingesetzt;
+Im ersten String-Literal in Zeile 2 wird anstelle von \code{$a} und \code{$b} der Wert der Variablen eingesetzt;
 \code{${a+b}} wertet den Ausdruck \code{a+b} aus und setzt das Ergebnis in den resultierenden String ein.
 
-In Zeile 5 wird ein Slashy-String-Literal zusammen mit dem Find-Operator \code{=~} verwendet, um einen String mit einem regulären Ausdruck zu matchen.
+In Zeile 3 wird ein Slashy-String-Literal zusammen mit dem Find-Operator \code{=~} verwendet, um einen String mit einem regulären Ausdruck zu matchen.
 Im Slashy-String müssen die Escape-Zeichen~\plain{\ } nicht doppelt geschrieben werden; der reguläre Ausdruck wird somit leichter lesbar.
 Das Ergebnis des \code{=~}-Operators ist ein \code{Matcher}.
 Dieser kann implizit zu einem Bool konvertiert werden, der den Erfolg angibt, und ermöglicht den Zugriff auf die Gruppen des regulären Ausdrucks.
@@ -241,19 +241,19 @@ Listing~\ref{lst:lists-and-maps.groovy} illustriert einige Möglichkeiten, Liste
 
 \codelisting{groovy}{lists-and-maps.groovy}{Erstellen, Zugriff und Verändern von Listen und Maps}
 
-In Zeile 2 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
+In Zeile 1 wird zunächst eine Liste mit der \code{[]}-Syntax angelegt;
 diese ist ohne explizite Typangabe eine \code{ArrayList}.
-In Zeile 4 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie etwa in Python möglich.
+In Zeile 2 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie in Python möglich.
 Danach wird mit dem \code{<<}-Operator ein Element ans Ende der Liste angehängt.
-Die 5.~Zeile zeigt, dass der Index-Operator auch mehrere Argumente sowie Intervalle unterstützt.
+Die 4.~Zeile zeigt, dass der Index-Operator auch mehrere Argumente sowie Intervalle unterstützt.
 Für letztere sind der geschlossene \code{..}-Operator sowie der halboffene \code{..<}-Operator auch in anderen Kontexten verwendbar, beispielsweise in Foreach-Schleifen.
 
-In Zeile 7 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
+In Zeile 6 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
 Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw.~\code{b} als Schlüssel verwendet.
 Das erzeugte Objekt verwendet die \code{LinkedHashMap}-Implementierung, damit die Reihenfolge der Schlüssel erhalten bleibt.
-Zeile 8 zeigt, wie der Zugriff auf den Wert eines Schlüssels sowohl mit dem Index-Operator als auch mit dem Punkt-Operator möglich ist, als wäre \code{d} eine Klassenvariable.
+Zeile 7 zeigt, wie der Zugriff auf den Wert eines Schlüssels sowohl mit dem Index-Operator als auch mit dem Punkt-Operator möglich ist, als wäre \code{d} eine Klassenvariable.
 In der nächsten Zeile werden auch beide Möglichkeiten verwendet, um neue Einträge hinzuzufügen.
-Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 10, welcher auch mit dem Punkt-Operator möglich ist und in beiden Fällen \code{null} zurückgibt.
+Auffällig ist der Zugriff auf unbekannte Schlüssel in Zeile 9, welcher auch mit dem Punkt-Operator möglich ist und in beiden Fällen \code{null} zurückgibt.
 
 Andere Collections und Arrays können durch Coercion von Listen- oder Map-Literalen erzeugt werden.
 Weitere Informationen zu Arrays, Listen und Maps sind in~\cite[Abs.~7.-9.]{groovy-lang:syntax} zu finden.
@@ -283,11 +283,11 @@ Listing~\ref{lst:closures-fp.groovy} enthält zunächst einige Beispiele, wie si
 
 \codelisting{groovy}{closures-fp.groovy}{Einsatz von Closures für funktionalen Listenoperationen}
 
-Zunächst wird in Zeile 2 eine Liste definiert.
-In Zeile 3 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
+Zunächst wird in Zeile 1 eine Liste definiert.
+In Zeile 2 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
 Dafür wird eine Closure als Argument übergeben, die einen Parameter \code{it} empfängt und ihn verdoppelt zurückgibt.
 Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gelegt, die durch zwei teilbar sind.
-In Zeile 5 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
+In Zeile 4 wird mit der \code{inject}-Methode und einer Closure, die zwei Argumente addiert, die Summe der Elemente von \code{list} berechnet.
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw.~\code{fold} bekannt.
 
 Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
@@ -298,8 +298,8 @@ Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DS
 Das Programm beginnt mit der Deklaration der Funktion \code{eval}, welche eine Closure akzeptiert und einen Variable \code{result} speichert.
 Danach wird dem \code{delegate} der Closure ein Objekt einer anonymen Klasse zugewiesen, welche die Methoden \code{add} und \code{mul} definiert.
 Diese verändern entsprechend die \code{result}-Variable mit dem übergebenen Argument.
-In Zeile 6 wird die modifizierte Closure aufgerufen und der Wert der Ergebnisvariable ausgegeben.
-Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folgt in Zeile 8.
+In Zeile 5 wird die modifizierte Closure aufgerufen und der Wert der Ergebnisvariable ausgegeben.
+Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folgt in Zeile 7.
 Die Closure, die der \code{eval}-Funktion übergeben wird, bezieht sich auf die in diesem Kontext unbekannten Funktionen \code{add} und \code{mul}.
 Diese müssen jedoch erst aufgelöst werden, wenn die Closure aufgerufen wird.
 Da zu diesem Zeitpunkt schon das \code{delegate} gesetzt ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, und beziehen sich entsprechend auf die Methoden der anonymen Klasse.
@@ -316,14 +316,14 @@ Hier wird zunächst eine Hilfsfunktion \code{make} erstellt, welche die DSL defi
 Um das Beispiel kurz zu halten, werden hierfür Map-Literale und Closures verwendet, die in den Unterabschnitten~\ref{subsubsec:listen-und-maps} und~\ref{subsubsec:closures} erklärt wurden.
 Bei echten DSLs sollten stattdessen Klassen und Methoden verwendet werden.
 Hier wurde zusätzlich ausgenutzt, dass die Verwendung des \code{return}-Schlüsselworts auch optional ist.
-In Zeile 5 werden aus Illustrationsgründung symbolische Variablen für einige Zeichenketten definiert.
+In Zeile 4 werden aus Illustrationsgründung symbolische Variablen für einige Zeichenketten definiert.
 Danach folgt die Verwendung der definierten DSL:
-Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch äquivalent zu der Anweisung in Zeile 7.
+Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch äquivalent zu der Anweisung in Zeile 6.
 Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und Methodenaufrufe impliziert.
 Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semikolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
-In Listing~\ref{lst:closures-dsl.groovy}, Zeile 8, ist zu beobachten, wie mit einem expliziten Semikolon auch mehrere Anweisungen in einer Zeile stehen können.
+In Listing~\ref{lst:closures-dsl.groovy}, Zeile 7, ist zu beobachten, wie mit einem expliziten Semikolon auch mehrere Anweisungen in einer Zeile stehen können.
 
 \subsubsection{Prototyp-Erweiterung}
 
@@ -336,10 +336,10 @@ In Listing~\ref{lst:prototype-extension.groovy} wird diese zur rekursiven Berech
 Hier wird zunächst die \code{factorial}-Methode für das \code{Integer}-Objekt der Zahl \code{0} durch eine Closure definiert, welche den Wert \code{1} zurückgibt (Basisfall).
 Danach wird allgemein für die \code{Number}-Klasse der Rekursionsfall definiert.
 Hier steht \code{delegate} für den Empfänger.
-In Zeile 4 wird schließlich die \code{factorial}-Methode aufgerufen.
+In Zeile 3 wird schließlich die \code{factorial}-Methode aufgerufen.
 Dabei wird zur Laufzeit zuerst in der \code{metaClass} der konkreten Instanz nach einer Definition gesucht, danach in der \code{metaClass} des Laufzeittyps.
-Der Aufruf \code{0.factorial()} bezieht sich also auf die Definition aus Zeile 2.
-Bei \code{5.factorial()} wird fünf Mal die Definition aus Zeile 3 aufgerufen, bevor \code{delegate} gleich \code{1} ist und \code{(delegate - 1).factorial()} auf die Definition für \code{0} verweist.
+Der Aufruf \code{0.factorial()} bezieht sich also auf die Definition aus Zeile 1.
+Bei \code{5.factorial()} wird fünf Mal die Definition aus Zeile 2 aufgerufen, bevor \code{delegate} gleich \code{1} ist und \code{(delegate - 1).factorial()} auf die Definition für \code{0} verweist.
 
 % --------------- ---------------
 

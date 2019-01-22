@@ -1,4 +1,3 @@
-#!/usr/bin/env groovy
 def make(what) { [ with: { Object... contents -> [ and: { last ->
 	println("my $what contains ${ contents.join(', ') } and $last")
 } ] } ] }

@@ -1,4 +1,3 @@
-#!/usr/bin/env groovy
 def list = [1, 2, 3]
 assert list instanceof ArrayList && list[0] == 1 && list[-1] == 3
 list << 4
