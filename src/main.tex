@@ -105,7 +105,7 @@ Groovy-Programme sollten somit einfach auszuführen sein, möglichst ohne Zwisch
 Dies ist mit dem \code{groovy}-Programm möglich, welches eine gegebene Datei direkt als Groovy-Skript ausführt.
 Ähnlich wie bei Bash oder Python können Groovy-Dateien (\code{.groovy}) aber auch mit einer Shebang\footnote{Auf UNIX-basierten Betriebssystem geben die Zeichen ``\#!'' am Anfang einer Datei an, dass diese mit dem darauffolgenden Befehl ausgeführt werden soll.}-Zeile beginnen, um sie direkt ausführbar zu machen.
 Variablen und Anweisungen können direkt in der obersten Ebene platziert werden, ebenso Imports, Klassen und Methoden.
-Das Listing~\ref{lst:hello-world.groovy} zeigt ein einfaches Hello-World-Programm, welches sich dies zunutze macht.
+Listing~\ref{lst:hello-world.groovy} zeigt ein einfaches Hello-World-Programm, welches sich dies zunutze macht.
 
 \codelisting{groovy}{hello-world.groovy}{Hello World in Groovy}
 
@@ -165,7 +165,7 @@ Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgele
 Ein Unterschied zu Java, der mit der dynamischen Typisierung in Verbindung steht, ist die Auflösung von Methodenaufrufen.
 In Java werden diese dynamisch anhand des Empfängertyps (Überschreiben), aber statisch anhand der Argumenttypen (Überladen) aufgelöst.
 Bei Groovy sind auch die Laufzeittypen der Argument für die Auswahl entscheidend, was unter dem Begriff Multi-Methoden bekannt ist.
-Das Listing~\ref{lst:multi-methods.groovy} zeigt ein einfaches Beispiel dafür.
+Listing~\ref{lst:multi-methods.groovy} zeigt ein einfaches Beispiel dafür.
 
 \codelisting{groovy}{multi-methods.groovy}{Dynamisches Auflösen von überladenen Methoden}
 
@@ -307,7 +307,7 @@ Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus,
 \subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
 Groovy erlaubt es, Punkt-Operatoren und Klammern bei Methodenaufrufen wegzulassen.
-Dies ermöglicht die einfache Erstellung von nahezu natürlichsprachigen DSLs, wie es das Listing~\ref{lst:optional-parens.groovy} zeigt.
+Dies ermöglicht die einfache Erstellung von nahezu natürlichsprachigen DSLs, wie es Listing~\ref{lst:optional-parens.groovy} zeigt.
 
 \codelisting{groovy}{optional-parens.groovy}{Eine weitere DSL mithilfe von optionalen Klammern und Punkten}
 
