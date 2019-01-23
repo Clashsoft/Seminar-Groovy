@@ -359,8 +359,16 @@ Im Folgenden werden kurz zwei dieser Projekte vorgestellt --- Gradle und Grails.
 Gradle~\cite{gradle} ist ein Open-Source-Tool zur Build-Automatisierung, welches in Groovy und Java geschrieben wurde.
 Konfiguriert wird es durch Groovy-Skripte, die sich die DSL-Fähigkeiten der Sprache zunutze machen.
 Dies hebt es von seinen Vorgängern Apache Ant und Apache Maven, welche XML-Dateien verwenden, durch erhöhte Nutzerfreundlichkeit ab.
-Seit dem ersten Release 2005 wurde Gradle stets weiterentwickelt, um neben Java und Groovy auch andere Zielsprachen wie Scala und sogar Python und C++ zu unterstützen.
+
+Im Konfigurationsskript können Module und deren Code- und Jar-Abhängigkeiten definiert werden.
+Deren Herunterladen, Cachen und Verlinken wird automatisch gehandhabt.
+Aufgaben (Tasks), die ihrerseits auch Abhängigkeiten haben können, können selber programmiert werden oder vordefinierte Abläufe kombinieren.
+Zu letzteren zählen beispielsweise das Kopieren von Datein, Kompilieren von Modulen oder das Verpacken, Signieren und Veröffentlichen von Jar-Artefakten.
 Gradle ist besonders für große Projekte gut geeignet, da durch inkrementelle Builds nur geänderte Dateien verarbeitet werden müssen.
+
+Seit dem ersten Release 2005 wurde Gradle stets weiterentwickelt.
+Durch Plugins werden neben Java und Groovy auch andere Zielsprachen wie Scala und sogar Python und C++ unterstützt.
+Unter anderem wird Gradle bei Adobe, LinkedIn und Netflix sowie für Android-Anwendungen eingesetzt.
 
 \subsection{Grails}\label{subsec:grails}
 
