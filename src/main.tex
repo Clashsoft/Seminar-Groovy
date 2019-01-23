@@ -326,6 +326,20 @@ Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semikolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
 In Listing~\ref{lst:closures-dsl.groovy}, Zeile 7, ist zu beobachten, wie mit einem expliziten Semikolon auch mehrere Anweisungen in einer Zeile stehen können.
 
+\subsubsection{Dateiverarbeitung}
+
+Ein häufiges Anwendungsgebiet von Skriptsprachen ist die Dateiverarbeitung.
+Groovy macht diese einfacher als mit Java, indem es Erweiterungen für JDK-Klassen wie \code{java.io.File} bereitstellt.
+Listing~\ref{lst:files.groovy} verwendet diese für eine beispielhafte Textverarbeitung.
+
+\codelisting{groovy}{files.groovy}{Groovy-Skript zur Textverarbeitung}
+
+Hier wird zunächst ein \code{File}-Objekt der Datei \code{all-files.txt} an eine Variable gebunden und durch Zuweisung des \code{text}-Attributs der Dateiinhalt geleert.
+In Zeile 2 wird mit der \code{eachFileMatch}-Methode die übergebene Closure für jede Datei mit der Endung \code{.groovy} im aktuellen Verzeichnis ausgeführt.
+Der Rumpf der Closure bewirkt zunächst in Zeile 3, dass der Name der aktuellen Datei \code{it} an \code{all-files.txt} angehangen wird\footnote{Dabei gehört \code{.name} zum Platzhalter in der Interpolation}.
+Danach wird mit \code{eachLine} über die Zeilen von \code{it} iteriert, welche zusammen mit der Zeilennummer an \code{all-files.txt} angehangen werden.
+Ergebnis des Skripts ist also die Datei \code{all-files.txt}, welche Groovy-Dateien mit Zeilennummern versehen auflistet.
+
 \subsubsection{Prototyp-Erweiterung}
 
 Die Prototyp-Erweiterung ist eine weitere Besonderheit der Methodenauflösung von Groovy.
