@@ -183,8 +183,8 @@ Trotz der Anlehnung an Java bringt Groovy auch einige Besonderheiten mit sich.
 Selbst elementare Sprachkonzepte wie Strings, Zahlen und boolsche Werte sind vielfältiger.
 Listen, Maps und andere Datenstrukturen sind einfacher zu verwenden; auch Null-Sicherheit wird durch die Sprache erleichtert.
 Optionale Syntax und Closures ermöglichen es, DSLs zu definieren und verwenden.
-Durch Prototyp-Erweiterungen können Methoden zur Laufzeit zu Klassen und einzelnen Instanzen hinzugefügt werden.
 Auf die oben genannten Sprachkonzepte wird in diesem Unterabschnitt genauer eingegangen.
+Zuletzt wird ein kurzes Beispiel zur Dateiverarbeitung gezeigt, das sich diese zunutze macht.
 
 \subsubsection{Zahlen und Operatoren}\label{subsubsec:zahlen}
 
@@ -340,22 +340,6 @@ In Zeile 2 wird mit der \code{eachFileMatch}-Methode die übergebene Closure fü
 Der Rumpf der Closure bewirkt zunächst in Zeile 3, dass der Name der aktuellen Datei \code{it} an \code{all-files.txt} angehangen wird\footnote{Dabei gehört \code{.name} zum Platzhalter in der Interpolation}.
 Danach wird mit \code{eachLine} über die Zeilen von \code{it} iteriert, welche zusammen mit der Zeilennummer an \code{all-files.txt} angehangen werden.
 Ergebnis des Skripts ist also die Datei \code{all-files.txt}, welche Groovy-Dateien mit Zeilennummern versehen auflistet.
-
-\subsubsection{Prototyp-Erweiterung}
-
-Die Prototyp-Erweiterung ist eine weitere Besonderheit der Methodenauflösung von Groovy.
-Sie erlaubt es, Klassen und Objekten Eigenschaften und Methoden zur Laufzeit hinzuzufügen, ohne dass der Quellcode geändert werden muss.
-In Listing~\ref{lst:prototype-extension.groovy} wird diese zur rekursiven Berechnung der Fakultät von Zahlen verwendet.
-
-\codelisting{groovy}{prototype-extension.groovy}{Fakultätberechnung mit Prototyp-Erweiterungen}
-
-Hier wird zunächst die \code{factorial}-Methode für das \code{Integer}-Objekt der Zahl \code{0} durch eine Closure definiert, welche den Wert \code{1} zurückgibt (Basisfall).
-Danach wird allgemein für die \code{Number}-Klasse der Rekursionsfall definiert.
-Hier steht \code{delegate} für den Empfänger.
-In Zeile 3 wird schließlich die \code{factorial}-Methode aufgerufen.
-Dabei wird zur Laufzeit zuerst in der \code{metaClass} der konkreten Instanz nach einer Definition gesucht, danach in der \code{metaClass} des Laufzeittyps.
-Der Aufruf \code{0.factorial()} bezieht sich also auf die Definition aus Zeile 1.
-Bei \code{5.factorial()} wird fünf Mal die Definition aus Zeile 2 aufgerufen, bevor \code{delegate} gleich \code{1} ist und \code{(delegate - 1).factorial()} auf die Definition für \code{0} verweist.
 
 % --------------- ---------------
 
