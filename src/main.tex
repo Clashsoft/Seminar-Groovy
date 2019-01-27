@@ -101,6 +101,7 @@ Eine Zusammenfassung folgt in Abschnitt~\ref{sec:zusammenfassung}.
 Im folgenden Abschnitt wird Groovy als Sprache vorgestellt.
 Die Syntax ist stark an Java und andere C-ähnliche Sprachen angelehnt.
 Deshalb wird im Unterabschnitt~\ref{subsec:vergleichMitJava} ein Vergleich mit Java durchgeführt.
+In Abschnitt~\ref{subsec:typisierung} werden Unterschiede in der Typisierung betrachtet.
 In Unterabschnitt~\ref{subsec:besonderheiten} werden neue Sprachelemente und Besonderheiten dargestellt.
 
 Bei Groovy handelt es sich primär um eine Skriptsprache.
@@ -143,40 +144,33 @@ Skripts, die auf Dateien oder das Internet zugreifen oder genaue Berechnungen du
 Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
 Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite[Abs~3.2.]{groovy-lang:documentation} sowie in den nachfolgenden Unterabschnitten zu finden.
 
-\subsubsection{Typisierung}\label{subsubsec:typisierung}
+\subsection{Typisierung}\label{subsec:typisierung}
 
 Das Typsystem von Groovy ist standardmäßig dynamisch und unterstützt neben nominaler auch Duck-Typisierung\footnote{Paradigma, bei dem nicht der Typ eines Objekts entscheidend ist, sondern was dieses kann --- beispielsweise welche Methoden und Attribute es bereitstellt.}~\cite[Abs.~1.6.6.]{groovy-lang:documentation}.
 An vielen Stellen werden implizite Typkonvertierung, beispielsweise von und zu Strings oder Booleans durchgeführt~\cite[Abs.~1.6.3.]{groovy-lang:documentation}.
 Typinformationen im Code dienen dem Compiler nur als Hilfe um Warnungen auszugeben; Fehler treten jedoch erst zur Laufzeit auf.
 Wenn gewünscht ist es aber auch möglich, Typfehler zur Compilezeit zu erzwingen; dafür können die \code{@TypeChecked}- und \code{@CompileStatic}-Annotationen verwendet werden~\cite[Abs.~1.6.6.]{groovy-lang:documentation}.
-Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
-
-\codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung}
-
-Zunächst werden zwei Klassen \code{Duck} und \code{Frog} jeweils mit einer \code{quack}-Methode deklariert.
-In Zeile 3 wird die \code{duck}-Variable angelegt, der zunächst eine \code{Duck}-Instanz zugewiesen wird.
-Der statische Typ der Variable ist durch das \code{def}-Schlüsselwort \code{Object}.
-Dennoch ist der Aufruf der \code{quack}-Methode möglich und erzeugt die Ausgabe \plain{I'm a duck}.
-In der nächsten Zeile wird ein Objekt einer \code{Frog}-Klasse angelegt.
-Der \code{quack}-Aufruf erzeugt nun die Ausgabe \plain{I'm a frog}.
-
-Da \code{duck} als Variable vom Typ \code{Object} deklariert wurde, ist auch die Zuweisung eines Strings erlaubt.
-Der Aufruf von \code{quack} auf dem String-Objekt wird vom Compiler nicht abgelehnt, führt jedoch zur Laufzeit zu einer \code{MissingMethodException}.
-Ändert man die Deklaration zu \code{Duck duck}, wird schon bei der Zuweisung des \code{Frog}-Objekts vom Compiler eine Warnung angezeigt und zur Laufzeit eine \code{GroovyCastException} erzeugt.
-
-\subsubsection{Multi-Methoden}
 
 Ein Unterschied zu Java, der mit der dynamischen Typisierung in Verbindung steht, ist die Auflösung von Methodenaufrufen.
 In Java werden diese dynamisch anhand des Empfängertyps (Überschreiben), aber statisch anhand der Argumenttypen (Überladen) aufgelöst.
 Bei Groovy sind auch die Laufzeittypen der Argument für die Auswahl entscheidend, was unter dem Begriff Multi-Methoden bekannt ist.
-Listing~\ref{lst:multi-methods.groovy} zeigt ein einfaches Beispiel dafür.
+Listing~\ref{lst:dynamic-typing.groovy} illustriert das dynamische Verhalten.
 
-\codelisting{groovy}{multi-methods.groovy}{Dynamisches Auflösen von überladenen Methoden}
+\codelisting{groovy}{dynamic-typing.groovy}{Dynamische und Duck-Typisierung und Multi-Methoden}
 
-Hier werden zunächst zwei überladene \code{take}-Methoden definiert, die jeweils ein \code{Object} und einen \code{String} akzeptieren.
-Die Variable in Zeile 3 hat den statischen Typ \code{Object}, ihr Wert ist zur Laufzeit aber vom Typ \code{String}.
-Dadurch wählt die Groovy-Laufzeitumgebung bei dem Aufruf in Zeile 4 dynamisch die \code{take(String)}-Methode aus.
-In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{take(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
+Zunächst werden zwei Klassen \code{Duck} und \code{Frog} jeweils mit einer \code{quack}-Methode deklariert.
+In Zeilen 3 und 4 werden außerdem zwei überladene Methoden \code{speak} definiert.
+Die ForEach-Schleife in Zeile 5 iteriert nun über drei Objekte, eine \code{Duck}, einen \code{Frog} und einen String.
+Die Variable \code{o} hat durch das \code{def}-Schlüsselwort den statischen Typ \code{Object}.
+Im Rumpf der Schleife wird die \code{quack}-Methode aufgerufen.
+Bei den ersten zwei Iterationen enthält \code{o} eine \code{Duck}- bzw. eine \code{Frog}-Instanz, mit der die allgemeine \code{speak(Object)}-Methode aufgerufen wird.
+Da das Argument zur Laufzeit eine Methode \code{quack} bereitstellt, kann diese (dynamisch) aufgerufen werden, obwohl \code{Object} diese nicht hat.
+Die Ausgabe ist also zunächst \plain{I'm a duck} gefolgt von \plain{I'm a frog}.
+
+In der dritten Iteration enthält \code{o} einen String.
+Trotz des statischen Typs \code{Object}, wählt die Groovy-Laufzeitumgebung die \code{speak(String)}-Methode aus, da die Auflösung überladener Methoden auch anhand der dynamischen Argumenttypen erfolgt.
+Die letzte Zeile der Ausgabe ist also \plain{A String can't talk}.
+In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{speak(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
 
 \subsection{Besonderheiten}\label{subsec:besonderheiten}
 

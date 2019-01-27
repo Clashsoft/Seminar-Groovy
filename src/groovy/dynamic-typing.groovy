@@ -1,5 +1,5 @@
 class Duck { void quack() { println "I'm a duck" } }
 class Frog { void quack() { println "I'm a frog" } }
-def duck = new Duck(); duck.quack()
-    duck = new Frog(); duck.quack()
-    duck = "a string"; duck.quack()
+void speak(Object o) { o.quack() }
+void speak(String s) { println s + " can't talk" }
+for (def o in [ new Duck(), new Frog(), "A String" ]) { quack(o) }
