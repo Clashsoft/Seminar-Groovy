@@ -163,15 +163,16 @@ Zunächst werden zwei Klassen \code{Duck} und \code{Frog} jeweils mit einer \cod
 In Zeilen 3 und 4 werden außerdem zwei überladene Methoden \code{speak} definiert.
 Die ForEach-Schleife in Zeile 5 iteriert nun über drei Objekte, eine \code{Duck}, einen \code{Frog} und einen String.
 Die Variable \code{o} hat durch das \code{def}-Schlüsselwort den statischen Typ \code{Object}.
-Im Rumpf der Schleife wird die \code{quack}-Methode aufgerufen.
-Bei den ersten zwei Iterationen enthält \code{o} eine \code{Duck}- bzw. eine \code{Frog}-Instanz, mit der die allgemeine \code{speak(Object)}-Methode aufgerufen wird.
-Da das Argument zur Laufzeit eine Methode \code{quack} bereitstellt, kann diese (dynamisch) aufgerufen werden, obwohl \code{Object} diese nicht hat.
-Die Ausgabe ist also zunächst \plain{I'm a duck} gefolgt von \plain{I'm a frog}.
 
-In der dritten Iteration enthält \code{o} einen String.
-Trotz des statischen Typs \code{Object}, wählt die Groovy-Laufzeitumgebung die \code{speak(String)}-Methode aus, da die Auflösung überladener Methoden auch anhand der dynamischen Argumenttypen erfolgt.
+Im Rumpf der Schleife wird die überladene \code{speak}-Funktion aufgerufen.
+Bei den ersten zwei Iterationen enthält \code{o} eine \code{Duck}- bzw. eine \code{Frog}-Instanz, weshalb sich der Aufruf auf die allgemeine \code{speak(Object)}-Implementierung bezieht.
+Da das Argument zur Laufzeit eine Methode \code{quack} bereitstellt, kann diese (dynamisch) aufgerufen werden, obwohl \code{Object} die Methode selber nicht hat.
+Die Ausgabe ist also \plain{I'm a duck} gefolgt von \plain{I'm a frog}.
+
+In der dritten Iteration enthält die Variable \code{o} einen String.
+Trotz des statischen Typs \code{Object} wählt die Groovy-Laufzeitumgebung die \code{speak(String)}-Funktion aus, da die Auflösung überladener Methoden auch anhand der dynamischen Argumenttypen erfolgt.
 Die letzte Zeile der Ausgabe ist also \plain{A String can't talk}.
-In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und die \code{speak(Object)}-Variante bevorzugen, da dort beim Überladen nur der statische Typ relevant ist.
+In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und immer die \code{speak(Object)}-Variante aufrufen, da dort beim Überladen nur der statische Typ relevant ist.
 
 \subsection{Besonderheiten}\label{subsec:besonderheiten}
 
