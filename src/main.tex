@@ -326,15 +326,15 @@ Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semikolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
 In Listing~\ref{lst:closures-dsl.groovy}, Zeile 7, ist zu beobachten, wie mit einem expliziten Semikolon auch mehrere Anweisungen in einer Zeile stehen können.
 
-\subsubsection{Standardbibliothek und Erweiterungen}\ref{subsubsec:standard-bibliothek}
+\subsubsection{Standardbibliothek und Erweiterungen}\label{subsubsec:standard-bibliothek}
 
 Groovy baut auf dem Java Development Kit (JDK) auf, stellt aber auch seine eigene Klassen bereit.
 Kollektiv wird die Standardbibliothek als GDK bezeichnet.
-Besonders ist, dass darin auch Klassen aus dem JDK erweitert.
+Besonders ist, dass dieses auch bestehende Klassen aus dem JDK erweitert.
 
 Klassen wie \code{List} und andere Collections haben in Groovy die in Unterabschnitt~\ref{subsubsec:listen-und-maps} verwendeten funktionalen Operationen.
-Die Klasse \code{String} wird dabei auch als Collection (von Zeichen) behandelt und kann ebenso verwendet werden.
-\code{File} und andere IO-Klassen besitzen Erweiterungen für die Iteration über Bytes, Zeichen und Zeilen.
+Die Klasse \code{String} wird dabei auch als Collection (von Zeichen) behandelt und unterstützt ähnliche Operationen.
+\code{File} und andere IO-Klassen besitzen Erweiterungen für das byte-, zeichen- oder zeilenweise Einlesen, sowie Methoden und Operatoren zur Ausgabe.
 Auch Verzeichnisbäume können innerhalb weniger Zeilen mit Closures traversiert werden.
 Da diese Erweiterungsmethoden meist Exceptions verstecken, kann auf Try-Catch-Blöcke verzichtet werden.
 Somit ist auch die Dateiverarbeitung in kurzen Skripts möglich.
@@ -353,7 +353,7 @@ Diese sind zusammenfassend unter der Bezeichnung ``Builder'' bekannt, werden hie
 \section{Community, Einsatz und Verbreitung}\label{sec:community}
 
 Nach dem technischen Teil zur Sprache soll nun auch das Ökosystem um Groovy betrachtet werden.
-Im Januar 2019 ist Groovy auf Platz 21 des TIOBE Index~\cite{tiobe-index} und somit die zweithöchste JVM-Sprache, nach Java auf dem ersten Platz.
+Im Januar 2019 ist Groovy auf Platz 21 des TIOBE Index~\cite{tiobe-index} und somit die zweitbeliebteste JVM-Sprache, nach Java auf dem ersten Platz.
 Die Konkurrenz bilden dabei Scala und Kotlin auf Platz 28 und 31, es handelt sich bei diesen jedoch nicht um Skriptsprachen.
 Auf StackOverflow~\cite{stackoverflow:groovy} sind über 22.000 Fragen und Antworten zu Groovy finden.
 Durch die Quelloffenheit der Groovy-Implementierung auf GitHub~\cite{github:groovy} kann sich jeder an der Weiterentwicklung und Fehlerbehebung beteiligen.
