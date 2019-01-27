@@ -352,8 +352,10 @@ Die Konkurrenz bilden dabei Scala und Kotlin auf Platz 28 und 31, es handelt sic
 Auf StackOverflow~\cite{stackoverflow:groovy} sind über 22.000 Fragen und Antworten zu Groovy finden.
 Durch die Quelloffenheit der Groovy-Implementierung auf GitHub~\cite{github:groovy} kann sich jeder an der Weiterentwicklung und Fehlerbehebung beteiligen.
 Da theoretisch jede Java-Bibliothek auch von Groovy-Code verwendbar ist, können sich Entwickler auf über 3,4 Mio.~Jar-Artefakte auf Maven Central~\cite{maven-central} verlassen.
-Doch auch eigene große Projekte sind auf Groovy entstanden.
+
+Doch auch in Groovy selbst sind große Projekte entstanden.
 Im Folgenden werden kurz zwei dieser Projekte vorgestellt --- Gradle und Grails.
+Ein weiteres Framework, Groovy-Griffon, dient zum Erstellen von Desktop-Anwendungen, soll aber nicht näher erläutert werden.
 
 \subsection{Gradle}\label{subsec:gradle}
 
@@ -364,7 +366,7 @@ Dies hebt es von seinen Vorgängern Apache Ant und Apache Maven, welche XML-Date
 Im Konfigurationsskript können Module und deren Code- und Jar-Abhängigkeiten definiert werden.
 Deren Herunterladen, Cachen und Verlinken wird automatisch gehandhabt.
 Aufgaben (Tasks), die ihrerseits auch Abhängigkeiten haben können, können selber programmiert werden oder vordefinierte Abläufe kombinieren.
-Zu letzteren zählen beispielsweise das Kopieren von Datein, Kompilieren von Modulen oder das Verpacken, Signieren und Veröffentlichen von Jar-Artefakten.
+Zu letzteren zählen beispielsweise das Kopieren, Kompilieren, Verpacken, Signieren und Veröffentlichen.
 Gradle ist besonders für große Projekte gut geeignet, da durch inkrementelle Builds nur geänderte Dateien verarbeitet werden müssen.
 
 Seit dem ersten Release 2005 wurde Gradle stets weiterentwickelt.
