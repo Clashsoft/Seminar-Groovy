@@ -298,14 +298,18 @@ Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DS
 \codelisting{groovy}{closures-dsl.groovy}{Verwendung von Closure Delegates für eine Rechenmaschinen-DSL}
 
 Das Programm beginnt mit der Deklaration der Funktion \code{eval}, welche eine Closure akzeptiert und einen Variable \code{result} speichert.
-Danach wird dem \code{delegate} der Closure ein Objekt einer anonymen Klasse zugewiesen, welche die Methoden \code{add} und \code{mul} definiert.
-Diese verändern entsprechend die \code{result}-Variable mit dem übergebenen Argument.
-In Zeile 5 wird die modifizierte Closure aufgerufen und der Wert der Ergebnisvariable ausgegeben.
-Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folgt in Zeile 7.
+Danach werden auf dem \code{delegate} der Closure die Methoden \code{add} und \code{mul} durch weitere Closures definiert.
+Diese verändern entsprechend die \code{result}-Variable mit dem übergebenen Argument \code{it}.
+In Zeile 4 wird die modifizierte Closure aufgerufen und der Wert der Ergebnisvariable ausgegeben.
+Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folgt in Zeile 6.
 Die Closure, die der \code{eval}-Funktion übergeben wird, bezieht sich auf die in diesem Kontext unbekannten Funktionen \code{add} und \code{mul}.
-Diese müssen jedoch erst aufgelöst werden, wenn die Closure aufgerufen wird.
-Da zu diesem Zeitpunkt schon das \code{delegate} gesetzt ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, und beziehen sich entsprechend auf die Methoden der anonymen Klasse.
-Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus, das Ergebnis der DSL-Rechenmaschine.
+Diese müssen jedoch erst dann (dynamisch) aufgelöst werden, wenn die Closure aufgerufen wird.
+Da zu diesem Zeitpunkt schon das \code{delegate} verändert ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, als hätte man \code{delegate.add/mul(...)} aufgerufen.
+Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus.
+
+Die Standardbibliothek ist stark auf Closures ausgelegt.
+So existieren Klassen, die geschachtelte Closures und dynamische Methodennamen zum Generieren von JSON, HTML, XML und sogar Swing-GUIs verwenden.
+Diese sind zusammenfassend unter der Bezeichnung ``Builder'' bekannt, werden hier aber nicht näher betrachtet~\cite[Abs.~3.15.8]{groovy-lang:documentation}.
 
 \subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
@@ -380,6 +384,7 @@ Der frühere Name ``Groovy on Grails'' war in Ahnlehnung an das populäre Ruby-o
 Es basiert auf dem Backend-Framework Spring Boot, setzt aber wie Rails auf Konvention statt Konfiguration, um einen leichteren Einstieg zu erlauben.
 Schnittstellen für Datenbankzugriff und JSON/REST-APIs sowie ein Templatesystem für HTML-Seiten werden bereitgestellt.
 Das Framework nutzt die DSL-Unterstützung von Groovy unter anderem für Validierung, Datenbankanfragen und Textformattierung.
+Dabei finden auch die JSON- und HTML-Builder der Standardbibliothek Anwendung.
 Grails wirbt mit dem Einsatz bei vielen großen Firmen, darunter Google, IBM, LinkedIn, Mastercard und Oracle.
 
 % --------------- ---------------
