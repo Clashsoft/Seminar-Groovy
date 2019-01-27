@@ -244,7 +244,7 @@ diese ist ohne explizite Typangabe eine \code{ArrayList}.
 In Zeile 2 wird der Index-Operator verwendet, um auf das erste und letzte Element zuzugreifen, dabei ist die Verwendung negativer Zahlen wie in Python möglich.
 Danach wird mit dem \code{<<}-Operator ein Element ans Ende der Liste angehängt.
 Die 4.~Zeile zeigt, dass der Index-Operator auch mehrere Argumente sowie Intervalle unterstützt.
-Für letztere sind der geschlossene \code{..}-Operator sowie der halboffene \code{..<}-Operator auch in anderen Kontexten verwendbar, beispielsweise in Foreach-Schleifen.
+Letztere sind mit dem geschlossenen \code{..}-Operator sowie dem halboffenen \code{..<}-Operator auch in anderen Kontexten definiertbar, beispielsweise in ForEach-Schleifen.
 
 In Zeile 6 wird eine Map angelegt, zu erkennen an den Schlüssel-Wert-Paaren in den eckigen Klammern.
 Bei den Bezeichnern \code{a} und \code{b} handelt es sich nicht um Variablennamen, stattdessen wird hier die Zeichenkette \code{a} bzw.~\code{b} als Schlüssel verwendet.
@@ -283,10 +283,10 @@ Listing~\ref{lst:closures-fp.groovy} enthält zunächst einige Beispiele, wie si
 
 Zunächst werden in Zeile 1 zwei Closures an Variablen gebunden.
 \code{doubler} verdoppelt den Wert des impliziten Parameters \code{it}, während \code{adder} zwei Parameter addiert.
-Die Variablen können wie Funktionen aufgerufen werden, durch dynamische Typisierung auch mit Strings, wie in Zeile 2 zu sehen ist.
+Die Variablen können wie Funktionen aufgerufen werden, wie in Zeile 2 zu sehen ist.
 Sie können jedoch auch selbst als Argument an andere Methoden übergeben werden.
 So wird in Zeile 3 mit \code{collect} eine neue Liste durch elementweises Anwenden von \code{doubler} erstellt.
-Mit Reduktion via \code{inject}, dem Startwert \code{0} und Reducer \code{adder} kann die Summe der Zahlen 1 bis 10 berechnet werden.
+Mit \code{inject}, welches einer Reduktion entspricht, kann mit Startwert 0 und \code{adder} die Summe einer Liste berechnet werden.
 Zeile 4 zeigt, dass Closures auch direkt übergeben werden, hier zur Ermittlung der geraden Zahlen zwischen 1 und 7.
 Die Operationen \code{collect}, \code{findAll} und \code{inject} sind auf allen Collection-ähnlichen Klassen vorhanden.
 In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind sie jedoch meist als \code{map}, \code{filter} und \code{reduce} bzw.~\code{fold} bekannt.
