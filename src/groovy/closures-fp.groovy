@@ -1,4 +1,4 @@
-def list = [1, 2, 3, 4, 5, 6]
-assert list.collect { it * 2 } == [2, 4, 6, 8, 10, 12]
-assert list.findAll { it % 2 == 0 } == [2, 4, 6]
-assert list.inject(0) { a, b -> a + b } == 21
+def doubler = { it * 2 }, adder = { a, b -> a + b }
+assert doubler(2) == 4 && adder(1, 2) == 3 && adder('a', 'b') == 'ab'
+assert [3, 1, 5].collect(doubler) == [6, 2, 10] && (1..10).inject(0, adder) == 55
+assert (1..7).findAll { it % 2 == 0 } == [2, 4, 6]

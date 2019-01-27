@@ -284,13 +284,15 @@ Listing~\ref{lst:closures-fp.groovy} enthält zunächst einige Beispiele, wie si
 
 \codelisting{groovy}{closures-fp.groovy}{Einsatz von Closures für funktionale Listenoperationen}
 
-Zunächst wird in Zeile 1 eine Liste definiert.
-In Zeile 2 wird mithilfe der \code{collect}-Methode eine neue Liste erstellt, die jeweils das Doppelte der Elemente der Ursprungsliste enthält.
-Dafür wird eine Closure als Argument übergeben, die einen Parameter \code{it} empfängt und ihn verdoppelt zurückgibt.
-Danach werden mit \code{findAll} diejenigen Elemente in eine neue Liste gelegt, die durch zwei teilbar sind.
-In Zeile 4 wird mit der \code{inject}-Methode die Summe der Elemente von \code{list} berechnet.
-Die Closure definiert dabei zwei Parameter vor \code{->} und liefert deren Summe als Ergebnis.
-In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind die Operationen \code{collect}, \code{findAll} und \code{inject} meist als \code{map}, \code{filter} und \code{reduce} bzw.~\code{fold} bekannt.
+Zunächst werden in Zeile 1 zwei Closures an Variablen gebunden.
+\code{doubler} verdoppelt den Wert des impliziten Parameters \code{it}, während \code{adder} zwei Parameter addiert.
+Die Variablen können wie Funktionen aufgerufen werden, durch dynamische Typisierung auch mit Strings, wie in Zeile 2 zu sehen ist.
+Sie können jedoch auch selbst als Argument an andere Methoden übergeben werden.
+So wird in Zeile 3 mit \code{collect} eine neue Liste durch elementweises Anwenden von \code{doubler} erstellt.
+Mit Reduktion via \code{inject}, dem Startwert \code{0} und Reducer \code{adder} kann die Summe der Zahlen 1 bis 10 berechnet werden.
+Zeile 4 zeigt, dass Closures auch direkt übergeben werden, hier zur Ermittlung der geraden Zahlen zwischen 1 und 7.
+Die Operationen \code{collect}, \code{findAll} und \code{inject} sind auf allen Collection-ähnlichen Klassen vorhanden.
+In funktionalen Programmiersprachen sowie in der Java-\code{Stream}-API sind sie jedoch meist als \code{map}, \code{filter} und \code{reduce} bzw.~\code{fold} bekannt.
 
 Eine Besonderheit von Closures ist, dass Methodenaufrufe und Feldzugriffe im Rumpf nicht an der Stelle verfügbar sein müssen, wo die Closure erstellt wird.
 Dafür wird der \code{delegate}-Mechanismus bereitgestellt, der sehr gut für DSLs geeignet ist und in Listing~\ref{lst:closures-dsl.groovy} gezeigt wird.
