@@ -79,7 +79,8 @@ Keine dieser Sprachen war jedoch eigens auf Java ausgelegt oder einfach zu verwe
 Deshalb wurde im Jahr 2003 die Skriptsprache \emph{Groovy} von Softwareentwickler und Java-Enthusiast James Strachan mit einem Blogpost~\cite{james-strachan-blog} angekündigt.
 Sie sollte dynamisch typisiert sein, aber für die JVM kompiliert werden und somit bestehende Java-Bibliotheken und -Code nutzen können.
 Primär basierend auf Java, sollten auch ausgewählte Konzepte von Python und Ruby übernommen werden.
-Ein Design-Ziel der neuen Sprache war, durch kompakte Syntax spezialisierte Einsatzgebiete wie Test-Driven Development zu gewinnen.
+Design-Ziel der neuen Sprache war allgemein, Java-Entwicklern das Leben zu vereinfachen.
+Durch kompakte Syntax sollte beispielweise Test-Driven Development vereinfacht werden.
 
 Im März 2004 wurde Groovy dem Java Community Process unter Java Specification Request 241 eingereicht~\cite{jcp:jsr241}.
 Nach einigen Vorgängerversionen und der Standardisierung wurde schließlich Version 1.0 am 2.~Januar 2007 veröffentlicht.
@@ -394,26 +395,26 @@ Grails wirbt mit dem Einsatz bei vielen großen Firmen, darunter Google, IBM, Li
 \section{Zusammenfassung}\label{sec:zusammenfassung}
 
 Es hat sich gezeigt, dass Groovy da ansetzt, wo Java aufhört --- kurze und prägnante Programme, die mit wenigen Zeilen viel bewirken können.
-Anweisungen auf oberster Ebene, optionale und dynamische Typen und das Auslassen des Kompilierungsschritts ermöglichen Skripte, wie sie von Ruby, Python oder Bash bekannt sind.
+Anweisungen auf oberster Ebene, optionale und dynamische Typen und das Auslassen des Kompilierungsschritts ermöglichen schnell einsatzbereite Skripte, wie sie von Ruby, Python oder Bash bekannt sind.
 Die Groovy Shell rundet dies mit einer interaktiven Umgebung ab und vereinfacht das Erlernen.
 
 Die Sprache gibt dem Entwickler viele Freiheiten bei der Syntax durch Closures und optionalen Zeichen, wodurch mächtige DSLs erstellt und optisch anschaulich genutzt werden können.
-Trotz der Skriptnatur ist, wenn gewünscht, auch für Sicherheit gesorgt;
-besonders die in Java häufig kritisierte Nullsicherheit ist in Groovy besser gelöst.
-Die vereinfachte Verwendung von Listen und Maps macht sie attraktiver als die auf einer tieferen Sprachebene liegenden Arrays.
-Typ- und Performanceprobleme können durch die optionale statische Kompilierung umgangen werden.
-Die bei JVM-Sprachen inherenten Probleme der Startup-Zeit und des Speicherverbrauchs können jedoch damit nicht umgangen werden.
+Trotz der Skriptnatur ist, wenn gewünscht, auch für Sicherheit gesorgt:
+Die in Java häufig kritisierte Nullsicherheit ist in Groovy besser gelöst;
+Listen und Maps sind sicherer und einfacher zu verwenden als Arrays.
+Typ- und Performanceprobleme, besonders bei großen Projekten, können durch die optionale statische Kompilierung umgangen werden,
+die bei JVM-Sprachen inherenten Probleme der Startup-Zeit und des Speicherverbrauchs jedoch nicht.
 
 Dennoch profitiert Groovy von dieser Zielplatform:
 Der leichte Umstieg von Java sowie der Einsatz mit Gradle fördern die Bekanntheit der Skriptsprache.
-Die Möglichkeit, die sehr umfangreiche Anzahl von Java-Bibliotheken zu nutzen, sind ein weiterer wichtiger Faktor.
+Die Möglichkeit, die sehr umfangreiche Anzahl von Java-Bibliotheken zu nutzen, sind weitere wichtige Faktoren.
 Durch die Standardisierung, die Zugehörigkeit zur Apache Foundation und die Quelloffenheit ist Groovy eine robuste und dennoch stets wachsende Sprache.
-Die steigende Popularität von Web-basierten Lösungen macht sich Groovy durch das Grails-Framework zunutze.
+Projekte wie Gradle und Grails unterstützen den Einsatz von Groovy in den populärer werdenden DevOps- und Web-Anwendungsbereichen.
 
 Insgesamt ist Groovy eine Sprache, die den Entwickler weder einschränkt noch belastet.
-Sie bietet ein Rahmenwerk für sehr kurze aber auch sehr lange Programme.
-Erstere kompakt und unter Auslassen von Typinformationen, um möglichst schnell einsatzfähig zu sein;
-letztere können mit Typen und statischer Kompilierung wartbar, robust und performant gemacht werden.
+Es besteht freie Paradigmenwahl:
+Groovy ist objektorientiert und funktional, dynamisch und statisch, imperativ und deklarativ, interpretiert und kompiliert.
+Es bietet ein Rahmenwerk für sehr kurze aber auch sehr lange Programme.
 Wo Java für kurze und Skriptsprachen für lange Programme nicht geeignet sind, setzt Groovy ein und verbindet zwei Welten.
 
 % --------------- ---------------
