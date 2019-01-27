@@ -34,6 +34,8 @@
 \newmintinline[code]{groovy}{}
 \newmintinline[plain]{text}{breaklines}
 
+\newcommand{\outquote}[1]{``{#1}''}
+
 \newcommand{\codelisting}[3]{\begin{listing}[htp]
 	\inputminted{#1}{#1/#2}
 	\vspace{-3ex}
@@ -115,7 +117,7 @@ Listing~\ref{lst:hello-world.groovy} zeigt ein einfaches Hello-World-Programm, w
 
 Speichert man das Beispiel in einer Datei namens \plain{hello-world.groovy}, kann es mit dem Befehl \code{groovy hello-world.groovy} ausgeführt werden.
 Ist die Datei als ausführbar markiert, genügt durch das Shebang der Befehl \code{./hello-world.groovy}.
-Die Ausgabe ist in beiden Fällen \plain{Hello World!}.
+Die Ausgabe ist in beiden Fällen \outquote{Hello World!}.
 
 Zu beachten ist, dass es sich zwar um ein Skript handelt, aber die Groovy-Laufzeit diese vor der Ausführung immer vollständig kompiliert.
 Bei Skripts geschieht dieser Schritt jedoch ohne dass zusätzliche Dateien gespeichert werden;
@@ -167,11 +169,11 @@ Die Variable \code{o} hat durch das \code{def}-Schlüsselwort den statischen Typ
 Im Rumpf der Schleife wird die überladene \code{speak}-Funktion aufgerufen.
 Bei den ersten zwei Iterationen enthält \code{o} eine \code{Duck}- bzw. eine \code{Frog}-Instanz, weshalb sich der Aufruf auf die allgemeine \code{speak(Object)}-Implementierung bezieht.
 Da das Argument zur Laufzeit eine Methode \code{quack} bereitstellt, kann diese (dynamisch) aufgerufen werden, obwohl \code{Object} die Methode selber nicht hat.
-Die Ausgabe ist also \plain{I'm a duck} gefolgt von \plain{I'm a frog}.
+Die Ausgabe ist also \outquote{I'm a duck} gefolgt von \outquote{I'm a frog}.
 
 In der dritten Iteration enthält die Variable \code{o} einen String.
 Trotz des statischen Typs \code{Object} wählt die Groovy-Laufzeitumgebung die \code{speak(String)}-Funktion aus, da die Auflösung überladener Methoden auch anhand der dynamischen Argumenttypen erfolgt.
-Die letzte Zeile der Ausgabe ist also \plain{A String can't talk}.
+Die letzte Zeile der Ausgabe ist also \outquote{A String can't talk}.
 In Java würde die Methodenauswahl zur Kompilierungszeit erfolgen und immer die \code{speak(Object)}-Variante aufrufen, da dort beim Überladen nur der statische Typ relevant ist.
 
 \subsection{Besonderheiten}\label{subsec:besonderheiten}
@@ -304,7 +306,7 @@ Die Verwendung der dadurch definierten DSL, einer einfachen Rechenmaschine, folg
 Die Closure, die der \code{eval}-Funktion übergeben wird, bezieht sich auf die in diesem Kontext unbekannten Funktionen \code{add} und \code{mul}.
 Diese müssen jedoch erst dann (dynamisch) aufgelöst werden, wenn die Closure aufgerufen wird.
 Da zu diesem Zeitpunkt schon das \code{delegate} verändert ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, als hätte man \code{delegate.add/mul(...)} aufgerufen.
-Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus.
+Somit kann das Programm erfolgreich ausgeführt werden und gibt \outquote{5.5} aus.
 
 \subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
@@ -321,7 +323,7 @@ In Zeile 4 werden aus Illustrationsgründung symbolische Variablen für einige Z
 Danach folgt die Verwendung der definierten DSL:
 Der Befehl sieht aus wie ein englischer Satz, ist aber semantisch äquivalent zu der Anweisung in Zeile 6.
 Bei den aufeinanderfolgenden Bezeichnern werden abwechselnd Punkt-Zugriffe und Methodenaufrufe impliziert.
-Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
+Die Ausgabe ist zweimal der Satz \outquote{my cake contains sugar, eggs and flour}.
 
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semikolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
 In Listing~\ref{lst:closures-dsl.groovy}, Zeile 7, ist zu beobachten, wie mit einem expliziten Semikolon auch mehrere Anweisungen in einer Zeile stehen können.
