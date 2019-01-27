@@ -142,6 +142,7 @@ Unterschiede können auch bei Programmen auftreten, die in beiden Sprachen synta
 Dazu gehören das implizite Importieren von Pakete zusätzlich zu \code{java.lang}, darunter u.a.~\code{java.io}, \code{java.net}, \code{java.util}, \code{groovy.lang} und \code{groovy.util}, sowie die Klassen \code{BigInteger} und \code{BigDecimal} aus \code{java.math}.
 Skripts, die auf Dateien oder das Internet zugreifen oder genaue Berechnungen durchführen, kommen also ohne zusätzliche Import-Deklarationen aus und sind dementsprechend kürzer.
 Weiterhin verhalten sich innere und geschachtelte Klassen, String- und Char-Literale und Typkonvertierungen zwischen primitiven Typen, Wrapper-Typen, \code{BigInteger} und \code{BigDecimal} anders als in Java.
+Der Zugriff auf Attribute erfolgt in Groovy standardmäßig durch Aufruf des Getters oder Setters, welche auch automatisch generiert werden können.
 Weitere Informationen und Beispiele zu den oben genannten Unterschieden sind bei~\cite[Abs~3.2.]{groovy-lang:documentation} sowie in den nachfolgenden Unterabschnitten zu finden.
 
 \subsection{Typisierung}\label{subsec:typisierung}
@@ -304,10 +305,6 @@ Diese müssen jedoch erst dann (dynamisch) aufgelöst werden, wenn die Closure a
 Da zu diesem Zeitpunkt schon das \code{delegate} verändert ist, können die bisher unbekannten Funktionen nun über dieses aufgelöst werden, als hätte man \code{delegate.add/mul(...)} aufgerufen.
 Somit kann das Programm erfolgreich ausgeführt werden und gibt \plain{5.5} aus.
 
-Die Standardbibliothek ist stark auf Closures ausgelegt.
-So existieren Klassen, die geschachtelte Closures und dynamische Methodennamen zum Generieren von JSON, HTML, XML und sogar Swing-GUIs verwenden.
-Diese sind zusammenfassend unter der Bezeichnung ``Builder'' bekannt, werden hier aber nicht näher betrachtet~\cite[Abs.~3.15.8]{groovy-lang:documentation}.
-
 \subsubsection{Optionale Syntax}\label{subsubsec:optionale-syntax}
 
 Groovy erlaubt es, Punkt-Operatoren und Klammern bei Methodenaufrufen wegzulassen.
@@ -328,20 +325,27 @@ Die Ausgabe ist zweimal der Satz \plain{my cake contains sugar, eggs and flour}.
 Es fällt auch auf, dass bei diesem und anderen Listings an Zeilenenden keine Semikolons gebraucht werden, da auch diese in den meisten Fällen optional sind.
 In Listing~\ref{lst:closures-dsl.groovy}, Zeile 7, ist zu beobachten, wie mit einem expliziten Semikolon auch mehrere Anweisungen in einer Zeile stehen können.
 
-\subsubsection{Dateiverarbeitung}
+\subsubsection{Standardbibliothek und Erweiterungen}\ref{subsubsec:standard-bibliothek}
 
-Ein häufiges Anwendungsgebiet von Skriptsprachen ist die Dateiverarbeitung.
-Groovy macht diese einfacher als mit Java, indem es Erweiterungen für bestehende JDK-Klassen bereitstellt.
-Diese sind kollektiv als GDK (Groovy Development Kit) bekannt.
-Listing~\ref{lst:files.groovy} verwendet Erweiterungsmethoden von \code{java.io.File} für eine beispielhafte Textverarbeitungsaufgabe.
+Groovy baut auf dem Java Development Kit (JDK) auf, stellt aber auch seine eigene Klassen bereit.
+Kollektiv wird die Standardbibliothek als GDK bezeichnet.
+Besonders ist, dass darin auch Klassen aus dem JDK erweitert.
 
-\codelisting{groovy}{files.groovy}{Groovy-Skript zur Textverarbeitung}
+Klassen wie \code{List} und andere Collections haben in Groovy die in Unterabschnitt~\ref{subsubsec:listen-und-maps} verwendeten funktionalen Operationen.
+Die Klasse \code{String} wird dabei auch als Collection (von Zeichen) behandelt und kann ebenso verwendet werden.
+\code{File} und andere IO-Klassen besitzen Erweiterungen für die Iteration über Bytes, Zeichen und Zeilen.
+Auch Verzeichnisbäume können innerhalb weniger Zeilen mit Closures traversiert werden.
+Da diese Erweiterungsmethoden meist Exceptions verstecken, kann auf Try-Catch-Blöcke verzichtet werden.
+Somit ist auch die Dateiverarbeitung in kurzen Skripts möglich.
 
-Hier wird zunächst ein \code{File}-Objekt der Datei \code{all-files.txt} an eine Variable gebunden und durch Zuweisung des \code{text}-Attributs der Dateiinhalt geleert.
-In Zeile 2 wird mit der \code{eachFileMatch}-Methode die übergebene Closure für jede Datei mit der Endung \code{.groovy} im aktuellen Verzeichnis ausgeführt.
-Der Rumpf der Closure bewirkt zunächst in Zeile 3, dass der Name der aktuellen Datei \code{it} an \code{all-files.txt} angehangen wird.
-Danach wird mit \code{eachLine} über die Zeilen von \code{it} iteriert, welche zusammen mit ihrer Zeilennummer an \code{all-files.txt} angehangen werden.
-Ergebnis des Skripts ist also die Datei \code{all-files.txt}, welche Groovy-Dateien mit Zeilennummern versehen auflistet.
+Zudem ist es möglich, selber bestehende Klassen zu verändern.
+Durch den \code{metaClass}-Mechanismus können beispielsweise Methoden zu Klassen oder einzelnen Instanzen hinzugefügt werden.
+Auch Properties können von speziellen Erweiterungen dynamisch aufgelöst werden, was insbesondere beim Zugriff auf Maps wie in Unterabschnitt~\ref{subsubsec:listen-und-maps} Anwendung findet.
+Weitere Konzepte der Metaprogrammierung, die teilweise von Ruby inspiriert sind, sind in~\cite[Abs.~3.4.]{groovy-lang:documentation} zu finden.
+
+In vielen Teilen der Standardbibliothek spielen Closures eine Schlüsselrolle.
+So existieren Klassen, die geschachtelte Closures und dynamische Methodennamen zum Generieren von JSON, HTML, XML und sogar Swing-GUIs verwenden.
+Diese sind zusammenfassend unter der Bezeichnung ``Builder'' bekannt, werden hier aber nicht näher betrachtet~\cite[Abs.~3.15.8]{groovy-lang:documentation}.
 
 % --------------- ---------------
 
@@ -385,8 +389,8 @@ Grails~\cite{grails} ist ein in Groovy geschriebenes Web-Framework, welches eben
 Der frühere Name ``Groovy on Grails'' war in Ahnlehnung an das populäre Ruby-on-Rails-Framework, von dem einige Konzepte übernommen wurden.
 Es basiert auf dem Backend-Framework Spring Boot, setzt aber wie Rails auf Konvention statt Konfiguration, um einen leichteren Einstieg zu erlauben.
 Schnittstellen für Datenbankzugriff und JSON/REST-APIs sowie ein Templatesystem für HTML-Seiten werden bereitgestellt.
+Dabei finden auch die in Unterabschnitt~\ref{subsubsec:standard-bibliothek} genannten JSON- und HTML-Builder der Standardbibliothek Anwendung.
 Das Framework nutzt die DSL-Unterstützung von Groovy unter anderem für Validierung, Datenbankanfragen und Textformattierung.
-Dabei finden auch die JSON- und HTML-Builder der Standardbibliothek Anwendung.
 Grails wirbt mit dem Einsatz bei vielen großen Firmen, darunter Google, IBM, LinkedIn, Mastercard und Oracle.
 
 % --------------- ---------------
